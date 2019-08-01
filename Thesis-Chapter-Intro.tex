@@ -1,3 +1,91 @@
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning}
+
+\newcommand{\apparatus}[4]{\node[square node] (#1) at (#2,#3){#4};
+                           \node[port] (#1+) at (#2 + 0.375, #3 + 0.5){+};
+                           \node[port] (#1-) at (#2 + 0.375, #3 - 0.5){-};}
+
 \part{Background}
 \chapter{Stern-Gerlach Experiments}
-\label{Section:Stern-Gerlach Experiments}
+
+\section{Complementarity}
+
+We now compare standard and consistent quantum mechanis' treatment of the principle of complementarity. Arguably the most fundamental feature of quantum mechanics, the principle of complementarity states that a quantum system has physical observables which cannot be measured simultaneously. Components of spin on orthogonal axes are complemntary properties, so we examine the measurements of succesive Stern-Gerlach experiments shown in \Figure~\fref{Figure:Intro:FigureExampleA}.
+
+First, we compute the probabilities of each outcome using standard quantum mechanics. The first apparatus serves as a state preparation device with output $\ket{+}$. Measurement by the second apparatus (oriented along the $X$ axis) is decribed by the \textit{projection postulate} and the \textit{probability postulate}.
+
+The projection postulate describes an instantaneous evolution of the input state to an output state that corresponds to an allowed measruement value. If input $\ket{\psi}$ is measured to have spin $n$ (up or down), then the new state is
+\begin{align}
+    \ket{\psi}^\prime = \frac{P_n\ket{\psi}}{\sqrt{\bra{\psi}P_n\ket{\psi}
+    }}
+\end{align}
+where $P_n = \ket{n}\bra{n}$ is the projection operator for state $\ket{n}$. This operation projects $\ket{\psi}$ onto $\ket{n}$, then divides by the magnitude of that projection. The end result is that $\ket{\psi}$ becomes the normalized state $\ket{n}$ corresponding to measuring spin $n$, which is shown by $\ket{+}_x$ and $\ket{-}_x$ exiting the second apparatus.
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{Z};
+    \apparatus{2}{6}{1}{X};
+    \apparatus{3}{9}{1}{Z};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (12,2.25) {$\ket{+}$};
+    \node[wf] (w2) at (12,-0.25) {$\ket{-}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+}$};
+
+    \draw[line width=0.5mm] (2-) -- (3) node [midway, below] {$\ket{-}_x$};
+    \draw[line width=0.5mm] (2+) -- (3) node [midway, above] {$\ket{+}_x$};
+
+    \draw[line width=0.5mm] (3-) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating interference of branch wavefunctions in Consistent Quantum Theory}
+\label{Figure:Intro:FigureExampleA}
+\end{figure}
+
+
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{Z};
+    \apparatus{2}{6}{1}{X};
+    \apparatus{3}{9}{1}{Z};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (12,2.5) {$\ket{\psi_1}$};
+    \node[wf] (w2) at (12,1.5) {$\ket{\psi_2}$};
+    \node[wf] (w3) at (12,0.5) {$\ket{\psi_3}$};
+    \node[wf] (w4) at (12,-0.5) {$\ket{\psi_4}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[transform canvas={yshift=-0.6em}, line width=0.5mm, loosely dotted] (1+) -- (2);
+    \draw[transform canvas={yshift=-0.2em}, line width=0.5mm, dotted] (1+) -- (2);
+    \draw[transform canvas={yshift=0.2em}, line width=0.5mm, dashed] (1+) -- (2);
+    \draw[transform canvas={yshift=0.6em}, line width=0.5mm] (1+) -- (2);
+
+    \draw[transform canvas={yshift=-0.4em}, line width=0.5mm, loosely dotted] (2-) -- (3);
+    \draw[transform canvas={yshift=0em}, line width=0.5mm, dotted] (2-) -- (3);
+    \draw[transform canvas={yshift=0em}, line width=0.5mm, dashed] (2+) -- (3);
+    \draw[transform canvas={yshift=0.4em}, line width=0.5mm] (2+) -- (3);
+
+    \draw[line width=0.5mm, loosely dotted] (3-) -- (w4);
+    \draw[line width=0.5mm, dashed] (3-) -- (w3);
+    \draw[line width=0.5mm, dotted] (3+) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating interference of branch wavefunctions in Consistent Quantum Theory}
+\label{Figure:Intro:FigureExampleB}
+\end{figure}

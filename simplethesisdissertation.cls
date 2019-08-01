@@ -44,7 +44,7 @@ footskip=6mm] % footer skip, below text body
 %% MISCELLANEOUS PACKAGES.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\RequirePackage[none]{hyphenat} % Disable hyphenation.
+\RequirePackage[none]{hyphenat} % Disable hyphenation.
 \RequirePackage[english]{babel} % For language-specific hyphenation.
 \RequirePackage{cite} % Automatically sort and range citations numbers.
 \RequirePackage{environ} % For easy definition of environments.
@@ -297,9 +297,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@plain{%
 \def\@oddhead{\UseHeaderFooterFont%
-\hfill\thepage\hfill}%
+\hfill\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\hfill\thepage\hfill}%
+\hfill\hfill}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
@@ -309,9 +309,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@plain{%
 \def\@oddhead{\UseHeaderFooterFont%
-\MakeUppercase{\DocumentTitle}\hfill\thepage}%
+\MakeUppercase{\DocumentTitle}\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\thepage\hfill\MakeUppercase{\DocumentTitle}}%
+\hfill\MakeUppercase{\DocumentTitle}}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
@@ -320,9 +320,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@regular{%
 \def\@oddhead{\UseHeaderFooterFont%
-\MakeUppercase{\chaptername~\thechapter~~\Chaptername}\hfill\thepage}%
+\MakeUppercase{\chaptername~\thechapter~~\Chaptername}\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\thepage\hfill\MakeUppercase{\DocumentTitle}}%
+\hfill\MakeUppercase{\DocumentTitle}}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
@@ -331,9 +331,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@regularunnumberedchapters{%
 \def\@oddhead{\UseHeaderFooterFont%
-\MakeUppercase{\Chaptername}\hfill\thepage}%
+\MakeUppercase{\Chaptername}\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\thepage\hfill\MakeUppercase{\DocumentTitle}}%
+\hfill\MakeUppercase{\DocumentTitle}}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
