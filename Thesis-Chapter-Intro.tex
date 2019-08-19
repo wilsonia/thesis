@@ -11,19 +11,19 @@
 TODO
 \section{Stern-Gerlach Measurement}
 
-We begin by comparing standard and consistent descriptions of measuring a quantum states' spin along one axis using a Stern-Gerlach apparatus. In standard quantum mechanics, the act of measurement plays a special role in assigning probabilities to the outcome and the evolution of the state through the probability and projection postulates.
+We begin by comparing standard and consistent descriptions of measuring a quantum states' spin along one axis using a Stern-Gerlach apparatus. In standard quantum mechanics, the act of measurement plays a special role in assigning probabilities to measurement outcomes through the probability postulate, and in determmining the evolution of the state through the projection postulate.
 
-The probability postulate assigns probabilities to each measurement by taking the inner product of the state $\ket{n}$ corresponding to a measruement result $n$ and $\ket{\psi}$:
+The probability postulate assigns probabilities to each measurement result by taking the inner product of $\ket{\psi}$ and the eigenstate $\ket{n}$ corresponding to measurement result $n$:
 \begin{align}
     \mathcal{P}_n = |\braket{n|\psi}|^2
 \end{align}
 
-The projection postulate describes an instantaneous evolution of the input state to an output state that corresponds to an allowed measruement value. If input $\ket{\psi}$ is measured to have spin $n$ (up or down), then the new state is
+The projection postulate describes an instantaneous evolution of the input state to the eigenstate corresponding to the measruement result. If input $\ket{\psi}$ is measured to have spin $n$ (up or down), then the new state is
 \begin{align}
     \ket{\psi}^\prime = \frac{P_n\ket{\psi}}{\sqrt{\bra{\psi}P_n\ket{\psi}
     }}
 \end{align}
-where $P_n = \ket{n}\bra{n}$ is the projection operator for state $\ket{n}$. This operation projects $\ket{\psi}$ onto $\ket{n}$, then divides by the magnitude of that projection. The end result is that $\ket{\psi}$ becomes the normalized state $\ket{n}$ corresponding to measuring spin $n$, which is shown by the states exiting the each apparatus.
+where $P_n = \ket{n}\bra{n}$ is the projection operator for state $\ket{n}$. This operation projects $\ket{\psi}$ onto $\ket{n}$, then divides by the magnitude of that projection. The end result is that $\ket{\psi}$ becomes the normalized state $\ket{n}$ corresponding to measuring spin $n$, which is shown by the states exiting the each apparatus. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -53,16 +53,32 @@ where $P_n = \ket{n}\bra{n}$ is the projection operator for state $\ket{n}$. Thi
 TODO: show probability computations
 TODO: explain how measurement is not itself modeled as a physical process, and we are directed to use these postulates upon poorly defined "measurement"
 
-In consistent quantum theory, measurement is modeled as a physical process. Each Stern-Gerlach apparatus has its own detector Hilbert space, containing orthonormal states representing each measurement result. Let the state space of the $z$ apparatus be represented by ${\mathcal{H}_D}_z =  \{\ket{D_z}_+, \ket{D_z}_-\}$ where $_+\braket{D_z|D_z}_+=1$ and $_+\braket{D_z|D_z}_-=0$. ${\mathcal{H}_D}_x$ is similarly defined. Each detector state is orthogonal to states in seperate detector spaces.
+In consistent quantum theory, measurement is modeled as a physical process. Each Stern-Gerlach apparatus has its own detector state space, containing orthonormal states representing each measurement result. A detector state could represent a needle pointing up, or a particle colliding with a screen in a distinguishable region. Let the state space of the $z$ apparatus be represented by
+\begin{align}
+    {\mathcal{H}_D}_z =  \{\ket{D_+}_z, \ket{D_-}_z\}
+\end{align}
+where
+\begin{align}
+    _z\braket{D_+|D_+}_z&=1 \\
+    _z\braket{D_+|D_-}_z&=0
+\end{align}
+${\mathcal{H}_D}_x$ is similarly defined. Each detector state space is a subset of a global detector state space $\mathcal{H}_D}$, so that we can require orthogonality of states in seperate dector spaces:
+\begin{align*}
+    _z\braket{D_n|D_m}_x=0 \\
+    & \forall \ket{D_n}_z \in {\mathcal{H}_D}_z \\
+    & \forall \ket{D_m}_x \in {\mathcal{H}_D}_x
+\end{align*}
 
-The act of measurement is described by correlating the detector states with the corresponding quantum states. The system then evolves by
+The act of measurement is described by correlating detector states with corresponding quantum states. The system then evolves by
 \begin{align}
     \nonumber V: \\
-    & \nonumber \mathcal{H}_s \mapsto \mathcal{H}_s \otimes \mathcal{H}_D \\
-    & \ket{\psi} = \sum_{n} P_n\ket{\psi} \mapsto \sum_{n} P_n\ket{\psi} \otimes \ket{D}_n
+    & \ket{\psi} = \left(\sum_{n} P_n\ket{\psi}\right) \otimes \left(\sum_{m} P_m\ket{D}\right) \mapsto \sum_{n} P_n\ket{\psi} \otimes \ket{D_n}
 \end{align}
+where $P_n$ is the projection operator for the $n^{th}$ spin eigenstate and $P_m$ is the projection operator for the $m^{th}$ detector state. \\
 
-Measurment is now described by an abstract physical process. In this model, it is now feasible for "state collapse" to occur independent of physicists conducting clever experiments.
+This evolution describes a change in the eigenstates of the system. Before, $\ket{\psi}$ was a superposition of the tensor products of any spin eigenstate and any detector state. Afterwards, $\ket{\psi}$ is a superposition of the tensor products of a spin eigenstate and one specific detector state.
+
+Measurment is now described by an abstract physical process. In this model, it is now feasible for state collapse to occur independent of physicists conducting clever experiments. For this sytem, we defined a detector state as a Stern Gerlach apparatus recording spin up or spin down. However, other systems could define detector states as quantum systems possesing physical properties that interact with the macroscopic world accordingly. Detector states describe a system's behavior macroscopically without necessarily including any classical measurement apparatus.
 
 To compute probabilities of each outcome, we sum the magnitudes of each branch wavefunction that includes the corresponding detector state. This is accomplished by finding the trace of the projection operator of that detector state acting on the projection operator or the overall evolved state.
 \begin{align}
