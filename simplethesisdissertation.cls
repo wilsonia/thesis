@@ -34,7 +34,7 @@
 \RequirePackage[
 left=25.4mm,
 right=25.4mm,
-top=20mm,
+top=16mm,
 bottom=16mm,
 headsep=6mm, % header separation, above text body
 footskip=6mm] % footer skip, below text body
@@ -111,7 +111,6 @@ Scale=0.95]
 
 % Symbols.
 \RequirePackage{textcomp} % For symbols.
-\RequirePackage{underscore} % Use underscore symbol without escape sequence.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SECTION HEADINGS.
