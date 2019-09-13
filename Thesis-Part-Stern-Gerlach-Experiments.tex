@@ -1,0 +1,268 @@
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning}
+
+\newcommand{\apparatus}[4]{\node[square node] (#1) at (#2,#3){#4};
+                           \node[port] (#1+) at (#2 + 0.375, #3 + 0.5){+};
+                           \node[port] (#1-) at (#2 + 0.375, #3 - 0.5){-};}
+
+\part{Stern-Gerlach Experiments}
+
+\chapter{The Born Rule}
+We begin by comparing standard and consistent descriptions of measuring a quantum states' spin along one axis using a Stern-Gerlach apparatus.
+
+We accept the first three postulates of quantum mechanics.
+
+\begin{enumerate}
+    \item All information known about a quantum mechanical system is represented by an abstract vector $\ket{\psi}$. This vector lives in a linear state space $\mathcal{H}$, which is the set of all possible states of the quantum system.
+    \item A physical observable of the system is represented by a linear operator $A$ that acts on vectors in $\mathcal{H}$.
+    \item The only possible measurement results of a physical observable are the eigenvalues $a_n$ of the corresponding observable $A$.
+\end{enumerate}
+
+We accept the second and thirst postulates because they do not describe the operator's relationship to the measurement process. The second correlates a measurable quantity of the system to an operator, while the third describes the possible results. However, care must be taken when interpreting a "measurement result of $a_n$". We take this to mean that some record exists of the system behaving classically such that $A$ must have been $a_n$.
+
+The fourth and fifth postulates require more scrutiny. In standard quantum mechanics, the act of measurement plays a special role in assigning probabilities to measurement outcomes through the probability postulate, and in determmining the evolution of the state through the projection postulate.
+
+The probability postulate assigns probabilities to each measurement result by taking the inner product of $\ket{\psi}$ and the eigenstate $\ket{n}$ corresponding to measurement result $n$:
+\begin{align}
+    \mathcal{P}_n = |\braket{n|\psi}|^2
+\end{align}
+
+This postulate is also known as the \textit{Born Rule}, which is usually presented in the language of wavefunctions. The probability that a system is found at position $x$ is
+\begin{align}
+    \mathcal{P}_x = |\psi(x)|^2
+\end{align}
+which follows from the wavefunction's definition as the inner product of the $\ket{x}$ eigenstate and $\psi$.
+
+The projection postulate describes an instantaneous evolution of the input state to the eigenstate corresponding to the measruement result.
+
+If input $\ket{\psi}$ is measured to have spin $n$ (up or down), then the new state is
+\begin{align}
+    \ket{\psi}^\prime = \frac{P_n\ket{\psi}}{\sqrt{\bra{\psi}P_n\ket{\psi}
+    }}
+\end{align}
+where $P_n = \ket{n}\bra{n}$ is the projection operator for state $\ket{n}$. This operation projects $\ket{\psi}$ onto $\ket{n}$, then divides by the magnitude of that projection. The end result is that $\ket{\psi}$ becomes the normalized state $\ket{n}$ corresponding to measuring spin $n$, which is shown by the states exiting each apparatus. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{$Z$};
+    \apparatus{2}{6}{1.5}{$X$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (8, 2.0) {$\ket{+}_x$};
+    \node[wf] (w2) at (8, 1.0) {$\ket{-}_x$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+}$};
+
+    \draw[line width=0.5mm] (2+) -- (w1);
+    \draw[line width=0.5mm] (2-) -- (w2);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating renormalizing upon measurment in standard quantum mechanics}
+\label{Figure:Intro:FigureExampleA}
+\end{figure}
+
+Consider the system shown in Figure 1.1. Using the probability postulate, the probabilities of each state leaving the Stern-Gerlach device oriented along the x-axis are
+\begin{align*}
+    \mathcal{P}_{+_x} &= |_x\braket{+|+}|^2 = \frac{1}{2} \\
+    \mathcal{P}_{-_x} &= |_x\braket{-|+}|^2 = \frac{1}{2}
+\end{align*} \\
+Using the projection postulate, the states after measurement are
+\begin{align*}
+    \ket{\psi_{top}} &= \frac{{P^x}_+\ket{+}}{\sqrt{\bra{+}{P^x}_+\ket{+}}} = \ket{+}_x \\ \\
+    \ket{\psi_{bottom}} &= \frac{{P^x}_-\ket{+}}{\sqrt{\bra{+}{P^x}_-\ket{+}}} = \ket{-}_x
+\end{align*} \\
+
+Both probability and projection postulates relied on the term "measurement" in their definitions. TODO: introduce measurement problem.
+
+In consistent quantum theory, measurement is modeled as a physical process. Each Stern-Gerlach apparatus has its own detector state space, containing orthonormal states representing each measurement result. A detector state could represent a needle pointing up, or a particle colliding with a screen in a distinguishable region. Let the state space of the $z$ apparatus be represented by
+\begin{align}
+    {\mathcal{H}_D}_z =  \{\ket{D_+}_z, \ket{D_-}_z\}
+\end{align}
+where
+\begin{align}
+    _z\braket{D_+|D_+}_z&=1 \\
+    _z\braket{D_+|D_-}_z&=0
+\end{align}
+${\mathcal{H}_D}_x$ is similarly defined. Each detector state space is a subset of a global detector state space $\mathcal{H}_D}$, so that we can require orthogonality of states in seperate dector spaces:
+\begin{align*}
+    _z\braket{D_n|D_m}_x=0 \\
+    & \forall \ket{D_n}_z \in {\mathcal{H}_D}_z \\
+    & \forall \ket{D_m}_x \in {\mathcal{H}_D}_x
+\end{align*}
+
+The act of measurement is described by correlating detector states with corresponding quantum states. The system then evolves by
+\begin{align}
+    \nonumber V: \\
+    & \ket{\psi} = \left(\sum_{n} P_n\ket{\psi}\right) \otimes \left(\sum_{m} P_m\ket{D}\right) \mapsto \sum_{n} P_n\ket{\psi} \otimes \ket{D_n}
+\end{align}
+where $P_n$ is the projection operator for the $n^{th}$ spin eigenstate and $P_m$ is the projection operator for the $m^{th}$ detector state. \\
+
+This evolution describes a change in the eigenstates of the system. Before, $\ket{\psi}$ was a superposition of the tensor products of any spin eigenstate and any detector state. Afterwards, $\ket{\psi}$ is a superposition of the tensor products of a spin eigenstate and one specific detector state.
+
+In general, we may know the probabilities of measurement results, but the outcome itself is random. Because the measurement result is not generally predetermined, this type of time evolution is called stochastic evolution.
+
+Measurment is now described by an abstract physical process. In this model, it is now feasible for state collapse to occur independent of physicists conducting clever experiments. For this sytem, we defined a detector state as a Stern Gerlach apparatus recording spin up or spin down. However, one could define detector states as any record of quantum systems possesing physical properties that interact with the classical world accordingly. Detector states describe a system's behavior classically without necessarily including any classical measurement apparatus.
+
+To compute probabilities of each outcome, we introduce an analog of the Born Rule: sum the magnitudes of each branch wavefunction that includes the corresponding detector state. This is accomplished by finding the trace of the projection operator of that detector state acting on the projection operator or the overall evolved state.
+\begin{align}
+    \mathcal{P}_n = Tr(P^D_n \cdot V\ket{\psi}\bra{\psi}V^\dagger)
+\end{align}
+
+TODO: explain trace
+
+In this simple Stern-Gerlach example, there is only one branch wavefunction correlated with each detector state. So, computing probabilities is done by finding the magnitude of each branch wavefunction.
+
+TODO: compute probabilities, show it is equal to std QM
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm, text width = 0.7cm}]
+    \apparatus{1}{3}{0}{$Z$};
+    \apparatus{2}{6}{1.5}{$X$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (8, 2.0) {$P^x_+ \ket{+} \otimes \ket{D_z}_+  \otimes \ket{D_x}_+$};
+    \node[wf] (w2) at (8, 1.0) {$P^x_- \ket{+} \otimes \ket{D_z}_+ \otimes \ket{D_x}_-$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+} \otimes \ket{D_z}_+$};
+
+    \draw[line width=0.5mm] (2+) -- (w1);
+    \draw[line width=0.5mm] (2-) -- (w2);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating description of measurment as an abstract physical process in consistent quantum mechanics}
+\label{Figure:Intro:FigureExampleB}
+\end{figure}
+
+\subsection{Complementarity}
+
+We now compare standard and consistent quantum mechanics' treatment of the principle of complementarity. Arguably the most fundamental feature of quantum mechanics, the principle of complementarity states that a quantum system has pairs of physical observables which cannot be measured simultaneously. Components of spin on orthogonal axes are complementary properties, so we examine measurements of succesive Stern-Gerlach experiments. We will see how complementarity is a strange consequence of the standard postulates of quantum mechanics, while in consistent formulations, complementarity is itself a postulate from which strange consequences arise.
+
+First, we compute the probabilities of each outcome using standard quantum mechanics. The first apparatus serves as a state preparation device with output $\ket{+}$. By the direction of the projection postulate, the state is renormalized upon each measurement. After measuring a property complementary to what is known (such as spin along $x$, knowing spin along $z$), any information known about the input state is lost; the input state instantaneously changes to the state corresponding to the observed quantity. Consequently, there is an equal probability of observing the final state as $\ket{+}$ or $\ket{-}$ at either final apparatus, even though the state was initially prepared as $\ket{+}$, since
+\begin{align*}
+    \mathcal{P}_n &= |\braket{+|+}_x|^2 \\
+                  &= |\braket{-|+}_x|^2 \\
+                  &= |\braket{+|-}_x|^2 \\
+                  &= |\braket{-|-}_x|^2 \\
+                  &= \frac{1}{4}
+\end{align*}
+This contradiction with classical intuition is a direct result of the projection postulate. The act of measurement causes the system to shed properties previously recorded. TODO: describe measurement problem.
+
+TODO: Demonstrate complementarity and single framework rule
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{$Z$};
+    \apparatus{2}{6}{1.25}{$X$};
+    \apparatus{3}{9}{2.50}{$Z$};
+    \apparatus{4}{9}{0}{$Z$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (11, 3.0) {$\ket{+}$};
+    \node[wf] (w2) at (11, 2.0) {$\ket{-}$};
+    \node[wf] (w3) at (11, 0.5) {$\ket{+}$};
+    \node[wf] (w4) at (11, -0.5) {$\ket{-}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+}$};
+
+    \draw[line width=0.5mm] (2-) -- (4) node [midway, below] {$\ket{-}_x$};
+    \draw[line width=0.5mm] (2+) -- (3) node [midway, above] {$\ket{+}_x$};
+
+    \draw[line width=0.5mm] (3-) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+    \draw[line width=0.5mm] (4-) -- (w4);
+    \draw[line width=0.5mm] (4+) -- (w3);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating complementary measurments in standard quantum mechanics}
+\label{Figure:Intro:FigureExampleC}
+\end{figure}
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{$Z$};
+    \apparatus{2}{6}{1.25}{$X$};
+    \apparatus{3}{9}{2.50}{$Z$};
+    \apparatus{4}{9}{0}{$Z$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (11, 3.0) {$\ket{+}$};
+    \node[wf] (w2) at (11, 2.0) {$\ket{-}$};
+    \node[wf] (w3) at (11, 0.5) {$\ket{+}$};
+    \node[wf] (w4) at (11, -0.5) {$\ket{-}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+}$};
+
+    \draw[line width=0.5mm] (2-) -- (4) node [midway, below] {$\ket{-}_x$};
+    \draw[line width=0.5mm] (2+) -- (3) node [midway, above] {$\ket{+}_x$};
+
+    \draw[line width=0.5mm] (3-) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+    \draw[line width=0.5mm] (4-) -- (w4);
+    \draw[line width=0.5mm] (4+) -- (w3);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating complementary measurments in consistent quantum mechanics}
+\label{Figure:Intro:FigureExampleD}
+\end{figure}
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{Z};
+    \apparatus{2}{6}{1}{X};
+    \apparatus{3}{9}{1}{Z};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (12,2.5) {$\ket{\psi_1}$};
+    \node[wf] (w2) at (12,1.5) {$\ket{\psi_2}$};
+    \node[wf] (w3) at (12,0.5) {$\ket{\psi_3}$};
+    \node[wf] (w4) at (12,-0.5) {$\ket{\psi_4}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[transform canvas={yshift=-0.6em}, line width=0.5mm, loosely dotted] (1+) -- (2);
+    \draw[transform canvas={yshift=-0.2em}, line width=0.5mm, dotted] (1+) -- (2);
+    \draw[transform canvas={yshift=0.2em}, line width=0.5mm, dashed] (1+) -- (2);
+    \draw[transform canvas={yshift=0.6em}, line width=0.5mm] (1+) -- (2);
+
+    \draw[transform canvas={yshift=-0.4em}, line width=0.5mm, loosely dotted] (2-) -- (3);
+    \draw[transform canvas={yshift=0em}, line width=0.5mm, dotted] (2-) -- (3);
+    \draw[transform canvas={yshift=0em}, line width=0.5mm, dashed] (2+) -- (3);
+    \draw[transform canvas={yshift=0.4em}, line width=0.5mm] (2+) -- (3);
+
+    \draw[line width=0.5mm, loosely dotted] (3-) -- (w4);
+    \draw[line width=0.5mm, dashed] (3-) -- (w3);
+    \draw[line width=0.5mm, dotted] (3+) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{TODO: create section to discuss this example, and how it creates an inconsistent set of histories. Describe how the set can be made to be consistent}
+\label{Figure:Intro:FigureExampleE}
+\end{figure}

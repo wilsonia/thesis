@@ -34,7 +34,7 @@
 \RequirePackage[
 left=25.4mm,
 right=25.4mm,
-top=20mm,
+top=16mm,
 bottom=16mm,
 headsep=6mm, % header separation, above text body
 footskip=6mm] % footer skip, below text body
@@ -44,7 +44,7 @@ footskip=6mm] % footer skip, below text body
 %% MISCELLANEOUS PACKAGES.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\RequirePackage[none]{hyphenat} % Disable hyphenation.
+\RequirePackage[none]{hyphenat} % Disable hyphenation.
 \RequirePackage[english]{babel} % For language-specific hyphenation.
 \RequirePackage{cite} % Automatically sort and range citations numbers.
 \RequirePackage{environ} % For easy definition of environments.
@@ -63,7 +63,7 @@ footskip=6mm] % footer skip, below text body
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage[usenames]{color} % For colors.
-\definecolor{AccentOne}{RGB}{0,68,186} % blue
+\definecolor{AccentOne}{RGB}{0,0,0} % black
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% FONTS.
@@ -111,7 +111,6 @@ Scale=0.95]
 
 % Symbols.
 \RequirePackage{textcomp} % For symbols.
-\RequirePackage{underscore} % Use underscore symbol without escape sequence.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SECTION HEADINGS.
@@ -144,16 +143,16 @@ Scale=0.95]
 
 \titlespacing*{\chapter}%
 {0em}% left
-{5em}% vertical space before title
+{0em}% vertical space before title
 {2em}% vertical space after title
 [0em]% right
 
 \titleformat{\chapter}
-[display]% shape
+[block]% shape
 {\sffamily\bfseries\raggedright}% applied to label and text
-{\fontsize{17.5}{21}\selectfont\color{AccentOne}CHAPTER~\thechapter}% applied to the label only
-{0em}% vertical spacing between label and text
-{\fontsize{30}{36}\selectfont{#1}}% applied before the text
+{\fontsize{21}{21}\selectfont \thechapter}% applied to the label only
+{1em}% vertical spacing between label and text
+{\fontsize{21}{36}\selectfont{#1}}% applied before the text
 []% applied after the text
 
 \titleformat{name=\chapter,numberless}
@@ -297,9 +296,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@plain{%
 \def\@oddhead{\UseHeaderFooterFont%
-\hfill\thepage\hfill}%
+\hfill\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\hfill\thepage\hfill}%
+\hfill\hfill}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
@@ -309,9 +308,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@plain{%
 \def\@oddhead{\UseHeaderFooterFont%
-\MakeUppercase{\DocumentTitle}\hfill\thepage}%
+\MakeUppercase{\DocumentTitle}\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\thepage\hfill\MakeUppercase{\DocumentTitle}}%
+\hfill\MakeUppercase{\DocumentTitle}}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
@@ -320,9 +319,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@regular{%
 \def\@oddhead{\UseHeaderFooterFont%
-\MakeUppercase{\chaptername~\thechapter~~\Chaptername}\hfill\thepage}%
+\MakeUppercase{\chaptername~\thechapter~~\Chaptername}\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\thepage\hfill\MakeUppercase{\DocumentTitle}}%
+\hfill\MakeUppercase{\DocumentTitle}}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother
@@ -331,9 +330,9 @@ Scale=0.95]
 \makeatletter
 \def\ps@regularunnumberedchapters{%
 \def\@oddhead{\UseHeaderFooterFont%
-\MakeUppercase{\Chaptername}\hfill\thepage}%
+\MakeUppercase{\Chaptername}\hfill}%
 \def\@evenhead{\UseHeaderFooterFont%
-\thepage\hfill\MakeUppercase{\DocumentTitle}}%
+\hfill\MakeUppercase{\DocumentTitle}}%
 \def\@oddfoot{\UseHeaderFooterFont\FooterText}%
 \def\@evenfoot{\UseHeaderFooterFont\FooterText}}
 \makeatother

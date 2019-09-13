@@ -11,8 +11,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % See "README.md" for instructions on compiling this document.
-
 \documentclass[letterpaper,nonstop,draftmode]{simplethesisdissertation}
+\usepackage{tikz}
+\usepackage{braket}
+\usepackage{arev}
 % Class options:
 % a4paper, letterpaper, nonstop, draftmode.
 
@@ -42,9 +44,6 @@ hidelinks,
 breaklinks,
 bookmarksnumbered}
 
-% Accent colors.
-\definecolor{AccentOne}{RGB}{0,68,186} % blue
-
 % Macros:
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -64,9 +63,9 @@ bookmarksnumbered}
 
 \input{Thesis-FrontMatter.tex}
 
-\input{Thesis-Chapter-Intro.tex}
+\input{Thesis-Part-Background.tex}
 
-\input{Thesis-Chapter-ChapAbbr.tex}
+\input{Thesis-Part-Stern-Gerlach-Experiments.tex}
 
 \input{Thesis-Chapter-Summary.tex}
 
