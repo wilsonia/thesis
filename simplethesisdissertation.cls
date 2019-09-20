@@ -514,7 +514,7 @@ Scale=0.95]
 \makeatother
 
 \newtheorem{Thm:Lemma}[Thm:Theorem]{Lemma}
-\newtheorem{innercustomthm}{Theorem}
+\newtheorem{innercustomthm}{Postulate}
 \newenvironment{Thm:Postulate}[1]
   {\renewcommand\theinnercustomthm{#1}\innercustomthm}
   {\endinnercustomthm}
