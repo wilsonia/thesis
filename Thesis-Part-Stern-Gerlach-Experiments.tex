@@ -16,7 +16,7 @@ Consider the spin (intrinsic angular momentum) of an electron. Our system is the
 
 Our physical variable of interest is the magnitude of spin in the $z$ direction; clasically, this variable is modeled by a function of spin state: $S_z(S) = \braket{z|S}$. This function relies on the inner product of the state space $\mathbb{R}^3$ to determine the magnitude of the spin vector in the $z$ direction only. In general, measurement of spin in three orthogonal directions uniquely determines the spin component in any direction $w$.
 
-Experimental evidence raises issues with this classical description of spin states and $S_z$. First, only two values have ever been recorded, named \textit{spin-up} and \textit{spin-down}. These values are of equal magnitude $\frac{\hbar}{2}$ with positive and negative orientations, respectively. Second, the results of succesive measurements of a spin system impliy that the spin state is determined by spin along one axis only. Consequently, spin along more than one axis cannot be simultaneously determined; this is discussed further in section \ref{Section:Measurement}. To resolve these issues, we must change the mathematical objects used to represent system states and physical variables. Specifically, the sample space must restrict observed $S_w$ values to spin up and spin down, and the inability of determining spin in more than one direction should be reflected through incompatible sample spaces.
+Experimental evidence raises issues with this classical description of electron spin states and $S_z$. First, only two values have ever been recorded, named \textit{spin-up} and \textit{spin-down}. These values are of equal magnitude $\frac{\hbar}{2}$ with positive and negative orientations, respectively. Second, the results of succesive measurements of a spin system impliy that spin state is determined by spin along one axis only. Consequently, spin along more than one axis cannot be simultaneously determined; this is discussed further in Section \sref{Section:Measurement}. To resolve these issues, we must change the mathematical objects used to represent system states and physical variables. Specifically, the sample space must restrict observed $S_w$ values to spin up and spin down, and the inability of determining spin in more than one direction should be reflected through incompatible sample spaces.
 
 The quantum mechanical system state is described by a normalized vector in a linear state space. In fact, this is the first postulate of quantum mechanics:
 \begin{Thm:Postulate}{1}
@@ -74,7 +74,7 @@ The first three postulates designate the mathematical objects used to model phys
 
 \section{Measurement}
 \label{Section:Measurement}
-
+\subsection{Standard Description}
 In standard quantum mechanics, the fifth postualte (known as the projection postulate) describes how a system changes upon measurement. Defined as ``an interaction with a classical apparatus'', measurement instantaneously changes the measured state to the eigenstate corresponding to the measruement result.
 
 \begin{Thm:Postulate}{5}
@@ -86,7 +86,7 @@ In standard quantum mechanics, the fifth postualte (known as the projection post
     onto the subspace associated with $a_n$.
 \end{Thm:Postulate}
 
-Consider a measurement result for the $z$ component of spin, $S_z$. We represent the result with $n_z$, which could be either spin-up or spin-down. ${P^n}_z = \ket{n}_z\tensor[_z]{\bra{n}}{}$ is the projection operator for the state $\ket{n}_z$ corresponding to $n_z$. The new state is the projection of $\ket{\psi}$ onto $\ket{n}_z$, divided by the magnitude of that projection. The end result is that $\ket{\psi}$ becomes the normalized state $\ket{n}_z$. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
+${P^n}_z = \ket{n}_z\tensor[_z]{\bra{n}}{}$ is the projection operator for the state $\ket{n}_z$ corresponding to $n_z$. Consider a measurement result for the $z$ component of spin, $S_z$. We represent the result with $n_z$, which could be either spin-up or spin-down. The new state is the normalized projection of $\ket{\psi}$ onto $\ket{n}_z$. In other words, $\ket{\psi}$ instantaneously becomes $\ket{n}_z$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -117,40 +117,40 @@ As an example, consider the system shown in \fref{Figure:Measurement:Renormalizi
 \begin{align*}
     \ket{\psi_{top}} &= \frac{{P^z}_+\ket{\psi}}{\sqrt{\bra{\psi}{P^z}_+\ket{\psi}}} = \ket{+}_z
 \end{align*}
-Similarly, the possible output states from the second apparatus are
+Similarly, the possible output states from the second apparatus are $\tensor[_z]{\bra{+}}{}$
 \begin{align*}
-    \ket{\psi_{top}} &= \frac{{P^x}_+\ket{+}_z}{\sqrt{\bra{+}{P^x}_+\ket{+}_z}} = \ket{+}_x \\ \\
-    \ket{\psi_{bottom}} &= \frac{{P^x}_-\ket{+}_z}{\sqrt{\bra{+}{P^x}_-\ket{+}_z}} = \ket{-}_x
+    \ket{\psi_{top}} &= \frac{{P^x}_+\ket{+}_z}{\sqrt{\tensor[_z]{\bra{+}}{}{P^x}_+\ket{+}_z}} = \ket{+}_x \\ \\
+    \ket{\psi_{bottom}} &= \frac{{P^x}_-\ket{+}_z}{\sqrt{\tensor[_z]{\bra{+}}{}{P^x}_-\ket{+}_z}} = \ket{-}_x
 \end{align*}
 
-In consistent quantum theory, what is meant by ``measurement'' in the projection postulate is itself modeled as a physical process. Therefore, no notion of ``interaction with a classical apparatus'' is required to describe how states evolve when their classical properties are recorded. To describe measurement, each Stern-Gerlach apparatus has its own detector state space, containing orthonormal states representing each measurement result. For a Stern-Gerlach apparatus, a detection state is defined by a particle being located at some spatially separated output. In general, a detection state is some classical indicator; examples include an apparatus needle pointing up, or a particle colliding with a screen in a distinguishable region.
+\subsection{Consistent Description}
+In consistent quantum theory, what is meant by ``measurement'' in the projection postulate is itself modeled as a physical process. Therefore, no notion of an undefined ``interaction with a classical apparatus'' is required to describe how states evolve when their classical properties are recorded. To describe measurement, each Stern-Gerlach apparatus has its own detector state space, containing orthonormal states representing each measurement result. For a Stern-Gerlach apparatus, a detection state is defined by a particle existing at some spatially separated output. In general, a detection state is some classical indicator; examples include an apparatus needle pointing up, or a particle colliding with a screen in a distinguishable region.
 
 Let the state space of the $z$ apparatus be represented by
 \begin{align*}
-    {\mathcal{H}_D}_z =  \{\ket{D_+}_z, \ket{D_-}_z\}
+    {D}_z =  \{\ket{D_+}_z, \ket{D_-}_z\}
 \end{align*}
 where
 \begin{align*}
     _z\braket{D_+|D_+}_z&=1 \\
     _z\braket{D_+|D_-}_z&=0
 \end{align*}
-${\mathcal{H}_D}_x$ is similarly defined. Each detector state space is a subset of a global detector state space $\mathcal{H}_D$, so that we can require orthogonality of states in seperate dector spaces:
-\begin{align*}
-    _z\braket{D_n|D_m}_x=0 \\
-    & \forall \ket{D_n}_z \in {\mathcal{H}_D}_z \\
-    & \forall \ket{D_m}_x \in {\mathcal{H}_D}_x
-\end{align*}
+The requirement of orthonormality reflects mutually exlcusive outcomes; the particle exits spin-up or spin-down. The state space for an apparatus aligned in any general direction ${D}_w$ is similarly defined.
 
-The act of measurement is described by correlating detector states with quantum states. The system then evolves by
+The act of measurement is described by correlating detector states with $\ket{\psi}$ eigenstates. The system then evolves unitarily by
 \begin{align}
     \nonumber V: \\
     & \ket{\psi} = \left(\sum_{n} {P^z}_n\ket{\psi}\right) \otimes \left(\sum_{m} P_m\ket{D}\right) \mapsto \sum_{n} {P^z}_n\ket{\psi} \otimes \ket{D_n}
 \end{align}
 where ${P^z}_n$ is the projection operator for the $n^{th} z$ spin eigenstate and $P_m$ is the projection operator for the $m^{th}$ detector state.
 
-This evolution describes a change in the eigenstates of the system. Before, $\ket{\psi}$ was a superposition of the tensor products of any spin eigenstate and any detector state. Any detector state could be realized with any quantum state. Afterwards, $\ket{\psi}$ is a superposition of the tensor products of a spin eigenstate and one specific detector state; a detector state can be realized with one specific quantum state only.
+Before, $\ket{\psi}$ was a superposition of tensor products of any spin eigenstate and any detector state. Any detector state could be realized with any quantum state. Afterwards, $\ket{\psi}$ is a superposition of tensor products of a spin eigenstate and one specific detector state; a detector state is realized with one specific quantum state only.
 
-\fref{Figure:Measurement:DetectorStates} illustrates this description of measurement. The state of a particle leaving each output is the tensor product of a spin eigenstate and a detection state. As the quantum state is realized in incompatible sample spaces ($S_z$ and $S_x$), it loses information about its history; by posessing a definite $S_x$ value, information about $S_z$ is lost. However, the detector states are not impacted by these measurements, and the \textit{event history} of the state is preserved.
+Figure \fref{Figure:Measurement:DetectorStates} illustrates this description of measurement. As physical variables with incompatible sample spaces are recorded ($S_z$ and $S_x$), $\ket{\psi}$ loses information about its history; by posessing a definite $S_x$ value, nothing can be said about $S_z$. However, the detector states are not impacted by these measurements, and the \textit{event history} of the state is preserved. Our system now belongs to a \textit{history Hilbert space} defined by $\widetilde{\mathcal{H}} = \mathcal{H} \otimes D_z \otimes D_x$.
+
+Each pure state in $\widetilde{\mathcal{H}}$ represents a \textit{history} (or sequence of events). Because of the orthonormality conditions imposed on detector states, these histories satisfy \textit{consistency conditions}; that is, they are disjoint and their magnitudes sum to 1. Together, these pure states are a \textit{consistent family of histories}, meaning that they constitue an exhaustive and disjoint set of event sequences.
+
+TODO: introduce another example that illustrates +x, +z interfere, but their histories do not.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -177,57 +177,65 @@ This evolution describes a change in the eigenstates of the system. Before, $\ke
 \label{Figure:Measurement:DetectorStates}
 \end{figure}
 
-% Measurment is now described by an abstract physical process. In this model, it is now feasible for state collapse to occur independent of physicists conducting clever experiments. For this sytem, we defined a detector state as a Stern Gerlach apparatus recording spin up or spin down. However, one could define detector states as any record of quantum systems possesing physical properties that interact with the classical world accordingly. Detector states describe a system's behavior classically without necessarily including any classical measurement apparatus.
+Measurment is now described by an abstract physical process. In this model, it is now feasible for state collapse to occur independent of physicists conducting clever experiments. For this sytem, we defined a detector state as a Stern Gerlach apparatus recording spin up or spin down. However, one could define detector states as any record of quantum systems possesing physical properties that interact with the classical world accordingly. Detector states describe a system's behavior classically without necessarily including any classical measurement apparatus.
 
 \section{The Born Rule}
+\subsection{Standard Description}
+The fourth postualte (known as the probability postulate) assigns a probability distribution to the sample space of a physical variable.
 
-% Both probability and projection postulates relied on the term "measurement" in their definitions.  Using the probability postulate, the probabilities of each state leaving the Stern-Gerlach device oriented along the x-axis are
-% \begin{align*}
-%     \mathcal{P}_{+_x} &= |_x\braket{+|+}|^2 = \frac{1}{2} \\
-%     \mathcal{P}_{-_x} &= |_x\braket{-|+}|^2 = \frac{1}{2}
-% \end{align*} \\ TODO: introduce measurement problem.
+\begin{Thm:Postulate}{4}
+    The probability $\mathcal{P}(n)$ of obtaining a result $a_n$ corresponding to $\ket{a}_n$  is equal to
+     \begin{align*}
+        \mathcal{P}(n) = |\tensor[_n]{\braket{a|\psi}}{}|^2
+    \end{align*}
+\end{Thm:Postulate}
 
-We begin by comparing standard and consistent descriptions of measuring a quantum states' spin along one axis using a Stern-Gerlach apparatus.
-
-We accept the first three postulates of quantum mechanics.
-
-\begin{enumerate}
-    \item All information known about a quantum mechanical system is represented by an abstract vector $\ket{\psi}$. This vector lives in a linear state space $\mathcal{H}$, which is the set of all possible states of the quantum system.
-    \item A physical observable of the system is represented by a linear operator $A$ that acts on vectors in $\mathcal{H}$.
-    \item The only possible measurement results of a physical observable are the eigenvalues $a_n$ of the corresponding observable $A$.
-\end{enumerate}
-
-We accept the second and thirst postulates because they do not describe the operator's relationship to the measurement process. The second correlates a measurable quantity of the system to an operator, while the third describes the possible results. However, care must be taken when interpreting a "measurement result of $a_n$". We take this to mean that some record exists of the system behaving classically such that $A$ must have been $a_n$.
-
-The fourth and fifth postulates require more scrutiny. In standard quantum mechanics, the act of measurement plays a special role in assigning probabilities to measurement outcomes through the probability postulate, and in determmining the evolution of the state through the projection postulate.
-
-The probability postulate assigns probabilities to each measurement result by taking the inner product of $\ket{\psi}$ and the eigenstate $\ket{n}$ corresponding to measurement result $n$:
-\begin{align}
-    \mathcal{P}_n = |\braket{n|\psi}|^2
-\end{align}
-
-This postulate is also known as the \textit{Born Rule}, which is usually presented in the language of wavefunctions. The probability that a system is found at position $x$ is
+This postulate is also known as the \textit{Born Rule}, which is usually presented in the language of wavefunctions. The probability that a system is found at position $x$ is the magnitude of the wavefunction at that point:
 \begin{align}
     \mathcal{P}_x = |\psi(x)|^2
 \end{align}
-which follows from the wavefunction's definition as the inner product of the $\ket{x}$ eigenstate and $\psi$.
 
+The probabilities assigned to each state leaving the $S_x$ Stern-Gerlach device in Figure \fref{Figure:Measurement:DetectorStates} are
+\begin{align*}
+    \mathcal{P}_{+_x} &= |_x\braket{+|+}|^2 = \frac{1}{2} \\
+    \mathcal{P}_{-_x} &= |_x\braket{-|+}|^2 = \frac{1}{2}
+\end{align*}
+\subsection{Consistent Description}
+The spirit of the Born Rule is unchanged in consistent quantum theory. The difference is that we now compute the inner product of the time evolved state, $V\ket{\psi}$, and the detection state representing the result we are interested in, $\ket{D_n}$. So, we assign probabilities with the following:
 
+The probability $\mathcal{P}(n)$ of observing a result $a_n$ at a detector $D$ is equal to
+\begin{align*}
+  \mathcal{P}(n) = |\braket{D_n|V|\psi}|^2
+\end{align*}
 
-To compute probabilities of each outcome, we introduce an analog of the Born Rule: sum the magnitudes of each branch wavefunction that includes the corresponding detector state. This is accomplished by finding the trace of the projection operator of that detector state acting on the projection operator or the overall evolved state.
-\begin{align}
-    \mathcal{P}_n = Tr(P^D_n \cdot V\ket{\psi}\bra{\psi}V^\dagger)
-\end{align}
+By taking the innner product with a detector state, we sum the probability amplitudes of all the histories that include that detection state. Histories that include the other spin outcome are orthogonal, and contribute nothing to this sum.
 
-TODO: explain trace
+\subsection{Density Matrices}
+The Born Rule can also be expressed in terms of \textit{density matrices}. From (TODO: reference appendix), we know that an inner product can be written as the trace of the corresponding dyad. The Born Rule is the complex square of an inner product, so we should be able to assign probabilities to detection states by tracing over some corresponding tensor. We will manipulate the Born Rule to take this form, and then examine the resulting tensor.
 
-In this simple Stern-Gerlach example, there is only one branch wavefunction correlated with each detector state. So, computing probabilities is done by finding the magnitude of each branch wavefunction.
+Expanding the complex square,
+\begin{align*}
+  \mathcal{P}(n) &= \left(\bra{D_n}V\ket{\psi}\right) \cdot \left(\bra{D_n}V\ket{\psi}\right)^* \\
+  \mathcal{P}(n) &= \left(\bra{D_n}V\ket{\psi}\right) \cdot \left(\bra{\psi}V^\dagger\ket{D_n}\right)
+\end{align*}
+Rewriting the second inner product as the trace of a dyad,
+\begin{align*}
+  \mathcal{P}(n) &= \left(\bra{D_n}V\ket{\psi}\right) \cdot Tr\left(\ket{D_n}\bra{\psi}V^\dagger\right)f
+\end{align*}
+The remaining inner product, like any, is a scalar. Since trace is a linear operator, we can scale any factor inside the operation by this inner product.
+\begin{align*}
+  \mathcal{P}(n) &= Tr\left(\ket{D_n} \cdot \left(\bra{D_n}V\ket{\psi}\right) \cdot \left(\bra{\psi}V^\dagger\right)\right)
+\end{align*}
+Now we can rewrite $\ket{D_n}\bra{D_n}$ as ${P^D}_n$, and simplify grouping:
+\begin{align*}
+  \mathcal{P}(n) &= Tr\left({P^D}_n \cdot \left(V\ket{\psi}\bra{\psi}V^\dagger\right)\right)
+\end{align*}
 
-TODO: compute probabilities, show it is equal to std QM
+TODO: discuss remaining object ${P^D}_n \cdot \left(V\ket{\psi}\bra{\psi}V^\dagger\right)$
 
-\Chapter{Complementarity}
+\chapter{Complementarity}
 
-We now compare standard and consistent quantum mechanics' treatment of the principle of complementarity. Arguably the most fundamental feature of quantum mechanics, the principle of complementarity states that a quantum system has pairs of physical observables which cannot be measured simultaneously. Components of spin on orthogonal axes are complementary properties, so we examine measurements of succesive Stern-Gerlach experiments. We will see how complementarity is a strange consequence of the standard postulates of quantum mechanics, while in consistent formulations, complementarity is itself a postulate from which strange consequences arise.
+We now discuss the the principle of complementarity in the context of standard and consistent quantum mechanics. Arguably the most fundamental feature of quantum mechanics, the principle of complementarity states that a quantum system has pairs of physical observables which cannot be measured simultaneously. Components of spin on orthogonal axes are complementary properties, so we examine measurements of succesive Stern-Gerlach experiments.
 
 First, we compute the probabilities of each outcome using standard quantum mechanics. The first apparatus serves as a state preparation device with output $\ket{+}$. By the direction of the projection postulate, the state is renormalized upon each measurement. After measuring a property complementary to what is known (such as spin along $x$, knowing spin along $z$), any information known about the input state is lost; the input state instantaneously changes to the state corresponding to the observed quantity. Consequently, there is an equal probability of observing the final state as $\ket{+}$ or $\ket{-}$ at either final apparatus, even though the state was initially prepared as $\ket{+}$, since
 \begin{align*}
