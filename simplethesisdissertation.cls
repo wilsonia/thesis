@@ -514,6 +514,11 @@ Scale=0.95]
 \makeatother
 
 \newtheorem{Thm:Lemma}[Thm:Theorem]{Lemma}
+\newtheorem{innercustomthm}{Postulate}
+\newenvironment{Thm:Postulate}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
 \newtheorem{Thm:Corollary}[Thm:Theorem]{Corollary}
 \newtheorem{Thm:Claim}[Thm:Theorem]{Claim}
 \newtheorem{Thm:Proposition}[Thm:Theorem]{Proposition}
