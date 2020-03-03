@@ -1,0 +1,241 @@
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning}
+
+\chapter{Consistent Histories}
+
+The TODO REF fourth postulate makes probabilistic predictions of measurement results. Now that we are using the von Neumann measurement scheme, we no longer want to frame the calculation of probabilities in the context of the Copenhagen definition of measurement. The \textit{Consistent Histories} interpretation of quantum mechanics modifies the Born Rule to make predictions about \textit{quantum histories} rather than measurement results.
+
+\section{Events and Histories}
+
+A \textit{quantum event} represents a system's possession of a \textit{quantum property} at a given time. For example, measuring spin-up in a Stern-Gerlach analyzer corresponds to the spin system possessing the property of ``having spin magnitude $\frac{\hbar}{2}$ along the $z$ axis'' at time $t_1$. A property corresponds to a subspace of the Hilbert space; for the example of one spin measurement, this subspace is only the state $\ket{+}$. So, we represent an event with an operator projecting into that subspace; for measuring spin up, this operator is ${P^z}_+$.
+
+A \textit{quantum history} is a collection of events at sequential times \cite{Griffiths}. Once again, the tensor product is employed to represent a composite system; this time, the spin-pointer system is considered at different points in time. The history Hilbert space for a single spin measurement is defined by
+\begin{align}
+  \bar{\mathcal{H}} = \mathcal{H}_{t_0} \odot \mathcal{H}_{t_1}
+\end{align}
+
+where $\odot$ is the ordinary tensor product, but denotes that the same quantum system $H$ is considered at different times.
+
+Histories are represented by projectors into this Hilbert space. For example, measuring spin-up in the $z$ direction followed by measuring spin-down in the $x$ direction would be represented by the history $Y = {P^z}_+ \odot {P^x}_-$.
+
+\section{Consistency Conditions}
+
+Consistent quantum theory does not assign probabilities to every history projecting into $\bar{\mathcal{H}}$. Rather, predictions are only made within the context of a set (or \textit{family}) of histories satisfying consistency conditions. Just like our pointer system, histories in a consistent family are mutually exclusive
+\begin{align}
+  Y_i Y_j = 0
+\end{align}
+and exhaustive
+\begin{align}
+  \sum_{i} \mathcal{P}(Y_i) = 1
+\end{align}
+
+
+
+Once a consistent family of histories is found, we can use this new Born Rue to calculate the probability of a particular history's occurence.
+
+is that we now compute the inner product of the time evolved state, $V\ket{\psi}$, and the detection state representing the result we are interested in, $\ket{D_n}$. So, we assign probabilities with the following:
+The probability $\mathcal{P}(n)$ of observing a result $a_n$ at a detector $D$ is equal to
+
+\begin{align}
+  \mathcal{P}(n) = |\braket{D_n|V|\psi}|^2
+\end{align}
+
+By taking the inner product with a detector state, we sum the probability amplitudes of all the histories that include that detection state. Histories that include the other spin outcome are orthogonal, and contribute nothing to this sum.
+
+
+
+Figure \fref{Figure:Measurement:DetectorStates} illustrates this description of measurement. As physical variables with incompatible sample spaces are recorded ($S_z$ and $S_y$), $\ket{\psi}$ loses information about its history; by posessing a definite $S_y$ value, nothing can be said about $S_z$. However, the detector states are not impacted by these measurements, and the \textit{event history} of the state is preserved. Our system now belongs to a \textit{history Hilbert space} defined by $\widetilde{\mathcal{H}} = \mathcal{H} \otimes D_z \otimes D_y$.
+
+Each pure state in $\widetilde{\mathcal{H}}$ represents a \textit{history} (or sequence of events). Because of the orthonormality conditions imposed on detector states, these histories satisfy \textit{consistency conditions}; that is, they are disjoint and their magnitudes sum to 1. Together, these pure states are a \textit{consistent family of histories}, meaning that they constitue an exhaustive and disjoint set of event sequences.
+
+
+\chapter{Decoherence}
+
+All remaining content are rough notes.
+
+TODO: introduce decoherence, explain role played by vnms. Incomplete which path, Environment continuously monitors system. TODO: sometimes we must ignore the environment, results are inaccessible or ignored experimentally.
+
+\section{Density Matrices}
+As stated in TODO ref, $\ket{\psi}$ can no longer be written in the form $\ket{\psi}_s \otimes \ket{\mathcal{X}}_z$. Rather, $\ket{\psi}$ is a superposition of such states; quantum \textit{coherency} has been extended from the spin system to the spin-pointer composite system.
+
+In the case of environmental decoherence, we consider this type of interaction while possessing no information on the pointer system. Since multiple pointer states may correspond to the same spin state, "ignoring the environment" now means that we must coarse grain out all possible environment states for each spin state. We can no longer ``factor out'' the environment subsystem.
+
+Some environment state is realized; we just do not know which one. This uncertainty is classical in nature; it has nothing to do with any inherent quantum uncertainty. We are now dealing with a "classical mixture" of superposition states.
+
+Such a system is well represented by a \textit{density matrix}. For a \textit{pure state}, the representative density matrix is just the projection operator for that state
+\begin{align}
+  \rho = \ket{\psi}\bra{\psi}
+\end{align}
+
+Recall that when considering the projection operator of some state, we can equivalently think of the subset of states in the Hilbert space into which it projects.
+
+The density operator for the state after measurement is
+\begin{align}
+\rho &= \sum_{n,m}\left({P^z}_n\ket{\psi}_s \otimes \ket{\mathcal{X}_n}_z \right) \cdot \left({P^z}_m\bra{\psi} \otimes \bra{\mathcal{X}_m} \right) \\
+\rho &=  \sum_{n,m}\braket{n|\psi}_s \braket{m|\psi}_s \ket{n}\bra{m} \otimes \ket{\mathcal{X}_n}_z \bra{\mathcal{X}_m}
+\end{align}
+
+
+\chapter{Probabilities}
+\section{Density matrix Born rule}
+The Born Rule can also be expressed in terms of \textit{density matrices}. From (TODO: reference appendix), we know that an inner product can be written as the trace of the corresponding dyad. The Born Rule is the complex square of an inner product, so we should be able to assign probabilities to detection states by tracing over some corresponding tensor. We will manipulate the Born Rule to take this form, and then examine the resulting tensor.
+
+Expanding the complex square,
+\begin{align}
+  \mathcal{P}(n) &= \left(\bra{D_n}V\ket{\psi}\right) \cdot \left(\bra{D_n}V\ket{\psi}\right)^* \\
+  \mathcal{P}(n) &= \left(\bra{D_n}V\ket{\psi}\right) \cdot \left(\bra{\psi}V^\dagger\ket{D_n}\right)
+\end{align}
+Rewriting the second inner product as the trace of a dyad,
+\begin{align}
+  \mathcal{P}(n) &= \left(\bra{D_n}V\ket{\psi}\right) \cdot Tr\left(\ket{D_n}\bra{\psi}V^\dagger\right)f
+\end{align}
+The remaining inner product, like any, is a scalar. Since trace is a linear operator, we can scale any factor inside the operation by this inner product.
+\begin{align}
+  \mathcal{P}(n) &= Tr\left(\ket{D_n} \cdot \left(\bra{D_n}V\ket{\psi}\right) \cdot \left(\bra{\psi}V^\dagger\right)\right)
+\end{align}
+Now we can rewrite $\ket{D_n}\bra{D_n}$ as ${P^D}_n$, and simplify grouping:
+\begin{align}
+  \mathcal{P}(n) &= Tr\left({P^D}_n \cdot \left(V\ket{\psi}\bra{\psi}V^\dagger\right)\right)
+\end{align}
+
+TODO: discuss remaining object ${P^D}_n \cdot \left(V\ket{\psi}\bra{\psi}V^\dagger\right)$
+TODO: discuss coarse graining, conditional probabilities
+\section{Consistent Histories}
+The von Neumann measurement scheme describes the measurement interaction between the electron spin system and the Stern-Gerlach apparatus as an entanglement between spin eigenstates and pointer states. TODO: This leads to the expected dynamics without state collapse.
+
+How do we discuss probabilities of sequential measurements?
+Issue with first postulate: a state contains all information known.
+
+\chapter{Complementarity}
+We now discuss the the principle of complementarity in the context of standard and consistent quantum mechanics. Arguably the most fundamental feature of quantum mechanics, the principle of complementarity states that a quantum system has pairs of physical observables which cannot be measured simultaneously. The operators corresponding to pairs of complementary properties do not commute; that is, $[A,B] = AB - BA \neq 0$. Components of spin on orthogonal axes are complementary properties, so we examine measurements of succesive Stern-Gerlach experiments.
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{$Z$};
+    \apparatus{2}{6}{1.25}{$Y$};
+    \apparatus{3}{9}{2.50}{$Z$};
+    \apparatus{4}{9}{0}{$Z$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (11, 3.0) {$\ket{+}$};
+    \node[wf] (w2) at (11, 2.0) {$\ket{-}$};
+    \node[wf] (w3) at (11, 0.5) {$\ket{+}$};
+    \node[wf] (w4) at (11, -0.5) {$\ket{-}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+}$};
+
+    \draw[line width=0.5mm] (2-) -- (4) node [midway, below] {$\ket{-}_y$};
+    \draw[line width=0.5mm] (2+) -- (3) node [midway, above] {$\ket{+}_y$};
+
+    \draw[line width=0.5mm] (3-) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+    \draw[line width=0.5mm] (4-) -- (w4);
+    \draw[line width=0.5mm] (4+) -- (w3);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating complementary measurments in standard quantum mechanics}
+\label{Figure:Intro:FigureExampleC}
+\end{figure}
+
+\chapter{Wigner's Friend}
+
+\section{Standard Description}
+Using the Born Rule, we calculate the probabilities of observing each final state in Figure 4.1. The first apparatus serves as a state preparation device with output $\ket{+}$. By the direction of the projection postulate, the state is renormalized upon each measurement. After measuring a property complementary to what is known (such as spin along $x$, knowing spin along $z$), any information known about the input state is lost; the input state instantaneously changes to the state corresponding to the observed quantity. Consequently, there is an equal probability of observing the final state as $\ket{+}$ or $\ket{-}$ at either final apparatus, even though the state was initially prepared as $\ket{+}$, since
+\begin{align}
+    \mathcal{P}_n &= |\braket{+|+}_y|^2 \\
+                  &= |\braket{-|+}_y|^2 \\
+                  &= |\braket{+|-}_y|^2 \\
+                  &= |\braket{-|-}_y|^2 \\
+                  &= \frac{1}{4}
+\end{align}
+TODO: make above separate equations for clarity.
+It appears that this contradiction with classical intuition is a direct result of the projection postulate. The act of measurement and ensuing state collapse causes the system to shed properties previously recorded.
+
+\section{Consistent Description}
+TODO: calculate probabilities using consistent Born Rule.
+Consistent quantum theory predicts the same loss of a definite $S_z$ value, but for different reasons.
+The description of measurment in consistent histories does not postulate state collapse; rather, the system evolves through some Hamiltonian that correlates system and detector states. This implies that the measurement process has nothing to do with the principle of complementarity. We can trace the cause back to our definition of the state space. For a spin state, $\ket{\psi}$ is completely defined by spin-up or spin-down in a single direction $w$. The Hilbert space does not include states that could be interpreted as possesing a definite spin value in more than one direction. Consequently, the operators for spin in directions not parallel or antiparallel to each other share no eigenstates. It follows mathematically that these operators do not commute: TODO run through this math.
+
+This description of complementary implies that the principle is a limitation inherent to the quantum state, rather than a consequence of the role of measurement. In consistent histories, this limitation is embodied by \textit{the single framework rule}. There exists multiple ways in which a quantum system can be described, yet descriptions from only one of these \textit{frameworks} can be meaningfully compared or combined.
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{2}{0}{$Z$};
+    \apparatus{2}{5}{1.25}{$Y$};
+    \apparatus{3}{10}{2.50}{$Z$};
+    \apparatus{4}{10}{0}{$Z$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (15, 3.0) {${P^z}_+{P^y}_+{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_+ \otimes \ket{D_z}_+$};
+    \node[wf] (w2) at (15, 2.0) {${P^z}_-{P^y}_+{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_+ \otimes \ket{D_z}_-$};
+    \node[wf] (w3) at (15, 0.5) {${P^z}_+{P^y}_-{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_- \otimes \ket{D_z}_+$};
+    \node[wf] (w4) at (15, -0.5) {${P^z}_-{P^y}_-{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_- \otimes \ket{D_z}_-$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {${P^z}_+\ket{\psi} \otimes \ket{D_z}_+ $};
+
+    \draw[line width=0.5mm] (2-) -- (4) node [near start, below, yshift=-0.35cm] {${P^y}_-{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_-$};
+    \draw[line width=0.5mm] (2+) -- (3) node [near start, above, yshift=0.35cm] {${P^y}_+{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_+$};
+
+    \draw[line width=0.5mm] (3-) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+    \draw[line width=0.5mm] (4-) -- (w4);
+    \draw[line width=0.5mm] (4+) -- (w3);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Demonstrating complementary measurments in consistent quantum mechanics}
+\label{Figure:Intro:FigureExampleD}
+\end{figure}
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{Z};
+    \apparatus{2}{6}{1}{X};
+    \apparatus{3}{9}{1}{Z};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w1) at (12,2.5) {$\ket{\psi_1}$};
+    \node[wf] (w2) at (12,1.5) {$\ket{\psi_2}$};
+    \node[wf] (w3) at (12,0.5) {$\ket{\psi_3}$};
+    \node[wf] (w4) at (12,-0.5) {$\ket{\psi_4}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[transform canvas={yshift=-0.6em}, line width=0.5mm, loosely dotted] (1+) -- (2);
+    \draw[transform canvas={yshift=-0.2em}, line width=0.5mm, dotted] (1+) -- (2);
+    \draw[transform canvas={yshift=0.2em}, line width=0.5mm, dashed] (1+) -- (2);
+    \draw[transform canvas={yshift=0.6em}, line width=0.5mm] (1+) -- (2);
+
+    \draw[transform canvas={yshift=-0.4em}, line width=0.5mm, loosely dotted] (2-) -- (3);
+    \draw[transform canvas={yshift=0em}, line width=0.5mm, dotted] (2-) -- (3);
+    \draw[transform canvas={yshift=0em}, line width=0.5mm, dashed] (2+) -- (3);
+    \draw[transform canvas={yshift=0.4em}, line width=0.5mm] (2+) -- (3);
+
+    \draw[line width=0.5mm, loosely dotted] (3-) -- (w4);
+    \draw[line width=0.5mm, dashed] (3-) -- (w3);
+    \draw[line width=0.5mm, dotted] (3+) -- (w2);
+    \draw[line width=0.5mm] (3+) -- (w1);
+\end{tikzpicture}
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{TODO: create section to discuss this example}
+\label{Figure:Intro:FigureExampleE}
+\end{figure}
+
+% \chapter{Unitary Evolution in a Magnetic Field}
+% TODO: examples, discussion of similar experiments in an external B-field
+% TODO: describe unitary, collapse frameworks as described in colloqium paper

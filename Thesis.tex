@@ -15,6 +15,8 @@
 \usepackage{tikz}
 \usepackage{tensor}
 \usepackage{braket}
+\usepackage{fancyhdr}
+\usepackage{cite}
 % Class options:
 % a4paper, letterpaper, nonstop, draftmode.
 
@@ -23,14 +25,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Document properties.
-\def\DocumentTitle{Insert Thesis Title Here}
-\def\AuthorName{Insert Author Name Here}
+\def\DocumentTitle{A Spins-First Introduction to Consistent Histories and Decoherence}
+\def\AuthorName{Ian Wilson}
 
 % PDF settings and properties.
 \hypersetup{
 pdftitle={\DocumentTitle},
 pdfauthor={\AuthorName},
-pdfsubject={Ph.D. Thesis, University Institute of College, 2016},
+pdfsubject={B.S. Thesis, Oregon State University, 2020},
 pdfcreator={XeLaTeX},
 pdfproducer={},
 pdfkeywords={},
@@ -55,6 +57,11 @@ bookmarksnumbered}
 \DeclareMathOperator{\lcm}{lcm}
 \newcommand{\ZZ}{{\mathbb{Z}}}
 
+\newcommand\invisiblesubsubsection[1]{%
+  \refstepcounter{subsubsection}%
+  \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}%
+  \sectionmark{#1}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACTUAL DOCUMENT.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,8 +70,22 @@ bookmarksnumbered}
 
 \input{Thesis-FrontMatter.tex}
 
-\input{Thesis-Part-Background.tex}
+\fancypagestyle{plain}{
+  \fancyhf{}% Clear header/footer
+  \fancyhead[R]{\thepage}% Right header
+  \fancyfoot{}% Left footer
+  \renewcommand{\headrulewidth}{0pt}
+}
+\pagestyle{plain}% Set page style to plain.
 
-\input{Thesis-Part-Stern-Gerlach-Experiments.tex}
+\input{Thesis-Part-Introduction.tex}
+
+\input{Thesis-Part-Easy.tex}
+
+\input{Thesis-Part-Hard.tex}
+
+\input{Thesis-Part-Simulation.tex}
+
+\input{Thesis-Part-Conclusion.tex}
 
 \end{document}

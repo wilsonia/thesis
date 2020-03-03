@@ -34,8 +34,8 @@
 \RequirePackage[
 left=25.4mm,
 right=25.4mm,
-top=16mm,
-bottom=16mm,
+top=25.4mm,
+bottom=25.4mm,
 headsep=6mm, % header separation, above text body
 footskip=6mm] % footer skip, below text body
 {geometry}
