@@ -3,37 +3,62 @@
 
 \chapter{Consistent Histories}
 
-The TODO REF fourth postulate makes probabilistic predictions of measurement results. Now that we are using the von Neumann measurement scheme, we no longer want to frame the calculation of probabilities in the context of the Copenhagen definition of measurement. The \textit{Consistent Histories} interpretation of quantum mechanics modifies the Born Rule to make predictions about \textit{quantum histories} rather than measurement results.
+The fourth postulate TODO REF makes probabilistic predictions of measurement results. The mathematics of this postulate still apply, but now that we are using the von Neumann measurement scheme, we no longer want to frame the calculation of probabilities in the context of the standard description of measurement. That is, the formalism can stay, but we need different words surrounding it to give it meaning. The \textit{consistent} (or \textit{decoherent}) \textit{histories} interpretation of quantum mechanics modifies this postulate to make predictions about the more general \textit{quantum history} rather than measurement results.
 
-\section{Events and Histories}
+TODO: history about development. preview ordering. Griffiths provides a thorough set of logic/math, while Gell-Man/Hartle/Craig's work informs (and is informed by) cosmological applications. First section will reiterate Griffith's articuation of foundations of theory in Schrodinger picture, following will examine simplificatoins made by using Heisenberg picture as used by GMHC.
 
-A \textit{quantum event} represents a system's possession of a \textit{quantum property} at a given time. For example, measuring spin-up in a Stern-Gerlach analyzer corresponds to the spin system possessing the property of ``having spin magnitude $\frac{\hbar}{2}$ along the $z$ axis'' at time $t_1$. A property corresponds to a subspace of the Hilbert space; for the example of one spin measurement, this subspace is only the state $\ket{+}$. So, we represent an event with an operator projecting into that subspace; for measuring spin up, this operator is ${P^z}_+$.
+\section{Properties, Events and Histories}
 
-A \textit{quantum history} is a collection of events at sequential times \cite{Griffiths}. Once again, the tensor product is employed to represent a composite system; this time, the spin-pointer system is considered at different points in time. The history Hilbert space for a single spin measurement is defined by
+A \textit{quantum property} is a true or false statement about a physical variable. As an example, consider measuring spin in a Stern-Gerlach analyzer oriented along the $z$ axis TODO reference prior. Empirically, we find that the system will posses one of two properties at the end of measurement:
+\begin{itemize}
+  \item ``Spin along the $z$ axis is $\frac{\hbar}{2}$''
+  \item ``Spin along the $z$ axis is $-\frac{\hbar}{2}$''
+\end{itemize}
+
+A property corresponds to a subspace of the Hilbert space. For example, the subspace corresponding to the spin-up property is only the state $\ket{+}$.
+
+A \textit{quantum event} is a system's possession of a property. An event is represented by the projection operator for the property's subspace. For the spin-up example, this operator is ${P^z}_+$.
+
+A \textit{quantum history} is a set of events at sequential times. Now that we have dropped the projection postulate, the TODO REF 6th postulate now completely describes how states evolve with time. A history is a finite set of events that necessarily ignores an infinite amount of insignificant events.
+
+For example, consider the example of consecutive measurement in TODO REF. The history for measuring spin up in both analyzers is $\{{P^z}_+, {P^x}_+\}$.
+
+\section{Schrödinger Picture}
+\subsection{Probabilities / new born rule}
+
+\subsection{Consistency Conditions}
+
+Consistent quantum theory does not assign a single probability to every imaginable history. Rather, predictions are only made within the context of a set of histories satisfying consistency conditions. The consistency conditions require that histories represent exhaustive and mutually exclusive outcomes.
+
+So far, we have assumed the Schrödinger picture of time evolution, in which the unitary operator determined by the Schrödinger equations act on the quantum state. In the Heisenberg picture, the unitary operator acts on operators in the Hilbert space rather than states. TODO better explain this.
+
+Consistency conditions are expressed intuitively in the Schrödinger picture, and with simplifications in the Heisenberg picture. TODO finish this.
+
+A history, as a set of events, specifies possible states of $\ket{\psi}$ at multiple instances of time. Formally, this is no different than specifying possible states of a composite system consisting of copies of $\mathcal{H}$ for each instant in time \cite{Griffiths}.
+
+A \textit{history Hilbert space} is such a composite system. Once again, the tensor product is employed to create a composite system; this time, the entire spin-pointer system is considered at different points in time. The history Hilbert space for a single spin measurement is defined by
 \begin{align}
-  \bar{\mathcal{H}} = \mathcal{H}_{t_0} \odot \mathcal{H}_{t_1}
+  {\mathcal{H}}_h = \mathcal{H}_{t_0} \odot \mathcal{H}_{t_1}
+\end{align}
+where $\odot$ is the ordinary tensor product, but denotes that the same quantum system $\mathcal{H}$ is considered at different times.
+
+Since all dynamics are introduced by operating on states, the general state in this space is
+\begin{align}
+  {\ket{\psi}}_h = \ket{\psi} \odot U(t_0, t_1)\ket{\psi}
 \end{align}
 
-where $\odot$ is the ordinary tensor product, but denotes that the same quantum system $H$ is considered at different times.
-
-Histories are represented by projectors into this Hilbert space. For example, measuring spin-up in the $z$ direction followed by measuring spin-down in the $x$ direction would be represented by the history $Y = {P^z}_+ \odot {P^x}_-$.
-
-\section{Consistency Conditions}
-
-Consistent quantum theory does not assign probabilities to every history projecting into $\bar{\mathcal{H}}$. Rather, predictions are only made within the context of a set (or \textit{family}) of histories satisfying consistency conditions. Just like our pointer system, histories in a consistent family are mutually exclusive
+In this history Hilbert space, histories are represented by the tensor product of its events. For example, measuring spin-up in the $z$ direction followed by measuring spin-down in the $x$ direction would be represented by the history $Y = \left({P^z}_+ \otimes {I^\mathcal{X}} \right) \odot \left({P^x}_- \otimes {I^\mathcal{X}} \right)$.
+Just like our pointer system, histories in a consistent family are mutually exclusive
 \begin{align}
-  Y_i Y_j = 0
+  Y_i^* Y_j = 0
 \end{align}
 and exhaustive
 \begin{align}
-  \sum_{i} \mathcal{P}(Y_i) = 1
+  \sum_{i} Y_i = I
 \end{align}
 
+Once a consistent family of histories is found, we can use the following extension of the Born Rue to calculate the probability of a particular history's occurence.
 
-
-Once a consistent family of histories is found, we can use this new Born Rue to calculate the probability of a particular history's occurence.
-
-is that we now compute the inner product of the time evolved state, $V\ket{\psi}$, and the detection state representing the result we are interested in, $\ket{D_n}$. So, we assign probabilities with the following:
 The probability $\mathcal{P}(n)$ of observing a result $a_n$ at a detector $D$ is equal to
 
 \begin{align}
@@ -42,7 +67,9 @@ The probability $\mathcal{P}(n)$ of observing a result $a_n$ at a detector $D$ i
 
 By taking the inner product with a detector state, we sum the probability amplitudes of all the histories that include that detection state. Histories that include the other spin outcome are orthogonal, and contribute nothing to this sum.
 
-
+\section{Heisenberg Picture}
+\subsection{Probabilities/new born rule}
+\subsection{Consistency Conditions}
 
 Figure \fref{Figure:Measurement:DetectorStates} illustrates this description of measurement. As physical variables with incompatible sample spaces are recorded ($S_z$ and $S_y$), $\ket{\psi}$ loses information about its history; by posessing a definite $S_y$ value, nothing can be said about $S_z$. However, the detector states are not impacted by these measurements, and the \textit{event history} of the state is preserved. Our system now belongs to a \textit{history Hilbert space} defined by $\widetilde{\mathcal{H}} = \mathcal{H} \otimes D_z \otimes D_y$.
 
@@ -75,8 +102,6 @@ The density operator for the state after measurement is
 \rho &=  \sum_{n,m}\braket{n|\psi}_s \braket{m|\psi}_s \ket{n}\bra{m} \otimes \ket{\mathcal{X}_n}_z \bra{\mathcal{X}_m}
 \end{align}
 
-
-\chapter{Probabilities}
 \section{Density matrix Born rule}
 The Born Rule can also be expressed in terms of \textit{density matrices}. From (TODO: reference appendix), we know that an inner product can be written as the trace of the corresponding dyad. The Born Rule is the complex square of an inner product, so we should be able to assign probabilities to detection states by tracing over some corresponding tensor. We will manipulate the Born Rule to take this form, and then examine the resulting tensor.
 
@@ -142,7 +167,8 @@ We now discuss the the principle of complementarity in the context of standard a
 {Demonstrating complementary measurments in standard quantum mechanics}
 \label{Figure:Intro:FigureExampleC}
 \end{figure}
-
+\chapter{Simulation}
+Research for this section is complete. I expect writing this section to take 1-2 days of writing, to be done over spring break.
 \chapter{Wigner's Friend}
 
 \section{Standard Description}
