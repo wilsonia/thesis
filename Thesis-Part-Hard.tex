@@ -5,11 +5,12 @@
 
 The fourth postulate TODO REF makes probabilistic predictions of measurement results. The mathematics of this postulate still apply, but now that we are using the von Neumann measurement scheme, we no longer want to frame the calculation of probabilities in the context of the standard description of measurement. That is, the formalism can stay, but we need different words surrounding it to give it meaning. The \textit{consistent} (or \textit{decoherent}) \textit{histories} interpretation of quantum mechanics modifies this postulate to make predictions about the more general \textit{quantum history} rather than measurement results.
 
-TODO: history about development. preview ordering. Griffiths provides a thorough set of logic/math, while Gell-Man/Hartle/Craig's work informs (and is informed by) cosmological applications. First section will reiterate Griffith's articuation of foundations of theory in Schrodinger picture, following will examine simplificatoins made by using Heisenberg picture as used by GMHC.
+TODO: history about development. preview ordering. Griffiths provides a thorough set of logic/math, while Gell-Man/Hartle/Craig's work informs (and is informed by) cosmological applications. First section will reiterate Griffith's articuation of foundations of theory in Schrödinger picture, following will examine simplificatoins made by using Heisenberg picture as used by GMHC. So far, we have assumed the Schrödinger picture of time evolution, in which the unitary operator determined by the Schrödinger equations act on the quantum state. In the Heisenberg picture, the unitary operator acts on operators in the Hilbert space rather than states. TODO better explain this.
+Consistency conditions are expressed intuitively in the Schrödinger picture, and with simplifications in the Heisenberg picture. TODO finish this.
 
 \section{Properties, Events and Histories}
 
-A \textit{quantum property} is a true or false statement about a physical variable. As an example, consider measuring spin in a Stern-Gerlach analyzer oriented along the $z$ axis TODO reference prior. Empirically, we find that the system will posses one of two properties at the end of measurement:
+A \textit{quantum property} is a true or false statement about a physical variable. Recalling Example 1 TODO REF, we find through experiment that the system will posses one of two properties at the end of measurement:
 \begin{itemize}
   \item ``Spin along the $z$ axis is $\frac{\hbar}{2}$''
   \item ``Spin along the $z$ axis is $-\frac{\hbar}{2}$''
@@ -17,77 +18,189 @@ A \textit{quantum property} is a true or false statement about a physical variab
 
 A property corresponds to a subspace of the Hilbert space. For example, the subspace corresponding to the spin-up property is only the state $\ket{+}$.
 
-A \textit{quantum event} is a system's possession of a property. An event is represented by the projection operator for the property's subspace. For the spin-up example, this operator is ${P^z}_+$.
+A \textit{quantum event} is a system's possession of a property. An event is represented by the projection operator for the property's subspace. For the spin-up example, this operator is $P^z_+$.
 
 A \textit{quantum history} is a set of events at sequential times. Now that we have dropped the projection postulate, the TODO REF 6th postulate now completely describes how states evolve with time. A history is a finite set of events that necessarily ignores an infinite amount of insignificant events.
 
-For example, consider the example of consecutive measurement in TODO REF. The history for measuring spin up in both analyzers is $\{{P^z}_+, {P^x}_+\}$.
+For example, consider the example of consecutive measurement in TODO REF. The history for measuring spin up in both analyzers is $\{P^z_+, P^x_+\}$.
 
 \section{Schrödinger Picture}
-\subsection{Probabilities / new born rule}
+A history, as a set of events, specifies possible states of $\ket{\psi}$ at multiple instances of time. Formally, this is no different than specifying possible states of a composite system consisting of a copy of $\mathcal{H}$ for each instant in time \cite{Griffiths}.
 
-\subsection{Consistency Conditions}
-
-Consistent quantum theory does not assign a single probability to every imaginable history. Rather, predictions are only made within the context of a set of histories satisfying consistency conditions. The consistency conditions require that histories represent exhaustive and mutually exclusive outcomes.
-
-So far, we have assumed the Schrödinger picture of time evolution, in which the unitary operator determined by the Schrödinger equations act on the quantum state. In the Heisenberg picture, the unitary operator acts on operators in the Hilbert space rather than states. TODO better explain this.
-
-Consistency conditions are expressed intuitively in the Schrödinger picture, and with simplifications in the Heisenberg picture. TODO finish this.
-
-A history, as a set of events, specifies possible states of $\ket{\psi}$ at multiple instances of time. Formally, this is no different than specifying possible states of a composite system consisting of copies of $\mathcal{H}$ for each instant in time \cite{Griffiths}.
-
-A \textit{history Hilbert space} is such a composite system. Once again, the tensor product is employed to create a composite system; this time, the entire spin-pointer system is considered at different points in time. The history Hilbert space for a single spin measurement is defined by
+A \textit{history Hilbert space} is such a composite system. Once again, the tensor product is employed to create a composite system; this time, the entire spin-pointer system is considered at different points in time. The history Hilbert space representing $\ket{\psi}$ at times $\left(t_0, t_1, t_2, ..., t_f \right)$ is
 \begin{align}
-  {\mathcal{H}}_h = \mathcal{H}_{t_0} \odot \mathcal{H}_{t_1}
+  {\mathcal{H}}_h = \mathcal{H}_{t_0} \odot \mathcal{H}_{t_1} \odot \mathcal{H}_{t_2} \odot ... \odot \mathcal{H}_{t_f}
 \end{align}
 where $\odot$ is the ordinary tensor product, but denotes that the same quantum system $\mathcal{H}$ is considered at different times.
 
-Since all dynamics are introduced by operating on states, the general state in this space is
+In this history Hilbert space, the state representing the system at times $\left(t_0, t_1, t_2, ..., t_f \right)$ is
 \begin{align}
-  {\ket{\psi}}_h = \ket{\psi} \odot U(t_0, t_1)\ket{\psi}
+  \ket{\psi_h} &= \ket{\psi_{t_0}} \odot \ket{\psi_{t_1}} \odot \ket{\psi_{t_2}} \odot ... \odot \ket{\psi_{t_f}}
+\end{align}
+where each component $\ket{\psi_{t_i}}$ is determined by the unitary dynamics experienced by the system up until that point, $U(t_0, t_i)$. In other words,
+\begin{align}
+  \ket{\psi_h} &= \ket{\psi_{t_0}} \odot U(t_0, t_1)\ket{\psi_{t_0}} \odot U(t_0, t_2)\ket{\psi_{t_0}} \odot ... \odot U(t_0, t_f)\ket{\psi_{t_0}}
 \end{align}
 
-In this history Hilbert space, histories are represented by the tensor product of its events. For example, measuring spin-up in the $z$ direction followed by measuring spin-down in the $x$ direction would be represented by the history $Y = \left({P^z}_+ \otimes {I^\mathcal{X}} \right) \odot \left({P^x}_- \otimes {I^\mathcal{X}} \right)$.
-Just like our pointer system, histories in a consistent family are mutually exclusive
-\begin{align}
-  Y_i^* Y_j = 0
-\end{align}
-and exhaustive
-\begin{align}
-  \sum_{i} Y_i = I
-\end{align}
+In this history Hilbert space, a history is represented by the tensor product of its events. That is, history $n = \left( P_0, P_1, P_2, ... , P_f \right)$ is represented by $P^h_n = P_0 \odot P_1 \odot P_2 \odot ... \odot P_f $.
 
-Once a consistent family of histories is found, we can use the following extension of the Born Rue to calculate the probability of a particular history's occurence.
-
-The probability $\mathcal{P}(n)$ of observing a result $a_n$ at a detector $D$ is equal to
-
+\subsection{Extending the Probability Postulate}
+The standard probability postulate TODO REF is written as the inner product of the system state $\ket{\psi}$ and an eigenstate of a physical variable $\ket{a_n}$. It can instead be written in terms of the projection operator for $\ket{a_n}$ by expanding the complex square.
 \begin{align}
-  \mathcal{P}(n) = |\braket{D_n|V|\psi}|^2
+        \mathcal{P}(n) &= |\braket{a_n|\psi}|^2 \\ \nonumber
+        &= \braket{\psi|a_n} \braket{a_n|\psi} \\ \nonumber
+        &= \bra{\psi} P^a_n \ket{\psi}
 \end{align}
 
-By taking the inner product with a detector state, we sum the probability amplitudes of all the histories that include that detection state. Histories that include the other spin outcome are orthogonal, and contribute nothing to this sum.
+To extend this postulate to make predictions about histories, we replace the system $\ket{\psi}$ with the history system $\ket{\psi_h}$ and the measurement projector $P^a_n$ with the history projector $P^h_n$.
 
-\section{Heisenberg Picture}
-\subsection{Probabilities/new born rule}
+\begin{align}
+    \mathcal{P}(h_n) &= \bra{\psi_h} P^h_n \ket{\psi_h}
+\end{align}
+
+\subsubsection{Example 1}
+
+As shown in TODO REF, the measurement of an initial spin state $\ket{\psi_s}$ results in
+\begin{align}
+  \ket{{\psi}_1} &= U(t_0, t_1)\ket{{\psi}_0} \\ \nonumber
+  &= P^z_+ \ket{\psi_s} \otimes \ket{+_D} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_D}
+\end{align}
+
+In the history Hilbert space, the state representing the system before and after measurement is
+\begin{align}
+  \ket{\psi_h} &= \ket{\psi_0} \odot \ket{\psi_1} \\ \nonumber
+  &= \left(\ket{\psi_s} \otimes \ket{\varnothing_D}\right) \odot \left(P^z_+ \ket{\psi_s} \otimes \ket{+_D} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_D}\right)
+\end{align}
+
+The history for measuring spin-up is composed of the initial spin state with a ready detector, and an up spin state with an up detector:
+\begin{align}
+  P^h_+ = \left(P_{\psi_s} \otimes P^D_\varnothing \right) \odot \left(P^z_+ \otimes P^D_+ \right)
+\end{align}
+
+Using the new probaility postulate, the probability of measuring spin-up is
+\begin{align}
+    \mathcal{P}(h_+) &= \bra{\psi_h} P^h_+ \ket{\psi_h} \\ \nonumber
+    &= \bra{\psi_h} \left(P_{\psi_s} \otimes P^D_\varnothing \right) \odot \left(P^z_+ \otimes P^D_+ \right) \ket{\psi_h} \\ \nonumber
+    &=  \bra{\psi_h}  \left(\ket{\psi_s} \otimes \ket{\varnothing_D} \right)\odot \left(P^z_+\ket{\psi_s} \otimes \ket{+_D} \right) \\ \nonumber
+    &= \bra{\psi_s} P^z_+ \ket{\psi_s}
+\end{align}
+and we recover the prediction of the standard Born Rule.
+
 \subsection{Consistency Conditions}
 
-Figure \fref{Figure:Measurement:DetectorStates} illustrates this description of measurement. As physical variables with incompatible sample spaces are recorded ($S_z$ and $S_y$), $\ket{\psi}$ loses information about its history; by posessing a definite $S_y$ value, nothing can be said about $S_z$. However, the detector states are not impacted by these measurements, and the \textit{event history} of the state is preserved. Our system now belongs to a \textit{history Hilbert space} defined by $\widetilde{\mathcal{H}} = \mathcal{H} \otimes D_z \otimes D_y$.
+The third postulate TODO REF defines the subset of states corresponding to ``measurement results'', and the fourth postulate makes predictions about these states only. Now that we have extended the Born Rule to make predictions about histories, we need to be careful about the context in which the predictions are made, as it is no longer postulated for us.
 
-Each pure state in $\widetilde{\mathcal{H}}$ represents a \textit{history} (or sequence of events). Because of the orthonormality conditions imposed on detector states, these histories satisfy \textit{consistency conditions}; that is, they are disjoint and their magnitudes sum to 1. Together, these pure states are a \textit{consistent family of histories}, meaning that they constitue an exhaustive and disjoint set of event sequences.
+\subsubsection{Example 1}
+
+The standard Born Rule makes predictions for measurements of spin-up and spin-down along the $z$ axis. Since these states exhaust the possible outcomes, the probability of their measurement must sum to unity $\left( \mathcal{P}(+) + \mathcal{P}(-) = 1 \right)$ TODO make notation match Ch3. We saw in TODO REF that the extended Born Rule reproduced these results.
+
+However, the extended Born Rule goes on to make predictions about other outcomes. For example, we could change $\ket{+}$ to $\ket{+_x}$  and ask
+\begin{align}
+  \mathcal{P}(h_{x_+}) &= \bra{\psi_h} P^h_{x_+} \ket{\psi_h}  \\ \nonumber
+  &= \bra{\psi_s} P^x_+ \ket{\psi_s}
+\end{align}
+which is non-zero in general.
+
+We could ask an infinite amount of similar questions, since the spin Hilbert space includes states representing spin-up along every direction in space TODO REF STATE SPACE SECTION. Consequently, our probabilities no longer sum to unity, which is not consistent with probaility theory.
+
+The solution is to use \textit{consistency conditions} to determine the sets of histories that are consistent with probability theory. The consistency conditions require that histories represent exhaustive and mutually exclusive outcomes:
+\begin{align}
+  {P^h_i}^\dagger P^h_j = \delta_{i,j} P^h_i \\
+  \sum_i P^h_i = I_h
+\end{align}
+
+A set of histories satisfying these conditions is called a \textit{consistent family} of histories. Once a consistent family is specified, we can use the extended Born Rule to calculate probabilities within that context. For our example, $\{P^h_+, P^h_-, P^h_0\}$ is a consistent family where
+\begin{align}
+    P^h_+ &= \left(P_{\psi_s} \otimes P^D_\varnothing \right) \odot \left(P^z_+ \otimes P^D_+ \right) \\ \nonumber
+    P^h_- &= \left(P_{\psi_s} \otimes P^D_\varnothing \right) \odot \left(P^z_- \otimes P^D_- \right) \\ \nonumber
+    P^h_0 &= I_h - P^h_+ - P^h_-
+\end{align}
+$P^h_0$ represents any history distinct from $P^h_+$ and $P^h_-$. Showing this,
+\begin{align}
+  {P^h_0}^\dagger P^h_\pm &= (I_h - P^h_+ - P^h_-) P^h_\pm \\ \nonumber
+  &= P^h_\pm - P^h_\pm \\ \nonumber
+  &= 0
+\end{align}
+Furthermore, $P^h_+$ and $P^h_-$ are distinct since
+\begin{align}
+  {P^D_+}^*P^D_- = 0
+\end{align}
+and it is shown that histories in this set are mutually exclusive.
+
+Showing that the set is exhaustive,
+\begin{align}
+  P^h_+ + P^h_- + P^h_0 &=  P^h_+ + P^h_- + \left(I_h - P^h_+ - P^h_- \right) \\ \nonumber
+  &= I_h
+\end{align}
+
+Now that the consistency of the family is confirmed, we can use TODO REF Eq 5.5 to find probabilities for each history. Notice that $P^h_0$ is included to make the set exhaustive; even though its probability of occurence is $0$, its inclusion in the family enables such a prediction.
+
+TODO: reference frameworks, complementarity
+
+\section{Heisenberg Picture}
+TODO: intro paragraph. Before, we applied dynamics to the state to find $\ket{\psi_0}, \ket{\psi_1},$ etc. Now, we apply dynamics to each operator in the Hilbert space. The operators representing events become
+\begin{align}
+  \bar{P_n} = U(t_0, t_n)P_n
+\end{align}
+
+and a history TODO REF becomes
+\begin{align}
+  \bar{h_n} = \left(\bar{P_0}, \: \bar{P_1}, \: \bar{P_2}, \:..., \: \bar{P_f} \right)
+\end{align}
+
+TODO: applying U to states causes loss of information compared to applying U to projectors. This lets us avoid history hilbert space.
+
+In the non-history Hilbert space, a history is represented by a \textit{class operator}
+\begin{align}
+  C_{h_n} &= \bar{P_0} \bar{P_1} \bar{P_2} ... \bar{P_f}
+\end{align}
+
+\subsection{Extending the Probability Postulate}
+
+We again use the form of TODO REF EQs, replacing $\ket{\psi_h}$ with $\ket{\psi}$ and $P^h_n$ with $C_n$:
+\begin{align}
+  \mathcal{P}(h_n) = \bra{\psi} C_n \ket{\psi}
+\end{align}
+
+Since $\mathcal{P}(h_n)$ is a real scalar,
+\begin{align}
+  \mathcal{P}(h_n) &= \mathcal{P}(h_n)^\dagger \\ \nonumber
+  \mathcal{P}(h_n) &= \bra{\psi} C_n^\dagger \ket{\psi}
+\end{align}
+
+so that the class operator projects in the same order as the events:
+\begin{align}
+  C_n^\dagger \ket{\psi} = \bar{P_f}...\bar{P_2}\bar{P_1}\bar{P_0}\ket{\psi}
+\end{align}
+
+We call $C_n^\dagger \ket{\psi}$ the \textit{branch wave function} for the history $h_n$. Notice that in TODO REF FIGURES, the branch wavefunctions are represented by following a path from the initial state to some final outcome.
+
+\subsection{Consistency Conditions}
+
+Since histories are now represented by class operators rather than projectors into the history Hilbert space, the condition of mutually exclusive and exhaustive outcomes is
+\begin{align}
+  C_i^\dagger C_j = \delta_{i,j} C_i \\
+  \sum_i C_i = I
+\end{align}
+
+\subsection{Example 2}
+
+TODO REF FIG, INTRO PARAGRAPH
+
 
 
 \chapter{Decoherence}
 
-All remaining content are rough notes.
+All remaining content are outlines/notes.
 
 TODO: introduce decoherence, explain role played by vnms. Incomplete which path, Environment continuously monitors system. TODO: sometimes we must ignore the environment, results are inaccessible or ignored experimentally.
 
 \section{Density Matrices}
 As stated in TODO ref, $\ket{\psi}$ can no longer be written in the form $\ket{\psi}_s \otimes \ket{\mathcal{X}}_z$. Rather, $\ket{\psi}$ is a superposition of such states; quantum \textit{coherency} has been extended from the spin system to the spin-pointer composite system.
 
-In the case of environmental decoherence, we consider this type of interaction while possessing no information on the pointer system. Since multiple pointer states may correspond to the same spin state, "ignoring the environment" now means that we must coarse grain out all possible environment states for each spin state. We can no longer ``factor out'' the environment subsystem.
+In the case of environmental decoherence, we assume that this type of interaction while possessing no information about the pointer system. Since multiple pointer states may correspond to the same spin state, ``ignoring the environment'' now means that we must coarse grain out all possible environment states for each spin state. We can no longer ``factor out'' the environment subsystem.
 
-Some environment state is realized; we just do not know which one. This uncertainty is classical in nature; it has nothing to do with any inherent quantum uncertainty. We are now dealing with a "classical mixture" of superposition states.
+Some definite environment state is realized; we just do not know which one. This uncertainty is classical in nature; it has nothing to do with any inherent quantum uncertainty. We are now dealing with a "classical mixture" of superposition states.
 
 Such a system is well represented by a \textit{density matrix}. For a \textit{pure state}, the representative density matrix is just the projection operator for that state
 \begin{align}
@@ -125,51 +238,12 @@ Now we can rewrite $\ket{D_n}\bra{D_n}$ as ${P^D}_n$, and simplify grouping:
 
 TODO: discuss remaining object ${P^D}_n \cdot \left(V\ket{\psi}\bra{\psi}V^\dagger\right)$
 TODO: discuss coarse graining, conditional probabilities
-\section{Consistent Histories}
-The von Neumann measurement scheme describes the measurement interaction between the electron spin system and the Stern-Gerlach apparatus as an entanglement between spin eigenstates and pointer states. TODO: This leads to the expected dynamics without state collapse.
-
-How do we discuss probabilities of sequential measurements?
-Issue with first postulate: a state contains all information known.
 
 \chapter{Complementarity}
 We now discuss the the principle of complementarity in the context of standard and consistent quantum mechanics. Arguably the most fundamental feature of quantum mechanics, the principle of complementarity states that a quantum system has pairs of physical observables which cannot be measured simultaneously. The operators corresponding to pairs of complementary properties do not commute; that is, $[A,B] = AB - BA \neq 0$. Components of spin on orthogonal axes are complementary properties, so we examine measurements of succesive Stern-Gerlach experiments.
 
-\begin{figure}
-\centering\CaptionFontSize
-\begin{tikzpicture}[shorten >=1pt,auto, thick,
-     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
-     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
-     wf/.style={rectangle, minimum height=1cm}]
-    \apparatus{1}{3}{0}{$Z$};
-    \apparatus{2}{6}{1.25}{$Y$};
-    \apparatus{3}{9}{2.50}{$Z$};
-    \apparatus{4}{9}{0}{$Z$};
-
-    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
-    \node[wf] (w1) at (11, 3.0) {$\ket{+}$};
-    \node[wf] (w2) at (11, 2.0) {$\ket{-}$};
-    \node[wf] (w3) at (11, 0.5) {$\ket{+}$};
-    \node[wf] (w4) at (11, -0.5) {$\ket{-}$};
-
-    \draw[line width=0.5mm] (w0) -- (1);
-
-    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+}$};
-
-    \draw[line width=0.5mm] (2-) -- (4) node [midway, below] {$\ket{-}_y$};
-    \draw[line width=0.5mm] (2+) -- (3) node [midway, above] {$\ket{+}_y$};
-
-    \draw[line width=0.5mm] (3-) -- (w2);
-    \draw[line width=0.5mm] (3+) -- (w1);
-    \draw[line width=0.5mm] (4-) -- (w4);
-    \draw[line width=0.5mm] (4+) -- (w3);
-\end{tikzpicture}
-\caption[Insert an abbreviated caption here to show in the List of Figures]
-{Demonstrating complementary measurments in standard quantum mechanics}
-\label{Figure:Intro:FigureExampleC}
-\end{figure}
 \chapter{Simulation}
 Research for this section is complete. I expect writing this section to take 1-2 days of writing, to be done over spring break.
-\chapter{Wigner's Friend}
 
 \section{Standard Description}
 Using the Born Rule, we calculate the probabilities of observing each final state in Figure 4.1. The first apparatus serves as a state preparation device with output $\ket{+}$. By the direction of the projection postulate, the state is renormalized upon each measurement. After measuring a property complementary to what is known (such as spin along $x$, knowing spin along $z$), any information known about the input state is lost; the input state instantaneously changes to the state corresponding to the observed quantity. Consequently, there is an equal probability of observing the final state as $\ket{+}$ or $\ket{-}$ at either final apparatus, even though the state was initially prepared as $\ket{+}$, since

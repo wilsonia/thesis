@@ -109,20 +109,15 @@ TODO: compare addition of $S_x, S_y$ states and their interpretations. Introduce
 \section{Copenhagen Description of Measurement}
 The fourth and fifth postulates constitute the Copenhagen description of measurement. This description is a key component of the standard interpretation of quantum mechanics, taught in textbooks and introductory quantum courses worldwide.
 
-The probability postulate assigns a probability distribution to the sample space of a physical variable.
+The probability postulate, also known as the \textit{Born Rule}, assigns a probability distribution to the sample space of a physical variable.
 
 \invisiblesubsubsection{Postulate 4 (Probability Distribution of Measurement Outcomes)}
 \begin{Thm:Postulate}{4}
-    When measuring physical variable $A$, the probability $\mathcal{P}(n)$ of obtaining result $a_n$ corresponding to $\ket{a}_n$  is equal to
+    When measuring physical variable $A$, the probability $\mathcal{P}(n)$ of obtaining result $a_n$ corresponding to $\ket{a_n}$  is equal to
      \begin{align}
-        \mathcal{P}(n) = |\tensor[_n]{\braket{a|\psi}}{}|^2
+        \mathcal{P}(n) = |\braket{_na|\psi}|^2
     \end{align}
 \end{Thm:Postulate}
-
-This postulate is also known as the \textit{Born Rule}, which is sometimes presented in the language of wavefunctions. The probability that a system is found at position $x$ is the magnitude of the wavefunction at that point:
-\begin{align}
-    \mathcal{P}_x = |\psi(x)|^2
-\end{align}
 
 The probabilities assigned to each state leaving the $S_x$ Stern-Gerlach device in Figure \fref{Figure:Measurement:DetectorStates} are
 \begin{align}
@@ -220,31 +215,31 @@ Considering the apparatus itself as a quantum system, an additional Hilbert spac
 Revisiting the example of measuring spin along the $z$ axis, we define the pointer space as
 \begin{align}
   \ket{\psi_D} &\in \mathcal{H}_D, \\
-  \nonumber \ket{\psi_D} &= \alpha \ket{+^D_z} + \beta \ket{-^D_z} + \gamma \ket{\varnothing^D_z}
+  \nonumber \ket{\psi_D} &= \alpha \ket{+_D} + \beta \ket{-_D} + \gamma \ket{\varnothing_D}
 \end{align}
 where $\alpha, \beta, \gamma \in \mathbb{C}$ and
 \begin{align}
-    \braket{^D_zi|j^D_z} &=\delta_{i,j}
+    \braket{i_D|j_D} &=\delta_{i,j}
 \end{align}
 
-The $D$ superscript distinguishes the pointer state from the spin state, and the $z$ subscript is a reminder of the orientation of the analyzer. Recalling the non-observability of superposition states TODO REF, we represent definite apparatus readings as pure pointer states. That is, $\ket{+^D_z}$ represents the particle's localization in the spin-up region of the analyzer, $\ket{-^D_z}$ the spin-down output region, and $\ket{\varnothing^D_z}$ anywhere else in space. $\ket{\varnothing^D_z}$ represents the state of the apparatus when it has not measured anything, and is referred to as the ``ready state'' \cite{Schlosshauer}. These states are mutually exclusive (reflected by requiring orthonormality) and exhaustive (every position in space is encompassed by some pointer state).
+The $D$ subscript distinguishes pointer states from the spin states. Recalling the non-observability of superposition states TODO REF, we represent definite apparatus readings as pure pointer states. That is, $\ket{+_D}$ represents the particle's localization in the spin-up region of the analyzer, $\ket{-_D}$ the spin-down output region, and $\ket{\varnothing_D}$ anywhere else in space. $\ket{\varnothing_D}$ represents the state of the apparatus when it has not measured anything, referred to in literature as the ``ready state'' \cite{Schlosshauer}. These states are mutually exclusive (reflected by requiring orthonormality) and exhaustive (every position in space is encompassed by some pointer state).
 
 The total quantum system $\ket{\psi}$ is now a composite spin-pointer system. Naming our spin system $\ket{\psi_s} \in \mathcal{H}_s$, the composite state space is $\mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_D$.
 
-The von Neumann scheme describes measurement as \textit{entanglement} of pure pointer states and spin eigenstates. At the instant measurement begins $t_0$, the pointer state is $\ket{\varnothing^D_z}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the pointer state is either $\ket{+^D_z}$ or $\ket{-^D_z}$, realized with spin-up and spin-down spin states respectively. This correlation is the desired result of unitary evolution.
+The von Neumann scheme describes measurement as \textit{entanglement} of pure pointer states and spin eigenstates. At the instant measurement begins $t_0$, the pointer state is $\ket{\varnothing_D}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the pointer state is either $\ket{+_D}$ or $\ket{-_D}$, realized with spin-up and spin-down spin states respectively. This correlation is the desired result of unitary evolution.
 
 We introduce a unitary operator that accomplishes this in explicit form:
 \begin{align}
-  U(t_0, t_1) &= P^z_+ \otimes \left(\ket{+^D_z}\bra{^D_z\varnothing} \: \bm{+} \: \ket{\varnothing^D_z}\bra{^D_z+} \: \bm{+} \: \ket{-^D_z}\bra{^D_z-} \right) \\ \nonumber
-  &+ P^z_- \otimes \left(\ket{-^D_z}\bra{^D_z\varnothing} \: \bm{+} \: \ket{\varnothing^D_z}\bra{^D_z-} \: \bm{+} \: \ket{+^D_z}\bra{^D_z+} \right)
+  U(t_0, t_1) &= P^z_+ \otimes \left(\: \ket{+_D}\bra{\varnothing_D} \: \bm{+} \: \ket{\varnothing_D}\bra{+_D} \: \bm{+} \: \ket{-_D}\bra{-_D} \: \right) \\ \nonumber
+  &+ P^z_- \otimes \left( \: \ket{-_D}\bra{\varnothing_D} \: \bm{+} \: \ket{\varnothing_D}\bra{-_D} \: \bm{+} \: \ket{+_D}\bra{+_D} \: \right)
 \end{align}
 
 This is the unitary operator accomplishing entanglement, as evident by $UU^\dagger = I$.
 
 In general, the final state is
 \begin{align}
-  U(t_0, t_1)\ket{\psi} & =  U(t_0, t_1) \left(\ket{\psi_s} \otimes \ket{\varnothing ^D_z} \right) \\
-  &= \nonumber P^z_+ \ket{\psi_s} \otimes \ket{+^D_z} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-^D_z}
+  U(t_0, t_1)\ket{\psi} & =  U(t_0, t_1) \left(\ket{\psi_s} \otimes \ket{\varnothing_D} \right) \\
+  &= \nonumber P^z_+ \ket{\psi_s} \otimes \ket{+_D} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_D}
 \end{align}
 
 This process is represented schematically in TOD ref; the initial state branches into two distinct outcomes, each represented by a term in the final state.
@@ -257,9 +252,9 @@ This process is represented schematically in TOD ref; the initial state branches
      wf/.style={rectangle, minimum height=1cm}]
     \apparatus{1}{2}{0}{$Z$};
 
-    \node(w0) at (-0.5,0) {$\ket{\psi_s} \otimes \ket{\varnothing^D_z}$};
-    \node[wf] (w1) at (4.75, 0.5) {$P^z_+\ket{\psi_s} \otimes \ket{+^D_z}$};
-    \node[wf] (w2) at (4.75, -0.5) {$P^z_-\ket{\psi_s} \otimes \ket{-^D_z}$};
+    \node(w0) at (-0.5,0) {$\ket{\psi_s} \otimes \ket{\varnothing_D}$};
+    \node[wf] (w1) at (4.75, 0.5) {$P^z_+\ket{\psi_s} \otimes \ket{+_D}$};
+    \node[wf] (w2) at (4.75, -0.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_D}$};
 
     % \node(label1) at (0, -1.75) {$\bm{t_0}$};
     % \node(label2) at (6.25, -1.75) {$\bm{t_1}$};
@@ -274,12 +269,12 @@ This process is represented schematically in TOD ref; the initial state branches
 \label{Figure:Measurement:DetectorStates}
 \end{figure}
 
-Notice that the final sum does not contain any terms representing incorrect correlations between spin and pointer states (such as $ P^z_+ \ket{\psi_s} \otimes \ket{-^D_z}$).  Consequently, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_D$ (as the inital state was). This is the definition of entanglement; the von Neumann measurement scheme describes measurement as entanglement of the measured system and the apparatus.
+Notice that the final sum does not contain any terms representing incorrect correlations between spin and pointer states (such as $ P^z_+ \ket{\psi_s} \otimes \ket{-_D}$).  Consequently, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_D$ (as the inital state was). This is the definition of entanglement; the von Neumann measurement scheme describes measurement as entanglement of the measured system and the apparatus.
 
 In general, the measurement process is described by a linear map:
 \begin{align}
     \nonumber U(t_0, t_1): \\
-    & \ket{\psi} = \left(\sum_{n} P^z_n\ket{\psi_s}\right) \otimes \ket{\varnothing^D_z} \mapsto \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n^D_z}\right)
+    & \ket{\psi} = \left(\sum_{n} P^z_n\ket{\psi_s}\right) \otimes \ket{\varnothing_D} \mapsto \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_D}\right)
 \end{align}
 where $n = +, -$.
 
@@ -297,10 +292,10 @@ Notice that the initial state is a single tensor product, while the final state 
     \apparatus{1}{4}{0}{${}^{D_1}_z$};
     \apparatus{2}{6.5}{1.5}{${}^{D_2}_x$};
 
-    \node(w0) at (0.75,0) {$\ket{\psi_s} \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x $};
-    \node[wf] (w1) at (7.25, -.5) {$ P^z_-\ket{\psi_s} \otimes \ket{-}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x$};
-    \node[wf] (w2) at (10, 1) {$P^x_-P^z_+\ket{\psi}_s \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{-}^{D_2}_x$};
-    \node[wf] (w3) at (10, 2) {$P^x_+ P^z_+\ket{\psi_s} \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{+}^{D_2}_x$};
+    \node(w0) at (0.75,0) {$\ket{\psi_s} \otimes \ket{\varnothing_{D_1}} \otimes \ket{\varnothing_{D_2}} $};
+    \node[wf] (w1) at (7.25, -.5) {$ P^z_-\ket{\psi_s} \otimes \ket{-_{D_1}} \otimes \ket{\varnothing_{D_2}}$};
+    \node[wf] (w2) at (10, 1) {$P^x_-P^z_+\ket{\psi}_s \otimes \ket{\varnothing_{D_1}} \otimes \ket{-_{D_2}}$};
+    \node[wf] (w3) at (10, 2) {$P^x_+ P^z_+\ket{\psi_s} \otimes \ket{\varnothing_{D_1}} \otimes \ket{+_{D_2}}$};
 
     % \node(label0) at (0, -1.75) {$\bm{t_0}$};
     % \node(label1) at (4.75, -1.75) {$\bm{t_1}$};
@@ -326,20 +321,20 @@ Now a case of consecutive measurements is considered. The von Neumann measuremen
 
 Now that we have two apparatuses, the Hilbert space includes two pointer spaces: $\mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_{D_1} \otimes \mathcal{H}_{D_2}$. The dynamics are unchanged from TODO REF Example 1 for the first measurement, with the identity acting on the second apparatus to leave it unaffected:
 \begin{align}
-  U(t_0, t_1) &= P^z_+ \otimes \left(\ket{+^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z+} \: \bm{+} \: \ket{-^{D_1}_z}\bra{^{D_1}_z-} \right) \otimes I_{D_2} \\ \nonumber
-    &+ P^z_- \otimes \left(\ket{-^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z-} \: \bm{+} \: \ket{+^{D_1}_z}\bra{^{D_1}_z+} \right) \otimes I_{D_2}
+  U(t_0, t_1) &= P^z_+ \otimes \left(\ket{+_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{+_{D_1}} \: \bm{+} \: \ket{-_{D_1}}\bra{-_{D_1}} \right) \otimes I_{D_2} \\ \nonumber
+    &+ P^z_- \otimes \left(\ket{-_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{-_{D_1}} \: \bm{+} \: \ket{+_{D_1}}\bra{+_{D_1}} \right) \otimes I_{D_2}
 \end{align}
 
 Now we determine the dynamics for the second measurement. We expect the dynamics to do two things: return the first apparatus to the ready state, and entangle the second apparatus with spin eigenstates. We return the first apparatus to the ready state as it is no longer measuring the system. $U(t_0, t_1)^\dagger$ reverses the entanglement, but conveniently, $U(t_0, t_1)$ is Hermitian $\left(U(t_0, t_1)^\dagger = U(t_0, t_1)\right)$. So, the $D_1$ component of the unitary operator for the second measurement is the same as that of the first measurement:
 \begin{align}
-  U(t_1, t_2)_{D_1} &= P^z_+ \otimes \left(\ket{+^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z+} \: \bm{+} \: \ket{-^{D_1}_z}\bra{^{D_1}_z-} \right) \otimes I_{D_2}  \\ \nonumber
-    &+ P^z_- \otimes \left(\ket{-^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z-} \: \bm{+} \: \ket{+^{D_1}_z}\bra{^{D_1}_z+} \right) \otimes I_{D_2}
+  U(t_1, t_2)_{D_1} &= P^z_+ \otimes \left(\ket{+_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{+_{D_1}} \: \bm{+} \: \ket{-_{D_1}}\bra{-_{D_1}} \right) \otimes I_{D_2}  \\ \nonumber
+    &+ P^z_- \otimes \left(\ket{-_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{-_{D_1}} \: \bm{+} \: \ket{+_{D_1}}\bra{+_{D_1}} \right) \otimes I_{D_2}
 \end{align}
 
 For the $D_2$ component, we want to entangle pointer states with spin states only when the first apparatus has measured spin-up. In the branch where spin-down has been measured, we use the identity operator $I_s \otimes I_{D_2}$, representing the lack of a second measurement. In the branch where spin-up has been measured, we apply the measurement scheme again to entangle $D_2$ states with $x$ spin eigenstates. The $D_2$ component of the unitary operator during second measurement is
 \begin{align}
-  U(t_1, t_2)_{D_2} &= P^x_+ P^z_+ \otimes I_{D_1} \otimes \left(\ket{+^{D_2}_z}\bra{^{D_2}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_2}_z}\bra{^{D_2}_z+} \: \bm{+} \: \ket{-^{D_2}_z}\bra{^{D_2}_z-} \right) \\ \nonumber
-  &+ P^x_- P^z_+ \otimes I_{D_1} \otimes \left(\ket{-^{D_2}_z}\bra{^{D_2}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_2}_z}\bra{^{D_2}_z-} \: \bm{+} \: \ket{+^{D_2}_z}\bra{^{D_2}_z+} \right)\\ \nonumber
+  U(t_1, t_2)_{D_2} &= P^x_+ P^z_+ \otimes I_{D_1} \otimes \left(\ket{+_{D_2}}\bra{\varnothing_{D_2}} \: \bm{+} \: \ket{\varnothing_{D_2}}\bra{+_{D_2}} \: \bm{+} \: \ket{-_{D_2}}\bra{-_{D_2}} \right) \\ \nonumber
+  &+ P^x_- P^z_+ \otimes I_{D_1} \otimes \left(\ket{-_{D_2}}\bra{\varnothing_{D_2}} \: \bm{+} \: \ket{\varnothing_{D_2}}\bra{-_{D_2}} \: \bm{+} \: \ket{+_{D_2}}\bra{+_{D_2}} \right)\\ \nonumber
   &+ P^z_- \otimes I_{D_1} \otimes I_{D_2}
 \end{align}
 
@@ -347,11 +342,11 @@ For the $D_2$ component, we want to entangle pointer states with spin states onl
 So the complete unitary operator for the second measurement is
 \begin{align}
   U(t_1, t_2) &= U(t_1, t_2)_{D_1} U(t_1, t_2)_{D_2} \\ \nonumber
-  &= P^x_+ P^z_+ \otimes \left(\ket{+^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z+} \: \bm{+} \: \ket{-^{D_1}_z}\bra{^{D_1}_z-} \right) \\ \nonumber
-  & \phantom{{} = P^x_+ P^z_+} \otimes  \left(\ket{+^{D_2}_z}\bra{^{D_2}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_2}_z}\bra{^{D_2}_z+} \: \bm{+} \: \ket{-^{D_2}_z}\bra{^{D_2}_z-} \right) \\ \nonumber
-  &+ P^x_- P^z_+ \otimes \left(\ket{+^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z+} \: \bm{+} \: \ket{-^{D_1}_z}\bra{^{D_1}_z-} \right) \\ \nonumber
-  & \phantom{{} = P^x_+ P^z_+} \otimes  \left(\ket{-^{D_2}_z}\bra{^{D_2}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_2}_z}\bra{^{D_2}_z-} \: \bm{+} \: \ket{+^{D_2}_z}\bra{^{D_2}_z+} \right) \\ \nonumber
-  &+ P^z_- \otimes \left(\ket{-^{D_1}_z}\bra{^{D_1}_z\varnothing} \: \bm{+} \: \ket{\varnothing^{D_1}_z}\bra{^{D_1}_z-} \: \bm{+} \: \ket{+^{D_1}_z}\bra{^{D_1}_z+} \right) \\ \nonumber
+  &= P^x_+ P^z_+ \otimes \left(\ket{+_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{+_{D_1}} \: \bm{+} \: \ket{-_{D_1}}\bra{-_{D_1}} \right) \\ \nonumber
+  & \phantom{{} = P^x_+ P^z_+} \otimes  \left(\ket{+_{D_2}}\bra{\varnothing_{D_2}} \: \bm{+} \: \ket{\varnothing_{D_2}}\bra{+_{D_2}} \: \bm{+} \: \ket{-_{D_2}}\bra{-_{D_2}} \right) \\ \nonumber
+  &+ P^x_- P^z_+ \otimes \left(\ket{+_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{+_{D_1}} \: \bm{+} \: \ket{-_{D_1}}\bra{-_{D_1}} \right) \\ \nonumber
+  & \phantom{{} = P^x_+ P^z_+} \otimes  \left(\ket{-_{D_2}}\bra{\varnothing_{D_2}} \: \bm{+} \: \ket{\varnothing_{D_2}}\bra{-_{D_2}} \: \bm{+} \: \ket{+_{D_2}}\bra{+_{D_2}} \right) \\ \nonumber
+  &+ P^z_- \otimes \left(\ket{-_{D_1}}\bra{\varnothing_{D_1}} \: \bm{+} \: \ket{\varnothing_{D_1}}\bra{-_{D_1}} \: \bm{+} \: \ket{+_{D_1}}\bra{+_{D_1}} \right) \\ \nonumber
   & \phantom{{}={}P^z_+} \otimes I_{D_2}
 \end{align}
 
@@ -397,11 +392,11 @@ So the complete unitary operator for the second measurement is
     \apparatus{2}{6.5}{1.5}{${}^{D_2}_x$};
     \apparatus{3}{9}{3}{${}^{D_3}_z$};
 
-    \node(w0) at (0,0) {$\ket{\psi_s} \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x \otimes \ket{\varnothing}^{D_3}_z $};
-    \node[wf] (w1) at (8, -.5) {$ P^z_-\ket{\psi_s} \otimes \ket{-}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x \otimes \ket{\varnothing}^{D_3}_z $};
-    \node[wf] (w2) at (10.75, 1) {$P^x_-P^z_+\ket{\psi}_s \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{-}^{D_2}_x \otimes \ket{\varnothing}^{D_3}_z $};
-    \node[wf] (w3) at (13.5, 3.5) {$P^z_+ P^x_+ P^z_+\ket{\psi_s} \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x \otimes \ket{+}^{D_3}_z $};
-    \node[wf] (w4) at (13.5, 2.5) {$P^z_- P^x_+ P^z_+\ket{\psi_s} \otimes \ket{\varnothing}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x \otimes \ket{-}^{D_3}_z $};
+    \node(w0) at (0,0) {$\ket{\psi_s} \otimes \ket{\varnothing_{D_1}} \otimes \ket{\varnothing_{D_2}} \otimes \ket{\varnothing_{D_3}}$};
+    \node[wf] (w1) at (8, -.5) {$ P^z_-\ket{\psi_s} \otimes \ket{-_{D_1}} \otimes \ket{\varnothing_{D_2}} \otimes \ket{\varnothing_{D_3}} $};
+    \node[wf] (w2) at (10.75, 1) {$P^x_-P^z_+\ket{\psi}_s \otimes \ket{\varnothing_{D_1}} \otimes \ket{-_{D_2}} \otimes \ket{\varnothing_{D_3}} $};
+    \node[wf] (w3) at (13.5, 3.5) {$P^z_+ P^x_+ P^z_+\ket{\psi_s} \otimes \ket{\varnothing_{D_1}} \otimes \ket{\varnothing_{D_2}} \otimes \ket{+_{D_3}}$};
+    \node[wf] (w4) at (13.5, 2.5) {$P^z_- P^x_+ P^z_+ \ket{\psi_s} \otimes \ket{\varnothing_{D_1}} \otimes \ket{\varnothing_{D_2}} \otimes \ket{-_{D_3}} $};
 
     % \node(label0) at (0, -1.75) {$\bm{t_0}$};
     % \node(label1) at (4.75, -1.75) {$\bm{t_1}$};
