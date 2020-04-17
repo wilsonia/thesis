@@ -65,6 +65,12 @@ bookmarksnumbered}
   \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}%
   \sectionmark{#1}}
 
+\newcommand\invisiblesubsection[1]{%
+    \refstepcounter{subsection}%
+    \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsubsection}#1}%
+    \sectionmark{#1}}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACTUAL DOCUMENT.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
