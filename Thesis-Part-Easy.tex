@@ -119,12 +119,6 @@ The probability postulate, also known as the \textit{Born Rule}, assigns a proba
     \end{align}
 \end{Thm:Postulate}
 
-The probabilities assigned to each state leaving the $S_x$ Stern-Gerlach device in Figure \fref{Figure:Measurement:DetectorStates} are
-\begin{align}
-    \mathcal{P}(+_y) &= |\braket{+_x|+_z}|^2 = \frac{1}{2} \\
-    \mathcal{P}(-_y) &= |\braket{-_x|+_z}|^2 = \frac{1}{2}
-\end{align}
-
 The spirit of the Born Rule is unchanged in consistent quantum theory. Differences are discussed in (TODO: ref future section).
 
 \invisiblesubsection{Postulate 5 (Collapse Dynamics)}
@@ -140,7 +134,41 @@ The fifth postualte (known as the projection postulate) describes how a system e
     onto the subspace associated with $a_n$.
 \end{Thm:Postulate}
 
-Consider a measurement result for the $z$ component of spin. We represent the result with $n_z$, which could be either spin-up $\left(+_z \right)$ or spin-down $\left(-_z \right)$. The new state is the normalized projection of $\ket{\psi}$ onto $\ket{n_z}$. In other words, $\ket{\psi}$ instantaneously becomes $\ket{n_z}$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
+\subsection{Experiment 1}
+
+Consider a measurement result for the $z$ component of spin. By the third postulate, the result is either either spin-up or spin-down $\left( S_z = \pm \frac{\hbar}{2} \right)$. By the projection postulate, the state evolves to the normalized projection of $\ket{\psi}$ onto $\ket{\pm}$. In other words, $\ket{\psi}$ instantaneously becomes $\ket{\pm}$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}. The spatial separation of these outcomes is represented by \autoref{Figure:Measurement:Copenhagen Experiment 1}
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{2}{0}{$z$};
+
+    \node(w0) at (0,0) {$\ket{\psi_s}$};
+    \node[wf] (w1) at (4, 0.5) {$\ket{+}$};
+    \node[wf] (w2) at (4, -0.5) {$\ket{-}$};
+
+    % \node(label1) at (0, -1.75) {$\bm{t_0}$};
+    % \node(label2) at (6.25, -1.75) {$\bm{t_1}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+    \draw[line width=0.5mm] (1+) -- (w1);
+    \draw[line width=0.5mm] (1-) -- (w2);
+\end{tikzpicture}
+
+\caption[Insert an abbreviated caption here to show in the List of Figures]
+{Stern-Gerlach Experiment 1 as described by the Copenhagen description of measurement. Each measurement outcome }
+\label{Figure:Measurement:Copenhagen Experiment 1}
+\end{figure}
+
+The Born Rule gives the probabilities of measuring spin-up and spin-down as a function of initial spin state:
+\begin{align}
+  \mathcal{P}(\pm) = |\braket{\pm | \psi_s}|^2
+\end{align}
+
+\subsection{Experiment 2}
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -164,12 +192,10 @@ Consider a measurement result for the $z$ component of spin. We represent the re
 \end{tikzpicture}
 \caption[Insert an abbreviated caption here to show in the List of Figures]
 {The Stern-Gerlach experiment as described by the standard measurement scheme. Notice that each measurement outcome is renormalized, so that information about the state prior to measurement is lost.}
-\label{Figure:Measurement:Renormalizing}
+\label{Figure:Measurement:Copenhagen Experiment 2}
 \end{figure}
 
-\subsection{Example 1}
-
-As an example, consider the Stern-Gerlach experiment shown in \fref{Figure:Measurement:Renormalizing}. The first apparatus serves as a state preparation device, since we are only interested in particles exiting the spin-up output. Using the projection postulate, the state after the first measurement is
+Now we consecutively measure spin as shown in \autoref{Figure:Measurement:Copenhagen Experiment 2}. The first apparatus serves as a state preparation device, since we are only interested in particles exiting the spin-up output. Using the projection postulate, the state after the first measurement is
 \begin{align}
     \ket{\psi^\prime} &= \frac{{P^z_+}\ket{\psi}}{\sqrt{\bra{\psi}P^z_+\ket{\psi}}} = \ket{+_z}
 \end{align}
@@ -180,6 +206,12 @@ Similarly, the possible output states from the second apparatus are
 or
 \begin{align}
   \ket{\psi^{\prime\prime}} &= \frac{P^x_-\ket{+_z}}{\sqrt{\bra{+_z}P^x_-\ket{+_z}}} = \ket{-_x}
+\end{align}
+
+Because we ignore spin-down particles from the first measurement, we are certain that particles entering the second analyzer are in the spin-up state. The probabilities assigned to each state leaving the $S_x$ Stern-Gerlach device are
+\begin{align}
+    \mathcal{P}(+_x) &= |\braket{+_x|+_z}|^2 = \frac{1}{2} \\
+    \mathcal{P}(-_x) &= |\braket{-_x|+_z}|^2 = \frac{1}{2}
 \end{align}
 
 \section{Dynamics}
@@ -243,34 +275,34 @@ In the discussion of Stern-Gerlach experiments, the position of the electron pla
 
 Our goal is to use the von Neumann measurement scheme to formalize the correlation of position and spin eigenstates we observe in Stern-Gerlach experiments. We start by representing the electron with a composite spin-position system,
 \begin{align}
-  \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_x
+  \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X}
 \end{align}
 
-\subsection{Example 1}
-We revisit the example of one Stern-Gerlach measurement of spin along the $z$ axis. To simplify calculations, we define coarse grainings of position states. $\ket{+_x}$ and $\ket{-_x}$ represent localization within the spin-up and spin-down regions, respectively. We also group all other position eigenstates, representing it with $\ket{\varnothing_x}$; this is the position of an electron not being measured by the apparatus. The states $\{\ket{+_x}, \ket{-_x}, \ket{\varnothing_x}\}$ form an orthogonal and exhaustive basis for the position space. TODO: also assert normality? Figure.
+\subsection{Experiment 1}
+We revisit the example of one Stern-Gerlach measurement of spin along the $z$ axis. We name position states of interest; $\ket{\varnothing_\mathcal{X}}$ represents the localization at the beginning of the analyzer (which we call the ``ready'' position), while $\ket{+_\mathcal{X}}$ and $\ket{-_\mathcal{X}}$ represent localization at the spin-up and spin-down outputs, respectively (reference TODO REF FIG). Numerous papers detail these position states using Gaussian wave packets TODO REF, but for simplicity we leave these abstracted. We will say that $\{\ket{+_\mathcal{X}}, \ket{-_\mathcal{X}}, \ket{\varnothing_\mathcal{X}}\}$ are mutually orthonormal.
 
 We introduce an operator that correlates these position states with spin eigenstates in explicit form:
-\begin{align} \label{eq: example 1 unitary operator}
-  U(t_0, t_1) &= P^z_+ \otimes \left(\: \ket{+_x}\bra{\varnothing_x} \: \bm{+} \: \ket{\varnothing_x}\bra{+_x} \: \bm{+} \: \ket{-_x}\bra{-_x} \: \right) \\ \nonumber
-  &+ P^z_- \otimes \left( \: \ket{-_x}\bra{\varnothing_x} \: \bm{+} \: \ket{\varnothing_x}\bra{-_x} \: \bm{+} \: \ket{+_x}\bra{+_x} \: \right)
+\begin{align} \label{eq: Experiment 1 unitary operator}
+  U(t_0, t_1) &= P^z_+ \otimes \left(\: \ket{+_\mathcal{X}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: \ket{-_\mathcal{X}}\bra{-_\mathcal{X}} \: \right) \\ \nonumber
+  &+ P^z_- \otimes \left( \: \ket{-_\mathcal{X}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: \ket{+_\mathcal{X}}\bra{+_\mathcal{X}} \: \right)
 \end{align}
 
 Starting with a general spin state, the final state is
-\begin{align} \label{eq: example 1 final state}
-  U(t_1, t_0)\ket{\psi} & =  U(t_1, t_0) \left(\ket{\psi_s} \otimes \ket{\varnothing_x} \right) \\
-  &= \nonumber P^z_+ \ket{\psi_s} \otimes \ket{+_x} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_x}
+\begin{align} \label{eq: Experiment 1 final state}
+  U(t_1, t_0)\ket{\psi} & =  U(t_1, t_0) \left(\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \right) \\
+  &= \nonumber P^z_+ \ket{\psi_s} \otimes \ket{+_\mathcal{X}} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_\mathcal{X}}
 \end{align}
 
-At the instant measurement begins $t_0$, the position state is $\ket{\varnothing_x}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the position state is either $\ket{+_x}$ or $\ket{-_x}$, realized with spin-up and spin-down spin states respectively. Notice that the final sum does not contain any terms representing incorrect correlations between spin and position states (such as $ P^z_+ \ket{\psi_s} \otimes \ket{-_x}$).  Consequently, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_x$ (as the inital state was). This is the definition of \textit{entanglement}; the von Neumann measurement scheme describes the measurement process as entanglement.
+At the instant measurement begins $t_0$, the position state is $\ket{\varnothing_\mathcal{X}}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the position state is either $\ket{+_\mathcal{X}}$ or $\ket{-_\mathcal{X}}$, realized with spin-up and spin-down spin states respectively. Notice that the final sum does not contain any terms representing incorrect correlations between spin and position states (such as $ P^z_+ \ket{\psi_s} \otimes \ket{-_\mathcal{X}}$).  Consequently, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_\mathcal{X}$ (as the inital state was). This is the definition of \textit{entanglement}; the von Neumann measurement scheme describes the measurement process as entanglement. $U(t_1, t_0)$ is \textit{the} unitary operator accomplishing the desired correlation, as evident by $UU^\dagger = I$.
 
 The von Neumann scheme is usually written as a linear map:
 \begin{align} \label{eq: general final state}
     \nonumber U(t_1, t_0): \\
-    & \ket{\psi} = \left(\sum_{n} P^z_n\ket{\psi_s}\right) \otimes \ket{\varnothing_x} \mapsto \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_x}\right)
+    & \ket{\psi} = \left(\sum_{n} P^z_n\ket{\psi_s}\right) \otimes \ket{\varnothing_\mathcal{X}} \mapsto \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right)
 \end{align}
 where $n = +, -$.
 
-Notice that the initial state is a single tensor product, while the final state is a sum of tensor products. The coherence initially present only in the spin state is extended to the composite spin-momentum system. This process is represented schematically in TOD ref; the initial state branches into two distinct outcomes, each represented by a term in the final state. $U(t_1, t_0)$ is \textit{the} unitary operator accomplishing the desired correlation, as evident by $UU^\dagger = I$.
+Notice that the initial state is a single tensor product, while the final state is a sum of tensor products. The coherence initially present only in the spin state is extended to the composite spin-momentum system. This process is represented schematically in TOD ref; the initial state branches into two distinct outcomes, each represented by a term in the final state.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -280,9 +312,9 @@ Notice that the initial state is a single tensor product, while the final state 
      wf/.style={rectangle, minimum height=1cm}]
     \apparatus{1}{2}{0}{$z$};
 
-    \node(w0) at (-0.5,0) {$\ket{\psi_s} \otimes \ket{\varnothing_x}$};
-    \node[wf] (w1) at (4.75, 0.5) {$P^z_+\ket{\psi_s} \otimes \ket{+_x}$};
-    \node[wf] (w2) at (4.75, -0.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_x}$};
+    \node(w0) at (-0.5,0) {$\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}}$};
+    \node[wf] (w1) at (4.75, 0.5) {$P^z_+\ket{\psi_s} \otimes \ket{+_\mathcal{X}}$};
+    \node[wf] (w2) at (4.75, -0.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_\mathcal{X}}$};
 
     % \node(label1) at (0, -1.75) {$\bm{t_0}$};
     % \node(label2) at (6.25, -1.75) {$\bm{t_1}$};
@@ -293,51 +325,49 @@ Notice that the initial state is a single tensor product, while the final state 
 \end{tikzpicture}
 
 \caption[Insert an abbreviated caption here to show in the List of Figures]
-{The Stern-Gerlach experiment as described by the von Neumann measurement scheme. Each measurement outcome corresponds to a term in the time-evolved state (\autoref{eq: example 1 final state}). Notice that the measurement interaction results in a branching structure, represented here as a tree graph with the apparatus as a node.}
+{The Stern-Gerlach experiment as described by the von Neumann measurement scheme. Each measurement outcome corresponds to a term in the time-evolved state (\autoref{eq: Experiment 1 final state}). Notice that the measurement interaction results in a branching structure, represented here as a tree graph with the apparatus as a node.}
 \label{Figure:Measurement:DetectorStates}
 \end{figure}
 
-By describing measurement as a unitary process, we have eliminated many aspects of the quantum measurement problem. However, the interpretation of the final state of the von Neumann measurement scheme comes with its own problems; namely, the preferred basis problem and the problem of outcomes. The problem of outcomes is interpretation dependent, so we address it in TODO ref.
+By describing measurement as a unitary process, we have eliminated many aspects of the quantum measurement problem. TODO cite specific examples. However, there are two overarching problems with interpretation of the final state of the von Neumann measurement scheme. These are called the \textit{preferred basis problem} and the \textit{problem of outcomes} in literature \cite{Schlosshauer}\cite{Wang}. The problem of outcomes remains an open research question, and potential solutions lay outside the scope of this thesis. The preferred basis problem can be solved using the tools developed so far, so we show how it may be solved by including the apparatus in our measurement model.
 
 \section{Preferred Basis Problem}
 
 The preferred basis problem arises from the ability to write the final state in \autoref{eq: general final state} using different bases:
 \begin{align}
-  \ket{\psi_f} = \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_x}\right) = \sum_{n'}\left(P^z_{n'}\ket{\psi_s} \otimes \ket{n'_x}\right) =...
+  \ket{\psi'} = \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right) = \sum_{n'}\left(P^z_{n'}\ket{\psi_s} \otimes \ket{n'_\mathcal{X}}\right) =...
 \end{align}
 
-\subsection{Example 1}
+That $\{ \ket{n_s} \}$ and $\{ \ket{n_\mathcal{X}} \}$ are orthognal sets means that $\ket{\psi'}$ is a biorthongal system. The biorthogonal decomposition theorem states that alternate bases $\{ \ket{n'_s} \}$ and $\{ \ket{n'_\mathcal{X}} \}$ exist when $\braket{n_s | \psi_s}$ are not all distinct \cite{Elby}. We exemplify such a case using experiment 1.
 
-Consider setting the initial spin state of Example 1 to spin-up in the $x$ direction:
+\subsection{Experiment 1}
+
+Consider setting the initial spin state to spin-up in the $x$ direction:
 \begin{align}
-  \ket{\psi_s} = \ket{+^x_s} = \frac{\ket{+_s} + \ket{-_s}}{\sqrt{2}}
+  \ket{\psi_s} = \ket{+^x} = \frac{\ket{+} + \ket{-}}{\sqrt{2}}
 \end{align}
 
-The final state by \autoref{eq: example 1 unitary operator} is
+The final state by \autoref{eq: Experiment 1 unitary operator} is
 \begin{align}
-  \ket{\psi_f} = \frac{\ket{+_s}\otimes\ket{+_x} + \ket{-_s}\otimes\ket{-_x}}{\sqrt{2}}
+  \ket{\psi_f} = \frac{\ket{+}\otimes\ket{+_\mathcal{X}} + \ket{-}\otimes\ket{-_\mathcal{X}}}{\sqrt{2}}
 \end{align}
 
-Similar to the spin system, we can define an orthonormal basis for the position space $\{ \ket{+^x_x}, \ket{-^x_x} \}$:
+Similar to the $S_x$ eigenstates, we define orthonormal position states
 \begin{align}
-  \ket{+^x_x} = \frac{\ket{+_x} + \ket{-_x}}{\sqrt{2}} \\ \nonumber
-  \ket{-^x_x} = \frac{\ket{+_x} - \ket{-_x}}{\sqrt{2}}
+  \ket{+^x_\mathcal{X}} = \frac{\ket{+_\mathcal{X}} + \ket{-_\mathcal{X}}}{\sqrt{2}} \\ \nonumber
+  \ket{-^x_\mathcal{X}} = \frac{\ket{+_\mathcal{X}} - \ket{-_\mathcal{X}}}{\sqrt{2}}
 \end{align}
 
-Then the final state can be written
+so the final state can be written
 \begin{align}
-  \ket{\psi_f} = \ket{+^x_s} \otimes \ket{+^x_x}
+  \ket{\psi'} = \ket{+^x} \otimes \ket{+^x_\mathcal{X}}
 \end{align}
 
-It appears that the measurement process of spin along the $z$ axis resulted in a definite spin state along the $x$ axis. However, as complementary variables, $S_z$ and $S_x$ cannot be simultaneously known. It appears that the von Neumann measurement scheme violates the princple of complementarity. This is the essence of the preferred basis problem.
-
-Without solving this problem, everything works if only the ``right'' questions are asked. We know that we measured spin along the $z$ axis, so we could only ask questions about results in the \textit{preferred basis} (in this case $S_z \otimes x_z$). Rather than ignoring errenous predictions, we can remove them by ensuring that \autoref{eq: general final state} cannot be written in other bases. Such an approach would single out the determination of one variable at an instant of time, incorporating the principle of complementarity directly into the measurement process.
-
-TODO: introduce einselection, inselection.
+TODO REF matches the form TODO REF; it appears that the measurement process of spin along the $z$ axis has entangled position states with spin states along the $x$ axis. If we regard the measurement process as such an entangelement, the von Neumann measurement scheme violates the princple of complementarity by simultaneously measuring $S_z$ and $S_x$. We know that our experimental setup was configured to measure $S_z$, but nothing in the theory singles out $S_z$ as the \textit{preferred basis}.
 
 \section{Inselection}
 
-The von Neumann measurement scheme was originally phrased as the entanglement of a microscopic system with a macroscopic apparatus \cite{Neumann}. Many descriptions of non-unitary Stern-Gerlach measurement consider the electron position state as the state of the apparatus itself. This is a reasonable abstraction, as electron localization is how the state of the apparatus is ``read off''. However, the description it provides is incomplete, because it conflates two distinct physical systems; the apparatus, and the position system belonging to the electron. By labeling the position system as the ``apparatus'', the degree of freedom corresponding to the actual apparatus is effectively ignored.
+To solve this problem, we need only to look back to the original phrasing of the von Neumann measurement scheme, where measurement is described as the entanglement of a microscopic system with a macroscopic measuring apparatus \cite{Neumann}. Many descriptions of non-unitary Stern-Gerlach measurement consider the electron position system as the apparatus itself. This is a reasonable abstraction, as the position of the electron is used to ``read off'' the result of the measurement. However, this approach is misleading, because it conflates two distinct physical systems; the apparatus, and the position system belonging to the electron. By labeling the position system as the ``apparatus'', the degree of freedom corresponding to the actual apparatus is effectively ignored.
 
 Newton's third law asserts that the force exerted on the electron by the apparatus magnet is paired with a force exerted on the magnet by the electron. This motivates the definition of apparatus states $\{\ket{+_a}, \ket{-_a}, \ket{\varnothing_a}\}$ representing the effect of positive, negative, and zero torques on the magnet, respectively. Unlike the position states, these states need not be mutually orthongonal. We expect the torque exerted on macroscopic magnets by an electron to be small, so that
 \begin{align}
@@ -348,22 +378,24 @@ where $n, m = +, -, \varnothing$. In other words, these states are nearly indist
 We now formalize the spin-position-apparatus interaction, similar to how the implied spin-position correlation in the projection postulate was formalized.
 \begin{align} \label{eq: unitary operator inselection}
     \nonumber U(t_1, t_0): \\
-    & \ket{\psi} = \left(\sum_{n} P^z_n\ket{\psi_s}\right) \otimes \ket{\varnothing_x} \otimes \ket{\varnothing_a} \mapsto \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_x} \otimes \ket{n_a} \right)
+    & \ket{\psi} = \left(\sum_{n} P^z_n\ket{\psi_s}\right) \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_a} \mapsto \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_a} \right)
 \end{align}
 
-While systems in the form \autoref{eq: general final state} do not generally have unique decompositions, systems with three or more components do by the triorthongal decomposition theorem. In other words, we cannot write the final state in another basis:
+While systems in the form \autoref{eq: general final state} do not generally have unique decompositions, systems with three or more components do by the triorthongal decomposition theorem \cite{Elby}. Furthermore, so long as two components are expanded in orthongal bases, the third component need only be expanded in a non-colinear basis. In other words, because $\{n_s\}$ and $\{n_\mathcal{X}\}$ are orthongal sets, $\{n_a\}$ need only be linearly independent. The small difference between states $\braket{n_a | m_a} \neq 1$ satistfies this requirement.
+
+Using this result, we cannot write the final state in another basis:
 \begin{align}
-  \ket{\psi_f} = \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_x} \otimes \ket{n_a} \right) \neq \sum_{n'}\left(P^z_{n'}\ket{\psi_s} \otimes \ket{n'_x} \otimes \ket{n'_a} \right)
+  \ket{\psi'} = \sum_{n}\left(P^z_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_a} \right) \neq \sum_{n'}\left(P^z_{n'}\ket{\psi_s} \otimes \ket{n'_\mathcal{X}} \otimes \ket{n'_a} \right)
 \end{align}
 
-Since this is the only possible way to write $\ket{\psi_f}$, the preferred basis has been chosen by just by including the apparatus system. The uniqueness of the decomposition is dependent on the orthogonality of $\ket{n_s}$ states, the orthogonality of $\ket{n_x}$ states, and the non-colinearity of $\ket{n_a}$ states. The apparatus states only need to satisfy $\braket{n_a | m_a} \neq 1$, which is a much looser condition than requiring mutual orthogonality of apparatus states. Misidentifying the position system as the apparatus imposes strict restrictions on the apparatus that truly belong to the position system.
+Since this is the only possible way to write $\ket{\psi'}$, the preferred basis has been chosen by including the apparatus system. The uniqueness of the decomposition is dependent on the orthogonality of $\ket{n_s}$ states, the orthogonality of $\ket{n_\mathcal{X}}$ states, and the non-colinearity of $\ket{n_a}$ states. The apparatus states only need to satisfy $\braket{n_a | m_a} \neq 1$, which is a much looser condition than requiring mutual orthogonality of apparatus states. Misidentifying the position system as the apparatus imposes strict restrictions on the apparatus that truly belong to the position system.
 
-\subsection{Example 1}
-Our system is now composed of spin, position, and apparatus systems $H = H_s \otimes H_x \otimes H_a$. The unitary operator satisfying \autoref{eq: unitary operator inselection} is
+\subsection{Experiment 1}
+Our system is now composed of spin, position, and apparatus systems $H = H_s \otimes H_\mathcal{X} \otimes H_a$. The unitary operator satisfying \autoref{eq: unitary operator inselection} is
 \begin{align}
-  U(t_1, t_0) &= P^z_+ \otimes \left(\: \ket{+_x}\bra{\varnothing_x} \: \bm{+} \: \ket{\varnothing_x}\bra{+_x} \: \bm{+} \: \ket{-_x}\bra{-_x} \: \right) \\ \nonumber
+  U(t_1, t_0) &= P^z_+ \otimes \left(\: \ket{+_\mathcal{X}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: \ket{-_\mathcal{X}}\bra{-_\mathcal{X}} \: \right) \\ \nonumber
   &\phantom{{}=P^z_+} \otimes \left(\: \ket{+_a}\bra{\varnothing_a} \: \bm{+} \: \ket{\varnothing_a}\bra{+_a} \: \bm{+} \: \ket{-_a}\bra{-_a} \: \right)\\ \nonumber
-  &+ P^z_- \otimes \left( \: \ket{-_x}\bra{\varnothing_x} \: \bm{+} \: \ket{\varnothing_x}\bra{-_x} \: \bm{+} \: \ket{+_x}\bra{+_x} \: \right) \\ \nonumber
+  &+ P^z_- \otimes \left( \: \ket{-_\mathcal{X}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: \ket{+_\mathcal{X}}\bra{+_\mathcal{X}} \: \right) \\ \nonumber
  &\phantom{{}=P^z_-} \otimes \left(\: \ket{-_a}\bra{\varnothing_a} \: \bm{+} \: \ket{\varnothing_a}\bra{-_a} \: \bm{+} \: \ket{+_a}\bra{+_a} \: \right)
 \end{align}
 
@@ -374,14 +406,15 @@ To shorten this expression, we define the ``entanglement operator''
 
 Note that $E$ is Hermitian $\left(E^\dagger = E\right)$ and unitary $\left( E^\dagger E = I \right)$. The unitary operator is now
 \begin{align}
-  U(t_1, t_0) &= P^z_+ \otimes E^x_+ \otimes E^a_+ \\ \nonumber
-  &+ P^z_- \otimes E^x_- \otimes E^a_-
+  U(t_1, t_0) &= P^z_+ \otimes E^\mathcal{X}_+ \otimes E^a_+ \\ \nonumber
+  &+ P^z_- \otimes E^\mathcal{X}_- \otimes E^a_-
 \end{align}
 
 For a general initial spin state, this produces final state
 \begin{align}
-  \ket{\psi_f} &= P^z_+ \ket{\psi_s} \otimes \ket{+_x} \otimes \ket{+_a} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_x} \otimes \ket{-_a}
-\end{align} This experiment is visualized schematically in \autoref{fig: example 1 inselection}.
+  \ket{\psi'} &= P^z_+ \ket{\psi_s} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_a} \: \bm{+} \: P^z_- \ket{\psi_s} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_a}
+\end{align}
+This experiment is visualized schematically in \autoref{fig: Experiment 1 inselection}.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -391,9 +424,9 @@ For a general initial spin state, this produces final state
      wf/.style={rectangle, minimum height=1cm}]
     \apparatus{1}{2}{0}{$z$};
 
-    \node(w0) at (-1,0) {$\ket{\psi_s} \otimes \ket{\varnothing_x} \otimes \ket{\varnothing_a}$};
-    \node[wf] (w1) at (5.25, 0.5) {$P^z_+\ket{\psi_s} \otimes \ket{+_x} \otimes \ket{+_a}$};
-    \node[wf] (w2) at (5.25, -0.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_x} \otimes \ket{-_a}$};
+    \node(w0) at (-1,0) {$\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_a}$};
+    \node[wf] (w1) at (5.25, 0.5) {$P^z_+\ket{\psi_s} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_a}$};
+    \node[wf] (w2) at (5.25, -0.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_a}$};
 
     % \node(label1) at (0, -1.75) {$\bm{t_0}$};
     % \node(label2) at (6.25, -1.75) {$\bm{t_1}$};
@@ -403,13 +436,56 @@ For a general initial spin state, this produces final state
     \draw[line width=0.5mm] (1-) -- (w2);
 \end{tikzpicture}
 \caption[Insert an abbreviated caption here to show in the List of Figures]
-{The most complete description of Experiment 1 presented, including position and apparatus degres of freedom. The seemingly redundant correlation of both position and apparatus states to spin states makes the abstraction of position states as apparatus states valid. However, formalizing the interaction with the apparatus provides a more complete description that resolves the preferred basis problem.}
-\label{fig: example 1 inselection}
+{The most complete description of Experiment 1 presented, including position and apparatus degres of freedom. The seemingly redundant correlation of both position and apparatus states to spin states validifies the abstraction of position states as apparatus. However, formalizing the interaction with the apparatus provides a more complete description that resolves the preferred basis problem.}
+\label{fig: Experiment 1 inselection}
 \end{figure}
 
-The approach used to solve the preferred basis problem is called \textit{interaction induced superselection} (or \textit{inselection}), since basis selection arises by fully modeling the interaction of the system and the apparatus. A more popular approach is \textit{environment induced superselection} (or \textit{einselection}). It works by the same mechanism, but the third system is the enivornment instead of the apparatus. Since the apparatus is part of the environment in this approach, inselection and einselection are compatible, with inselection providing a more precise description of how the prefered basis is selected. We compare these approaches in greater detail in TODO REF APPENDIX.
+\section{Consecutive Measurements}
 
-The von Neumann measurement scheme can be applied succesivley, on a term-by-term basis, for consecutive measurements. TODO REF details this process for Stern-Gerlach Example 2, and the process is summarized in TODO REF.
+Now that
+
+TODO: introduce assumptions of consecutive measurement.
+
+The von Neumann measurement scheme can be applied succesively.
+
+\subsection{Example 2}
+Now that we have two apparatuses, the Hilbert space includes two pointer spaces: $\mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X} \otimes \mathcal{H}_{a_1} \otimes \mathcal{H}_{a_2}$. We also add two new coarse grained position states for the second apparatus. The position states are now $\{\ket{+_{x_1}}, \ket{-_{x_1}}, \ket{+_{x_2}}, \ket{-_{x_2}}, \ket{\varnothing_\mathcal{X}}\}$, where $\ket{\varnothing_\mathcal{X}}$ is any position not in either apparatus' spin-up or spin-down region. TODO: figure.
+
+The dynamics are unchanged from TODO REF Example 1 for the first measurement, with the identity acting on the second apparatus to leave it unaffected:
+\begin{align}
+  U(t_1, t_0)_{a_1} &= P^z_+ \otimes E^{x_1}_+  \nonumber \otimes E^{a_1}_+ \otimes I_{a_2}\\ \nonumber
+  &+ P^z_- \otimes E^{x_1}_-\otimes E^{a_1}_- \otimes I_{a_2}
+\end{align}
+
+Now we determine the dynamics for the second measurement. We expect the dynamics to do two things: revers the entanglements from the first measurement, and entangle the second apparatus with spin and position eigenstates. We return the first apparatus to the ready state, as it is no longer measuring the system and no torque is exerted on the magnet, and return position back to $\ket{\varnothing_\mathcal{X}}$ as the electron leaves the analyzer. $U(t_1, t_0)^\dagger$ reverses the entanglement, but conveniently, $U(t_1, t_0)$ is Hermitian. So, the $a_1$ component of the unitary operator for the second measurement is the same as that of the first measurement:
+\begin{align}
+  U(t_2, t_1)_{a_1} &= U(t_1, t_0)
+\end{align}
+
+For the $a_2$ component, we want to entangle pointer states with position and spin states only when the first apparatus has measured spin-up. In the branch where spin-down has been measured, we use the identity operator $I = I_s \otimes I_\mathcal{X} \otimes I_{a_1} \otimes I_{a_2}$ to represent the lack of a second measurement. In the branch where spin-up has been measured, we apply the measurement scheme again. The $a_2$ component of the unitary operator during second measurement is
+\begin{align}
+  U(t_2, t_1)_{a_2} &= P^x_+ P^z_+ \otimes E^{x_2}_+ \otimes I_{a_1} \otimes E^{a_2}_+ \\ \nonumber
+  &+ P^x_- P^z_+ \otimes E^{x_2}_- \otimes I_{a_1} \otimes E^{a_2}_- \\ \nonumber
+  &+ P^z_- \otimes{I_\mathcal{X}} \otimes I_{a_1} \otimes I_{a_2}
+\end{align}
+
+So the complete unitary operator for the second measurement is
+\begin{align}
+  U(t_2, t_1) &= U(t_2, t_1)_{a_2} U(t_2, t_1)_{a_1} \\ \nonumber
+  &= P^x_+ P^z_+ \otimes E^{x_2}_+  E^{x_1}_+ \otimes E^{a_1}_+ \otimes E^{a_2}_+ \\ \nonumber
+  &+ P^x_- P^z_+ \otimes E^{x_2}_-  E^{x_1}_+ \otimes E^{a_1}_+ \otimes E^{a_2}_- \\ \nonumber
+  &+ P^z_- \otimes E^{x_1}_- \otimes E^{a_1}_- \otimes I_{a_2}
+\end{align}
+and the final state is represented in Figure TODO REF.
+% \begin{align}
+%   U(t_2, t_1) &= U(t_2, t_1)_{a_1} U(t_2, t_1)_{a_2} \\ \nonumber
+%   &= P^x_+ P^z_+ \otimes \left(\ket{+_{a_1}}\bra{\varnothing_{a_1}} \: \bm{+} \: \ket{\varnothing_{a_1}}\bra{+_{a_1}} \: \bm{+} \: \ket{-_{a_1}}\bra{-_{a_1}} \right) \\ \nonumber
+%   & \phantom{{} = P^x_+ P^z_+} \otimes  \left(\ket{+_{a_2}}\bra{\varnothing_{a_2}} \: \bm{+} \: \ket{\varnothing_{a_2}}\bra{+_{a_2}} \: \bm{+} \: \ket{-_{a_2}}\bra{-_{a_2}} \right) \\ \nonumber
+%   &+ P^x_- P^z_+ \otimes \left(\ket{+_{a_1}}\bra{\varnothing_{a_1}} \: \bm{+} \: \ket{\varnothing_{a_1}}\bra{+_{a_1}} \: \bm{+} \: \ket{-_{a_1}}\bra{-_{a_1}} \right) \\ \nonumber
+%   & \phantom{{} = P^x_+ P^z_+} \otimes  \left(\ket{-_{a_2}}\bra{\varnothing_{a_2}} \: \bm{+} \: \ket{\varnothing_{a_2}}\bra{-_{a_2}} \: \bm{+} \: \ket{+_{a_2}}\bra{+_{a_2}} \right) \\ \nonumber
+%   &+ P^z_- \otimes \left(\ket{-_{a_1}}\bra{\varnothing_{a_1}} \: \bm{+} \: \ket{\varnothing_{a_1}}\bra{-_{a_1}} \: \bm{+} \: \ket{+_{a_1}}\bra{+_{a_1}} \right) \\ \nonumber
+%   & \phantom{{}={}P^z_+} \otimes I_{a_2}
+% \end{align}
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -419,9 +495,9 @@ The von Neumann measurement scheme can be applied succesivley, on a term-by-term
      port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
      wf/.style={rectangle, minimum height=1cm}]
     \apparatus{1}{4}{0}{${}^{a_1}_z$};
-    \apparatus{2}{6.5}{1.5}{${}^{a_2}_x$};
+    \apparatus{2}{6.5}{1.5}{${}^{a_2}_\mathcal{X}$};
 
-    \node(w0) at (0.25,0) {$\ket{\psi_s} \otimes \ket{\varnothing_x} \otimes \ket{\varnothing_{a_1}} \otimes \ket{\varnothing_{a_2}} $};
+    \node(w0) at (0.25,0) {$\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_{a_1}} \otimes \ket{\varnothing_{a_2}} $};
     \node[wf] (w1) at (8, -.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_{x_1}}  \otimes \ket{-_{a_1}} \otimes \ket{\varnothing_{a_2}}$};
     \node[wf] (w2) at (10.75, 1) {$P^x_-P^z_+\ket{\psi}_s \otimes \ket{-_{x_2}} \otimes \ket{\varnothing_{a_1}} \otimes \ket{-_{a_2}}$};
     \node[wf] (w3) at (10.75, 2) {$P^x_+ P^z_+\ket{\psi_s} \otimes \ket{+_{x_2}} \otimes \ket{\varnothing_{a_1}} \otimes \ket{+_{a_2}}$};
@@ -430,7 +506,7 @@ The von Neumann measurement scheme can be applied succesivley, on a term-by-term
     % \node(label1) at (4.75, -1.75) {$\bm{t_1}$};
     % \node(label2) at (7.25, -1.75) {$\bm{t_2}$};
     % \node(label3) at (9.75, -1.75) {$\bm{t_3}$};
-    % \node(bw1) at (-1.75, 1.75) {$P^z_+\ket{\psi}^s \otimes \ket{+}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_x $};
+    % \node(bw1) at (-1.75, 1.75) {$P^z_+\ket{\psi}^s \otimes \ket{+}^{D_1}_z \otimes \ket{\varnothing}^{D_2}_\mathcal{X} $};
 
     \draw[line width=0.5mm] (w0) -- (1);
     \draw[line width=0.5mm] (1+) -- (2);
