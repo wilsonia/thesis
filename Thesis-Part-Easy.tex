@@ -442,25 +442,33 @@ This experiment is visualized schematically in \autoref{fig: Experiment 1 insele
 
 \section{Consecutive Measurements}
 
-Now that
-
-TODO: introduce assumptions of consecutive measurement.
-
-The von Neumann measurement scheme can be applied succesively.
+In TODO REF, we applied the projection postulate succesively to account for consecutive measurements. When measurement was conditional on a prior result, we applied the postulate only to states routed to the second analyzer. The von Neumann measurement scheme can also be applied succesively, and is used on a term-by-term basis to account for conditional measurement.
 
 \subsection{Example 2}
-Now that we have two apparatuses, the Hilbert space includes two pointer spaces: $\mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X} \otimes \mathcal{H}_{a_1} \otimes \mathcal{H}_{a_2}$. We also add two new coarse grained position states for the second apparatus. The position states are now $\{\ket{+_{x_1}}, \ket{-_{x_1}}, \ket{+_{x_2}}, \ket{-_{x_2}}, \ket{\varnothing_\mathcal{X}}\}$, where $\ket{\varnothing_\mathcal{X}}$ is any position not in either apparatus' spin-up or spin-down region. TODO: figure.
+Now that we have two analyzers, the Hilbert space includes two apparatus spaces: $\mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X} \otimes \mathcal{H}_{a_1} \otimes \mathcal{H}_{a_2}$. We also name new position states for the second apparatus, so that position states of interest are now $\{ \ket{\varnothing_{\mathcal{X}_1}}, \ket{+_{\mathcal{X}_1}}, \ket{-_{\mathcal{X}_1}}, \ket{\varnothing_{\mathcal{X}_2}}, \ket{+_{\mathcal{X}_2}}, \ket{-_{\mathcal{X}_2}} \}$. These states are visualized in TODO FIG.
 
 The dynamics are unchanged from TODO REF Example 1 for the first measurement, with the identity acting on the second apparatus to leave it unaffected:
 \begin{align}
-  U(t_1, t_0)_{a_1} &= P^z_+ \otimes E^{x_1}_+  \nonumber \otimes E^{a_1}_+ \otimes I_{a_2}\\ \nonumber
-  &+ P^z_- \otimes E^{x_1}_-\otimes E^{a_1}_- \otimes I_{a_2}
+  U(t_1, t_0)_{a_1} &= P^z_+ \otimes E^{\mathcal{X}_1}_+  \nonumber \otimes E^{a_1}_+ \otimes I_{a_2}\\ \nonumber
+  &+ P^z_- \otimes E^{\mathcal{X}_1}_-\otimes E^{a_1}_- \otimes I_{a_2}
 \end{align}
 
-Now we determine the dynamics for the second measurement. We expect the dynamics to do two things: revers the entanglements from the first measurement, and entangle the second apparatus with spin and position eigenstates. We return the first apparatus to the ready state, as it is no longer measuring the system and no torque is exerted on the magnet, and return position back to $\ket{\varnothing_\mathcal{X}}$ as the electron leaves the analyzer. $U(t_1, t_0)^\dagger$ reverses the entanglement, but conveniently, $U(t_1, t_0)$ is Hermitian. So, the $a_1$ component of the unitary operator for the second measurement is the same as that of the first measurement:
+The second measurement happens immediately after the first. We separate the dynamics relevant to each apparatus, so that $U(t_2, t_1) = U(t_2, t_1)_{a_2}U(t_2, t_1)_{a_1}$. The dynamics for the first apparatus should do the following:
+\begin{itemize}
+  \item Map up/down position states of the $z$ apparatus to the ready position state for the $x$ apparatus
+  \item Return the spin-$z$ apparatus to the ready state
+\end{itemize}
+
+We return the first apparatus to the ready state, as it is no longer measuring the system and no torque is exerted on the magnet, and return position back to $\ket{\varnothing_\mathcal{X}}$ as the electron leaves the analyzer. $U(t_1, t_0)^\dagger$ reverses the entanglement, but conveniently, $U(t_1, t_0)$ is Hermitian. So, the $a_1$ component of the unitary operator for the second measurement is the same as that of the first measurement:
 \begin{align}
   U(t_2, t_1)_{a_1} &= U(t_1, t_0)
 \end{align}
+
+The dynamics for the second apparatus should do the following:
+\begin{itemize}
+  \item Entangle the spin and $x$ apparatus systems
+  \item Entangle the spin-appar ready state of the $x$ apparatus
+\end{itemize}
 
 For the $a_2$ component, we want to entangle pointer states with position and spin states only when the first apparatus has measured spin-up. In the branch where spin-down has been measured, we use the identity operator $I = I_s \otimes I_\mathcal{X} \otimes I_{a_1} \otimes I_{a_2}$ to represent the lack of a second measurement. In the branch where spin-up has been measured, we apply the measurement scheme again. The $a_2$ component of the unitary operator during second measurement is
 \begin{align}
@@ -495,7 +503,7 @@ and the final state is represented in Figure TODO REF.
      port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
      wf/.style={rectangle, minimum height=1cm}]
     \apparatus{1}{4}{0}{${}^{a_1}_z$};
-    \apparatus{2}{6.5}{1.5}{${}^{a_2}_\mathcal{X}$};
+    \apparatus{2}{6.5}{1.5}{${}^{a_2}_x$};
 
     \node(w0) at (0.25,0) {$\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_{a_1}} \otimes \ket{\varnothing_{a_2}} $};
     \node[wf] (w1) at (8, -.5) {$P^z_-\ket{\psi_s} \otimes \ket{-_{x_1}}  \otimes \ket{-_{a_1}} \otimes \ket{\varnothing_{a_2}}$};
