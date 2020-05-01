@@ -3,209 +3,253 @@
 
 \chapter{Consistent Histories}
 
-The fourth postulate TODO REF makes probabilistic predictions of measurement results. The mathematics of this postulate still apply, but now that we are using the von Neumann measurement scheme, we can no longer frame the calculation of probabilities in the context of the standard description of measurement. That is, the formalism can stay, but we need different words surrounding it to give it meaning. The \textit{consistent} (or \textit{decoherent}) \textit{histories} interpretation of quantum mechanics modifies this postulate to make predictions about the more general \textit{quantum history} rather than measurement results.
+The fourth postulate makes probabilistic predictions of measurement results. The mathematics of this postulate still apply, but now that we are using the von Neumann measurement scheme, we can no longer frame the calculation of probabilities in the context of the standard description of measurement. That is, the formalism can stay, but we need different words surrounding it to give it meaning. The \textit{consistent} (or \textit{decoherent}) \textit{histories} approach modifies this postulate to make predictions about the more general \textit{quantum history} rather than measurement results.
 
-TODO: history about development. preview ordering. Griffiths introduced the logic/math, while Gell-Man/Hartle/Craig's work informs (and is informed by) cosmological applications. First section will reiterate Griffith's articuation of foundations of theory in Schrödinger picture, following will examine simplifications made by using Heisenberg picture as used by GMHC.
-
-So far, we have assumed the Schrödinger picture of time evolution, in which the unitary operator acts on the quantum state. In the Heisenberg picture, the unitary operator acts on operators in the Hilbert space rather than states. TODO better explain this.
-Consistency conditions are expressed intuitively in the Schrödinger picture, and with simplifications in the Heisenberg picture. TODO finish this.
+TODO: history about development. preview ordering. Griffiths introduced the foundational logic/math,  Gell-Man/Hartle/Craig's work informs (and is informed by) cosmological applications, assumes less about the environment (allowing for PFBP discussion). First section will reiterate Griffith's articuation of events and histories, following sections reiterate GMHC's articulation of class operators and consistency conditions.
 
 % TODO: find place for this:
 
-% The approach used to solve the preferred basis problem is called \textit{interaction induced superselection} (or \textit{inselection}), since basis selection arises by fully modeling the interaction of the system and the apparatus \cite{Wang}. A more popular approach is \textit{environment induced superselection} (or \textit{einselection}). It works by the same mechanism, but the environment is used to fix the preferred basis instead of the apparatus. Since the apparatus is included in the environment in this approach, inselection and einselection are compatible, with inselection providing a more precise description of how the prefered basis is selected. Newton's third law requires the inclusion of the apparatus, so this must be 
+% The approach used to solve the preferred basis problem is called \textit{interaction induced superselection} (or \textit{inselection}), since basis selection arises by fully modeling the interaction of the system and the apparatus \cite{Wang}. A more popular approach is \textit{environment induced superselection} (or \textit{einselection}). It works by the same mechanism, but the environment is used to fix the preferred basis instead of the apparatus. Since the apparatus is included in the environment in this approach, inselection and einselection are compatible, with inselection providing a more precise description of how the prefered basis is selected. Newton's third law requires the inclusion of the apparatus, so this must be
 %
 % We will see later that without apparatus degree of freedom, we could not make histories TODO. So, the inability of our model to retain information about a state is a direct consequence of the incompleteness of our system, not a fundamental issue of quantum mechanics. TODO: introduce decoherence.
 
-\section{Properties, Events and Histories}
+\section{Events and Histories}
 
-A \textit{quantum property} is a true or false statement about a physical variable. Recalling Example 1 TODO REF, we find through experiment that the system will posses one of two properties at the end of measurement:
-\begin{itemize}
-  \item ``Spin along the $z$ axis is $\frac{\hbar}{2}$''
-  \item ``Spin along the $z$ axis is $-\frac{\hbar}{2}$''
-\end{itemize}
+% A \textit{quantum property} is a true or false statement about a physical variable. Recalling Experiment 1, we found that the system will posses one of two properties at the end of measurement:
+% \begin{itemize}
+%   \item ``Spin along the $z$ axis is $\frac{\hbar}{2}$''
+%   \item ``Spin along the $z$ axis is $-\frac{\hbar}{2}$''
+% \end{itemize}
+%
+% A property corresponds to a subspace of the Hilbert space. For example, the subspace corresponding to the spin-up property is only $\{\ket{+}\}$, while the subspace corresponding to the property ``spin along the $z$ axis is either up or down'' is $\{\ket{+}, \ket{-}\}$. Notice that this does not include linear combinations of $\ket{+}$ and $\ket{-}$; only pure states are interpreted as having definite properties.
 
-A property corresponds to a subspace of the Hilbert space. For example, the subspace corresponding to the spin-up property is only the state $\ket{+}$.
-
-A \textit{quantum event} is a system's possession of a property. An event is represented by the projection operator for the property's subspace. For the spin-up example, this operator is $P^z_+$.
-
-A \textit{quantum history} is a set of events at sequential times. Now that we have dropped the projection postulate, the TODO REF sixth postulate now completely describes how states evolve with time. A history is a finite set of events that necessarily ignores an infinite amount of insignificant events.
-
-For example, consider the example of consecutive measurement in TODO REF. The history for measuring spin up in both analyzers is $\{P^z_+, P^x_+\}$.
-
-\section{Schrödinger Picture}
-A history, as a set of events, specifies possible system states at multiple instances of time. Formally, this is no different than specifying possible states of a composite system consisting of a copy of $\mathcal{H}$ for each instant in time \cite{Griffiths}. This motivates the definition of a \textit{history Hilbert space}. Once again, the tensor product is employed to create a composite system; this time, the entire spin-pointer system is considered at different points in time. The history Hilbert space representing $\ket{\psi}$ at times $\left(t_0, t_1, t_2, ..., t_f \right)$ is
+In probability theory, a sample space consists of an exhaustive set of mutually exclusive events. In quantum mechanics, the sample space for a physical variable is found by decomposing the identity in that variable's basis. Each term in the decomposition is a \textit{quantum event}. For example, the sample space of $S_z$ consists of the terms in
 \begin{align}
-  {\mathcal{H}}_h = \mathcal{H}_{t_0} \odot \mathcal{H}_{t_1} \odot \mathcal{H}_{t_2} \odot ... \odot \mathcal{H}_{t_f}
-\end{align}
-where $\odot$ is the ordinary tensor product, but denotes that the same quantum system $\mathcal{H}$ is considered at different times.
-
-In this history Hilbert space, the state representing the system at times $\left(t_0, t_1, t_2, ..., t_f \right)$ is
-\begin{align}
-  \ket{\psi_h} &= \ket{\psi_{t_0}} \odot \ket{\psi_{t_1}} \odot \ket{\psi_{t_2}} \odot ... \odot \ket{\psi_{t_f}}
-\end{align}
-where each component $\ket{\psi_{t_i}}$ is determined by the unitary dynamics experienced by the system up until that point, $U(t_i, t_0)$. In other words,
-\begin{align}
-  \ket{\psi_h} &= \ket{\psi_{t_0}} \odot U(t_1, t_0)\ket{\psi_{t_0}} \odot U(t_2, t_0)\ket{\psi_{t_0}} \odot ... \odot U(t_f, t_0)\ket{\psi_{t_0}}
+  I = \sum_i P^z_i = P^z_+ + P^z_-
 \end{align}
 
-In this history Hilbert space, a history is represented by the tensor product of its events. That is, history $n = \left( P_0, P_1, P_2, ... , P_f \right)$ is represented by $P^h_n = P_0 \odot P_1 \odot P_2 \odot ... \odot P_f $.
+Events exist within the context of a particular sample space. Consequently, we can  use logical reasoning to make conjuctive or negative statements about events. For example, the event for ``spin is either up or down'' is the sum of spin-up and spin-down events, $P^z_+ + P^z_- = I$. Because this is the conjunction of all outcomes in the sample space, asserting that the system is either spin-up or spin-down at an instant in time is equivalent to asserting nothing at all.
 
-\subsection{Extending the Probability Postulate}
-The standard probability postulate TODO REF is written as the inner product of the system state $\ket{\psi}$ and an eigenstate of a physical variable $\ket{a_n}$. It can instead be written in terms of the projection operator for $\ket{a_n}$ by expanding the complex square.
+A \textit{quantum history} is a set of events at sequential times. As finite sets, histories necessarily ignore an infinite amount of insignificant events.
+
+\subsubsection{Experiment 1}
+The histories for measuring spin-up and spin-down are
+\begin{align}
+  h_\pm &= \left\{ \left(P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right), \left(P^z_\pm \otimes P^\mathcal{X}_\pm \otimes P^\epsilon_\pm \right)  \right\}  \\ \nonumber
+  h_+ &= \left\{P_\varnothing, P^z_\pm \right\}
+\end{align}
+where we named the events in the second line to simplify future expressions.
+
+\section{Class Operators}
+We seek to write an operator that takes an initial state through the events of a given history.
+
+\subsection{Experiment 2}
+
+To find such an operator, we follow a path from the initial state to some final outcome in TODO REF FIGURE, operating with dynamics and event projectors along the way. We call the resulting state the \textit{branch wavefunction} for that history, labeled $\ket{\psi_h}$.
+
+Returning to Experiment 2, we are interested in events at times $t_0$, $t_1$ and $t_2$. The history for measuring spin-up in the $z$ analyzer followed by measuring spin-down in the $x$ analyzer is
+\begin{align}
+  h = \left\{ P_\varnothing, P^z_+ ,P^x_- \right\}
+\end{align}
+%
+% We begin by assuming the form
+% \begin{align}
+%   U(t_2, t_0) C^\dagger_h
+% \end{align}
+% where $U(t_2, t_0)$ is responsible for time evolution state, and $C^\dagger_h$ is responsible for selecting
+First, we assert that the state initially occurs with the first event in the history
+\begin{align}
+  \ket{\psi_h} = P_\varnothing \: \ket{\psi}
+\end{align}
+Then, we assert that after evolution from $t_0$ to $t_1$, the event for measuring spin-up occurs
+\begin{align}
+  \ket{\psi_h} = P^z_+ \: U(t_1, t_0) \: P_\varnothing \: \ket{\psi}
+\end{align}
+Finally, we assert that after evolution from $t_1$ to $t_2$, the event for measuring spin-down occurs
+\begin{align}
+  \ket{\psi_h} = P^x_- \: U(t_2, t_1) \: P^z_+ \: U(t_1, t_0) \: P_\varnothing \: \ket{\psi}
+\end{align}
+Writing all unitary operators with time starting at $t_0$,
+\begin{align}
+  \ket{\psi_h} &= P^x_- \: U(t_2, t_0) \: U^\dagger(t_1, t_0) \: P^z_+ \: U(t_1, t_0) \: P_\varnothing \: \ket{\psi} \\ \nonumber
+  &= \left(P^x_- \: U(t_2, t_0) \right) \left( U^\dagger(t_1, t_0) \: P^z_+ \: U(t_1, t_0) \right) \left( P_\varnothing \right) \: \ket{\psi} \\ \nonumber
+  &= U(t_2, t_0)\left(U^\dagger(t_2, t_0) \: P^x_- \: U(t_2, t_0) \right) \left( U^\dagger(t_1, t_0) \: P^z_+ \: U(t_1, t_0) \right) \left( P_\varnothing \right) \: \ket{\psi}
+\end{align}
+we recognize the Heisenberg picture event operators ${P}(t) = U^\dagger(t, t_0) \: P \: U(t, t_0)$. In terms of Heisenberg projectors,
+\begin{align}
+  \ket{\psi_h} &= U(t_2, t_0) \: {P^x_-(t_2)} \: {P^z_+(t_1)} \: {P_\varnothing(t_0)} \: \ket{\psi} \\ \nonumber
+  \ket{\psi_h} &= U(t_2, t_0) C_h^\dagger \ket{\psi}
+\end{align}
+
+$C_h$ is called the \textit{class operator} for history $h$.  Conventionally, this operator is written with projectors appearing in the same left-to-right reading order as the order of events in the history. By calling our operator $C_h^\dagger$, we invert this order so that the event projectors operate on the initial state in the correct order.
+
+In general, the class operator for a set of $n$ histories is defined by
+\begin{align}
+  C_h^\dagger = P_n(t_n) \: P_{n-1}(t_{n-1}) \: ... \: P_0(t_0)
+\end{align}
+which corresponds to the branch wavefunction
+\begin{align}
+  \ket{\psi_h} = U(t_n, t_0) C_h^\dagger \ket{\psi}
+\end{align}
+
+\section{Extending the Probability Postulate}
+
+The standard probability postulate is written as the inner product of the system state $\ket{\psi}$ and an eigenstate of a physical variable $\ket{a_n}$. It can instead be written in terms of the projection operator for $\ket{a_n}$ by expanding the complex square.
 \begin{align}
         \mathcal{P}(n) &= |\braket{a_n|\psi}|^2 \\ \nonumber
         &= \braket{\psi|a_n} \braket{a_n|\psi} \\ \nonumber
         &= \bra{\psi} P^a_n \ket{\psi}
 \end{align}
 
-To extend this postulate to make predictions about histories, we replace the system $\ket{\psi}$ with the history system $\ket{\psi_h}$ and the measurement projector $P^a_n$ with the history projector $P^h_n$.
-
+To extend this postulate to make predictions about histories, we replace measurement result projector $P^a_n$ with the history projector $C_h^\dagger$
 \begin{align}
-    \mathcal{P}(h_n) &= \bra{\psi_h} P^h_n \ket{\psi_h}
+  \mathcal{P}(h_n) = \bra{\psi} C_h^\dagger \ket{\psi}
 \end{align}
 
-\subsubsection{Example 1}
-
-As shown in TODO REF, the measurement of an initial spin state $\ket{\psi_S}$ results in
+\subsection{Experiment 1}
+The class operator for measuring spin-up or spin-down is
 \begin{align}
-  \ket{{\psi}_1} &= U(t_1, t_0)\ket{{\psi}_0} \\ \nonumber
-  &= P^{S_z}_+ \ket{\psi_S} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_A}\: \bm{+} \: P^{S_z}_- \ket{\psi_S} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_A}
+  C_\pm^\dagger = P^z_\pm (t_1) \: P_\varnothing (t_0)
 \end{align}
-
-In the history Hilbert space, the state representing the system before and after measurement is
+so the extended Born Rule assigns probability
 \begin{align}
-  \ket{\psi_h} &= \ket{\psi_0} \odot \ket{\psi_1} \\ \nonumber
-  &= \left(\ket{\psi_S} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_A} \right) \odot \left(P^{S_z}_+ \ket{\psi_S} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_A} \: \bm{+} \: P^{S_z}_- \ket{\psi_S} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_A} \right)
+  \mathcal{P}(\pm) &= \bra{\psi} C_\pm^\dagger \ket{\psi} \\ \nonumber
+  &= \bra{\psi} P^z_\pm (t_1) \: P_\varnothing (t_0) \ket{\psi}
 \end{align}
-
-The history for measuring spin-up is composed of the projector for an initial spin state with a ready position and apparatus, and the projector for an up spin state with an up position and apparatus:
+$P_\varnothing (t_0)$ confirms that $\ket{\psi}$ is the correct initial state:
+% \begin{align}
+%   P_\varnothing (t_0) \ket{\psi} &=  \left(P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right) \left(\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_\epsilon} \right) \\ \nonumber
+%   &= \ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_\epsilon} \right \\ \nonumber
+%   &= \ket{\psi}
+% \end{align}
+so
 \begin{align}
-  P^h_+ &= P_\varnothing \odot P_+ \\ \nonumber
-  &= \left(P^{S_z}_{\psi_S} \otimes P^\mathcal{X}_\varnothing \otimes P^A_\varnothing \right) \odot \left(P^{S_z}_+ \otimes P^\mathcal{X}_+ \otimes P^A_+ \right)
+  \mathcal{P}(\pm) &= \bra{\psi} P^z_\pm (t_1) \ket{\psi}
 \end{align}
-
-Using the new probaility postulate, the probability of measuring spin-up is
+The Heisenberg projector at $t_1$ is
 \begin{align}
-    \mathcal{P}(h_+) &= \bra{\psi_h} P^h_+ \ket{\psi_h} \\ \nonumber
-    &= \bra{\psi_h} P_\varnothing \odot P_+ \ket{\psi_h} \\ \nonumber
-    % &= \bra{\psi_H} \left(P^{S_z}_{\psi_S} \otimes P^\mathcal{X}_\varnothing \otimes P^A_\varnothing \right) \odot \left(P^{S_z}_+ \otimes P^\mathcal{X}_+ \otimes P^A_+ \right) \ket{\psi_H} \\ \nonumber
-    &=  \bra{\psi_h}  \left(\ket{\psi_S} \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_A} \right)\odot \left(P^{S_z}_+\ket{\psi_S} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_A} \right) \\ \nonumber
-    &= \bra{\psi_S} P^{S_z}_+ \ket{\psi_S}
+  P^z_\pm (t_1) = U^\dagger(t_1, t_0) P^z_\pm U(t_1, t_0)
 \end{align}
-and we recover the prediction of the standard Born Rule.
-
-\subsection{Consistency Conditions}
-
-The third postulate TODO REF defines the subset of states corresponding to ``measurement results'', and the fourth postulate makes predictions about these states only. Now that we have extended the Born Rule to make predictions about histories, we need to be careful about the context in which the predictions are made, as it is no longer postulated for us.
-
-\subsubsection{Example 1}
-
-The standard Born Rule makes predictions for measurements of spin-up and spin-down along the $z$ axis. Since these states exhaust possible outcomes, the probabilities of their measurement must sum to unity
+so
 \begin{align}
-\left( \mathcal{P}(+) + \mathcal{P}(-) = 1 \right)
+  \mathcal{P}(\pm) &= \bra{\psi} U^\dagger(t_1, t_0) P^z_\pm U(t_1, t_0) \ket{\psi}
 \end{align}
-We saw in TODO REF that the extended Born Rule reproduced the probabilities of the standard Born Rule. However, the extension goes on to make predictions about other outcomes. For example, we could ask about the probability that spin-up in the $x$ direction is measured using the history
+Using the dynamics found in TODO REF, we find
 \begin{align}
-  P^h_{+_x} &= P_\varnothing \odot P_{+_x} \\ \nonumber
-  &= \left(P^{S_z}_{\psi_S} \otimes P^\mathcal{X}_\varnothing \otimes P^A_\varnothing \right) \odot \left(P^{S_x}_+ \otimes P^\mathcal{X}_+ \otimes P^A_+ \right)
+  U(t_1, t_0) \ket{\psi} &= P^z_+ \ket{\psi_s} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_\epsilon} + P^z_- \ket{\psi_s} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_\epsilon} \\ \nonumber
+  \bra{\psi} U^\dagger(t_1, t_0) &= \bra{\psi_s}P^z_+ \otimes \bra{+_\mathcal{X}} \otimes \bra{+_\epsilon} + \bra{\psi_s}P^z_- \otimes \bra{-_\mathcal{X}} \otimes \bra{-_\epsilon}
+\end{align}
+Applying the event projector,
+\begin{align}
+  P^z_\pm U(t_1, t_0) \ket{\psi} &= P^z_\pm \ket{\psi_s} \otimes \ket{\pm_\mathcal{X}} \otimes \ket{\pm_\epsilon}
+\end{align}
+so
+\begin{align}
+  \mathcal{P}(\pm) &= \left(\bra{\psi}  U^\dagger(t_1, t_0)\right) \left( P^z_\pm \ket{\psi_s} \otimes \ket{\pm_\mathcal{X}} \otimes \ket{\pm_\epsilon}\right) \\ \nonumber
+   &= \left(\bra{\psi_s}P^z_\pm \otimes \bra{\pm_\mathcal{X}} \otimes \bra{\pm_\epsilon} \pm \bra{\psi_s}P^z_- \otimes \bra{-_\mathcal{X}} \otimes \bra{-_\epsilon} \right) \left( P^z_\pm \ket{\psi_s} \otimes \ket{\pm_\mathcal{X}} \otimes \ket{\pm_\epsilon}\right) \\ \nonumber
+   &= \bra{\psi_s} P^z_\pm \ket{\psi_s} \braket{\pm_\mathcal{X}|\pm_\mathcal{X}} \braket{\pm_\epsilon|\pm_\epsilon} \\ \nonumber
+   &= \bra{\psi_s} P^z_\pm \ket{\psi_s}
+\end{align}
+We have reproduced the prediction of the standard Born Rule.
+
+
+\section{Consistency Conditions}
+
+In standard quantum mechanics, the third postulate defines the subset of states corresponding to ``measurement results'', and the fourth postulate makes predictions about these states only. Now that we have extended the Born Rule to make predictions about histories, we need to be careful about the context in which the predictions are made.
+
+\subsection{Experiment 1}
+
+We saw that the extended Born Rule reproduces the probabilities of the standard Born Rule. However, the extension goes on to make predictions about other outcomes. For example, we could ask about the probability that spin-up in the $x$ direction is measured using the history
+\begin{align}
+  h_{+_x} &= \{P_\varnothing ,P_{+_x} \}
 \end{align}
 which results in
 \begin{align}
-  \mathcal{P}(h_{+_x}) &= \bra{\psi_h} P^h_{+_x} \ket{\psi_h}  \\ \nonumber
+  \mathcal{P}(h_{+_x}) &= \bra{\psi_h} C_{+_x} \ket{\psi_h}  \\ \nonumber
   &= \bra{\psi_s} P^{S_x}_+ \ket{\psi_s}
 \end{align}
-which is non-zero in general. We could ask an infinite amount of similar questions, since the spin Hilbert space includes states representing spin-up along every direction in space TODO REF STATE SPACE SECTION. Consequently, our probabilities no longer sum to unity, which is not consistent with probaility theory.
+which is non-zero in general. We could ask an infinite amount of similar questions, since the spin Hilbert space includes states representing spin-up along every direction in space TODO REF STATE SPACE SECTION. Consequently, our probabilities no longer sum to unity, which is not consistent with probaility theory. The cause of this inconsistency is that $P_{+_z}$ and $P_{+_x}$ belong to incompatible sample spaces, so we are comparing predictions made within different contexts.
 
-The solution is to use \textit{consistency conditions} to determine the sets of histories that are consistent with probability theory. The consistency conditions require that histories represent exhaustive and mutually exclusive outcomes:
+In TODO REF 5.1, we defined events as elements of some specific sample space. The extended Born Rule assigns probabilities to sequences of events \textit{within the context of their sample spaces}. The idea of consistency conditions is to explicitly state the context in which preidctions are made.
+
+To establish such a context, we construct a sample space of histories by finding a set of histories that are mutually exclusive and exhaustive:
 \begin{align}
-  {P^h_i}^\dagger P^h_j = \delta_{i,j} P^h_i \\
-  \sum_i P^h_i = I_h
+  S = \{h\}: \\ \nonumber
+  \sum_{h \in S} C_h &= I \\ \nonumber
+  C_h^\dagger C_h' &= \delta_{h,h'} C_h \\
 \end{align}
 
-A set of histories satisfying these conditions is called a \textit{consistent family} of histories. Once a consistent family is specified, we can use the extended Born Rule to calculate probabilities within that context. For our example, $\{P^h_+, P^h_-, P^h_0\}$ is a consistent family where
+A set of histories $S$ satisfying these conditions a \textit{family} of histories. To find a family for this experiment, we start with the spin-up and spin-down histories:
 \begin{align}
-    P^h_+ &= P_\varnothing \odot P_+ \\ \nonumber
-    P^h_- &= P_\varnothing \odot P_- \\ \nonumber
-    P^h_0 &= I_h - P^h_+ - P^h_-
+  S = \{\{P_\varnothing, P^z_+\}, \{P_\varnothing, P^z_- \}\}
 \end{align}
-$P^h_0$ represents any history distinct from $P^h_+$ and $P^h_-$. Showing this,
+
+Though the probabilities of these histories sum to one, the set is not yet complete:
 \begin{align}
-  {P^h_0}^\dagger P^h_\pm &= (I_h - P^h_+ - P^h_-) P^h_\pm \\ \nonumber
-  &= P^h_\pm - P^h_\pm \\ \nonumber
+  \sum_{h \in S} C_h &= P_{\psi_s} P^z_+ \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing + P_{\psi_s} P^z_- \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \\ \nonumber
+  &= P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \neq I
+\end{align}
+
+Finding the class operator that completes the set,
+\begin{align}
+  C_{h_0} &= I - \left(P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right)
+\end{align}
+
+This is the class operator for any system not starting in the initial spin state, not starting in the ready position, or not starting with a ready environment. In other words, $C_{h_0}$ represents histories that start in some state other than the initial state. Even though these histories never occur, they must be included to complete the family; to make the prediction of non-occurence, these histories must be part of some context.
+
+Due to the position system's continuous sample space, there are an infinite number of histories distinct from the initial state with zero chance of occurence. Calling such a history $h_{0}$,
+\begin{align}
+  S = \{\{P_\varnothing, P^z_+\}, \{P_\varnothing, P^z_- \}\} \cup \{h_{0_n}\}
+\end{align}
+
+Now that we have an exhaustive set, we show that its histories are mutually exclusive:
+\begin{align}
+  C_+^\dagger C_- &= P_\varnothing \otimes P^z_+ P^z_-  \\ \nonumber
   &= 0
 \end{align}
-Furthermore, $P^h_+$ and $P^h_-$ are distinct since
+and
 \begin{align}
-  {P^\mathcal{X}_+}^\dagger P^\mathcal{X}_- = 0
-\end{align}
-so all histories in this set are mutually exclusive.
-
-Showing that the set is exhaustive,
-\begin{align}
-  P^h_+ + P^h_- + P^h_0 &=  P^h_+ + P^h_- + \left(I_h - P^h_+ - P^h_- \right) \\ \nonumber
-  &= I_h
+  C_\pm^\dagger C_{h_0} &= P_\varnothing (I-P_\varnothing) \otimes ... \\ \nonumber
+  &= 0
 \end{align}
 
-Now that the consistency of the family is confirmed, we can use TODO REF to find probabilities for each history. Notice that $P^h_0$ is included to make the set exhaustive; even though its probability of occurence is $0$, its inclusion in the family enables such a prediction.
+The set $S$ is shown to be a consistent family of histories, so the predictions of REF are made within this context.
+% \begin{align}
+%   C_+ &= P_\varnothing U(t_1, t_0) P^z_+ U^\dagger(t_1, t_0) \\
+%   &= \left(P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right) U(t_1, t_0) \left(P^z_+ \otimes P^\mathcal{X}_+ \otimes P^\epsilon_+ \right) U^\dagger(t_1, t_0)
+% \end{align}
+%
+% \begin{align}
+%   U(t_1, t_0) P^z_+ &= \left( P^z_+ \otimes \left(\: \ket{+_\mathcal{X}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: \ket{-_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_+  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right) \right) \left(P^z_+ \otimes P^\mathcal{X}_+ \otimes P^\epsilon_+ \right) \\
+%   &= P^z_+ \otimes \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \otimes \ket{\varnothing_\epsilon}\bra{+_\epsilon}
+% \end{align}
+%
+% \begin{align}
+%   P_\varnothing U(t_1, t_0) P^z_+ &=  \left(P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right) \left(P^z_+ \otimes \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \otimes \ket{\varnothing_\epsilon}\bra{+_\epsilon}\right) \\
+%   &= P_{\psi_s}P^z_+ \otimes \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \otimes \ket{\varnothing_\epsilon}\bra{+_\epsilon}
+% \end{align}
+%
+% \begin{align}
+%     C_+ &= P_\varnothing U(t_1, t_0) P^z_+ U^\dagger(t_1, t_0) \\
+%     &= \left(P_{\psi_s}P^z_+ \otimes \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \otimes \ket{\varnothing_\epsilon}\bra{+_\epsilon} \right) \left( P^z_+ \otimes \left(\: \ket{+_\mathcal{X}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: \ket{-_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_+  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right) \right) \\
+%     &= P_{\psi_s}P^z_+ \otimes P^\mathcal{X}_\varnothing \otimes P^\epslion_\varnothing
+% \end{align}
+% \begin{align}
+%   C_+ + C_- &= P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing
+% \end{align}
 
-\subsection{Interpretation}
+\section{Example 2}
 
-TODO: describe how environment is implied, records every component of system at all times
+TODO: work out probabilities.
 
-\section{Heisenberg Picture}
-TODO: describe environment as perfect record keeper
-
-Before, we applied dynamics to the state to find $\ket{\psi_0}, \ket{\psi_1},$ etc. Now, we apply dynamics to each operator in the Hilbert space. The operators representing events become
-\begin{align}
-  \bar{P_n} = U(t_n, t_0)P_n
-\end{align}
-
-and a history TODO REF becomes
-\begin{align}
-  \bar{h_n} = \left(\bar{P_0}, \: \bar{P_1}, \: \bar{P_2}, \:..., \: \bar{P_f} \right)
-\end{align}
-
-In the Hilbert space, a history is represented by a \textit{class operator}
-\begin{align}
-  C_{h_n} &= \bar{P_0} \bar{P_1} \bar{P_2} ... \bar{P_f}
-\end{align}
-
-\subsection{Extending the Probability Postulate}
-
-We again use the form of TODO REF EQs, replacing $\ket{\psi_h}$ with $\ket{\psi}$ and $P^h_n$ with $C_n$:
-\begin{align}
-  \mathcal{P}(h_n) = \bra{\psi} C_n \ket{\psi}
-\end{align}
-
-Since $\mathcal{P}(h_n)$ is a real scalar,
-\begin{align}
-  \mathcal{P}(h_n) &= \mathcal{P}(h_n)^\dagger \\ \nonumber
-  \mathcal{P}(h_n) &= \bra{\psi} C_n^\dagger \ket{\psi}
-\end{align}
-
-so that the class operator projects in the same order as the events:
-\begin{align}
-  C_n^\dagger \ket{\psi} = \bar{P_f}...\bar{P_2}\bar{P_1}\bar{P_0}\ket{\psi}
-\end{align}
-
-We call $C_n^\dagger \ket{\psi}$ the \textit{branch wave function} for the history $h_n$. Notice that in TODO REF FIGURES, the branch wavefunctions are represented by following a path from the initial state to some final outcome.
-
-\subsection{Consistency Conditions}
-
-Since histories are now represented by class operators rather than projectors into the history Hilbert space, the condition of mutually exclusive and exhaustive outcomes is
-\begin{align}
-  C_i^\dagger C_j = \delta_{i,j} C_i \\
-  \sum_i C_i = I
-\end{align}
-
-\subsection{Example 2}
-
-TODO REF FIG, INTRO PARAGRAPH
-
-
-
-\chapter{Decoherence}
+\section{Decoherence}
 TODO: exemplify how tracing out degrees of freedom results in mixed state, discuss what happens if environment is not a perfect record keeper.
+
+
+
+ It is important to note that the vast majority of which state information is unaccessible for all practical purposes;
+
+ If one understood the nature of all systems interacting with the electron, how well would they be able to answer questions about the history of the electron? The existence of which path
 %
 % All remaining content are outlines/notes.
 %
