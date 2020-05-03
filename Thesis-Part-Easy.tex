@@ -44,7 +44,7 @@ Electron spin measurements violate the intuitive classical state space propertie
 
 Quantum mechanics postulates that a system's state is completely described by a normalized vector in a linear state space.
 
-\invisiblesubsubsection{Postulate 1 (System States)}
+\invisiblesubsubsection{Postulate 1 (Hilbert Space)}
 \begin{Thm:Postulate}{1}
     The state of a physical system is defined by specifying an abstract vector $\ket{\psi}$ in a Hilbert state space $\mathcal{H}$.
 \end{Thm:Postulate}
@@ -111,7 +111,7 @@ The fourth and fifth postulates constitute the Copenhagen description of measure
 
 The probability postulate, also known as the \textit{Born Rule}, assigns a probability distribution to the sample space of a physical variable.
 
-\invisiblesubsection{Postulate 4 (Probability Distribution of Measurement Outcomes)}
+\invisiblesubsection{Postulate 4 (Probability Postulate)}
 \begin{Thm:Postulate}{4}
     When measuring physical variable $A$, the probability $\mathcal{P}(n)$ of obtaining result $a_n$ corresponding to $\ket{a_n}$  is equal to
      \begin{align}
@@ -121,7 +121,7 @@ The probability postulate, also known as the \textit{Born Rule}, assigns a proba
 
 The spirit of the Born Rule is unchanged in consistent quantum theory. Differences are discussed in (TODO: ref future section).
 
-\invisiblesubsection{Postulate 5 (Collapse Dynamics)}
+\invisiblesubsection{Postulate 5 (Projection Postulate)}
 
 The fifth postualte (known as the projection postulate) describes how a system evolves upon measurement. Contingent upon interaction of the system with a ``classical apparatus'', measurement instantaneously changes the state of the system to some eigenstate of the variable being measured.
 
@@ -234,6 +234,7 @@ Quantum theory postulates an another type of dynamics that is analogous to Newto
 \chapter{Measurement}
 
 TODO: chapter preview
+
 State collapse requires extra assumption, ambiguous defs lead to interepretation issues, arrow of time
 
 \section{Issues with State Collapse}
@@ -273,7 +274,7 @@ Fortunately, such a description is possible using the von Neumann measurement sc
 \section{von Neumann Measurement Scheme}
 In the discussion of Stern-Gerlach experiments, the position of the electron played an implicit role in measurement. In exemplifying use of the \hyperref[projection postulate]{projection posulate} TODO, we define a measurement result as the localization of the electron in the spin-up or spin-down regions. The primary measurement is that of position, which is used to imply the spin state, yet the position system is never formalized.
 
-Our goal is to use the von Neumann measurement scheme to formalize the correlation of position and spin eigenstates we observe in Stern-Gerlach experiments. We start by representing the electron with a composite spin-position system,
+Our goal is to formalize the correlation of position and spin eigenstates observed in Stern-Gerlach experiments. We start by representing the electron with a composite spin-position system,
 \begin{align}
   \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X}
 \end{align}
@@ -331,9 +332,9 @@ Notice that the initial state is a single tensor product, while the final state 
 \label{Figure:Measurement:DetectorStates}
 \end{figure}
 
-By describing measurement as a unitary process, we have eliminated many aspects of the quantum measurement problem. TODO cite specific examples. However, there are two overarching problems with interpretation of the final state of the von Neumann measurement scheme. These are called the \textit{preferred basis problem} and the \textit{problem of outcomes} in literature \cite{Schlosshauer}\cite{Wang}. The problem of outcomes remains an open research question, and potential solutions lay outside the scope of this thesis. The preferred basis problem can be solved using the tools developed so far, so we show how it may be solved by including the apparatus in our measurement model.
-
 \section{Preferred Basis Problem}
+
+By describing measurement as a unitary process, we have eliminated many aspects of the quantum measurement problem. TODO cite specific examples. However, there are two overarching problems with interpretation of the final state of the von Neumann measurement scheme. These are called the \textit{preferred basis problem} and the \textit{problem of outcomes} in literature \cite{Schlosshauer}\cite{Wang}. The problem of outcomes remains an open research question, and potential solutions lay outside the scope of this thesis. The preferred basis problem can be solved using the tools developed so far, so we show how it may be solved by including the apparatus in our measurement model.
 
 The preferred basis problem arises from the ability to write the final state in \autoref{eq: general final state} using different bases:
 \begin{align}  \label{eq: preferred basis state general}
@@ -456,7 +457,7 @@ This experiment is visualized schematically in \autoref{fig: Experiment 1 insele
 
 In \autoref{standared consecutive measurements}, we applied the projection postulate succesively to account for consecutive measurements. When measurement was conditional on a prior result, we applied the postulate only to states routed to the second analyzer. The von Neumann measurement scheme can also be applied succesively, and is used on a term-by-term basis to account for conditional measurement.
 
-\subsection{Example 2}
+\subsection{Experiment 2}
 Now the environment must record the state of two apparatuses. To simplify this, we seperate the components of the environment responsible for recording each apparatus
 \begin{align}
   H_\epsilon = H_{\epsilon_1} \otimes H_{\epsilon_2}
