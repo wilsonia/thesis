@@ -134,9 +134,8 @@ The fifth postualte (known as the projection postulate) describes how a system e
     onto the subspace associated with $a_n$.
 \end{Thm:Postulate}
 
-\subsection{Experiment 1}
-
-Consider a measurement result for the $z$ component of spin. By the third postulate, the result is either either spin-up or spin-down $\left( S_z = \pm \frac{\hbar}{2} \right)$. By the projection postulate, the state evolves to the normalized projection of $\ket{\psi}$ onto $\ket{\pm}$. In other words, $\ket{\psi}$ instantaneously becomes $\ket{\pm}$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}. The spatial separation of these outcomes is represented by \autoref{Figure:Measurement:Copenhagen Experiment 1}
+\subsection{Experiment 1}\label{Standard Experiment 1}
+We exemplify use of these postulates using Experiment 1. Consider a measurement result for the $z$ component of spin. By the third postulate, the result is either either spin-up or spin-down $\left( S_z = \pm \frac{\hbar}{2} \right)$. By the projection postulate, the state evolves to the normalized projection of $\ket{\psi}$ onto $\ket{\pm}$. In other words, $\ket{\psi}$ instantaneously becomes $\ket{\pm}$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}. The spatial separation of these outcomes is represented by \autoref{Figure:Measurement:Copenhagen Experiment 1}
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -168,7 +167,7 @@ The Born Rule gives the probabilities of measuring spin-up and spin-down as a fu
   \mathcal{P}(\pm) = |\braket{\pm | \psi_s}|^2
 \end{align}
 
-\subsection{Experiment 2} \label{standared consecutive measurements}
+\subsection{Experiment 2} \label{standard consecutive measurements}
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -209,8 +208,8 @@ or
 \end{align}
 
 Because we ignore spin-down particles from the first measurement, we are certain that particles entering the second analyzer are in the spin-up state. The probabilities assigned to each state leaving the $S_x$ Stern-Gerlach device are
-\begin{align}
-    \mathcal{P}(+_x) &= |\braket{+_{S_x}|+_{S_z}}|^2 = \frac{1}{2} \\
+\begin{align} \label{eq:standard conditional probabilites}
+    \mathcal{P}(+_x) &= |\braket{+_{S_x}|+_{S_z}}|^2 = \frac{1}{2} \\ \nonumber
     \mathcal{P}(-_x) &= |\braket{-_{S_x}|+_{S_z}}|^2 = \frac{1}{2}
 \end{align}
 
@@ -272,23 +271,25 @@ Describing measurement as a unitary process is desirable for multiple reasons:
 Fortunately, such a description is possible using the von Neumann measurement scheme.
 
 \section{von Neumann Measurement Scheme}
-In the discussion of Stern-Gerlach experiments, the position of the electron played an implicit role in measurement. In exemplifying use of the \hyperref[projection postulate]{projection posulate} TODO, we define a measurement result as the localization of the electron in the spin-up or spin-down regions. The primary measurement is that of position, which is used to imply the spin state, yet the position system is never formalized.
+In the discussion of Stern-Gerlach experiments, the position of the electron played an implicit role in measurement. In exemplifying use of the \hyperref[projection postulate]{projection posulate} TODO, we define a measurement result as the localization of the electron in the spin-up or spin-down regions. The primary measurement is that of position, which is used to imply the spin state, yet position as a system is never formalized.
 
 Our goal is to formalize the correlation of position and spin eigenstates observed in Stern-Gerlach experiments. We start by representing the electron with a composite spin-position system,
 \begin{align}
   \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X}
 \end{align}
 
-\subsection{Experiment 1}
-We revisit the example of one Stern-Gerlach measurement of spin along the $z$ axis. We name position states of interest; $\ket{\varnothing_\mathcal{X}}$ represents the localization at the beginning of the analyzer (which we call the ``ready'' position), while $\ket{+_{\mathcal{X}}}$ and $\ket{-_{\mathcal{X}}}$ represent localization at the spin-up and spin-down outputs, respectively (reference TODO REF FIG). Numerous papers detail these position states using Gaussian wave packets TODO REF, but for simplicity we leave these abstracted. We will say that $\{\ket{+_{\mathcal{X}}}, \ket{-_{\mathcal{X}}}, \ket{\varnothing_\mathcal{X}}\}$ are mutually orthonormal.
-
-We introduce an operator that correlates these position states with spin eigenstates in explicit form:
-\begin{align} \label{eq: Experiment 1 unitary operator}
-  U(t_1, t_0) &= P^{S_z}_+ \otimes \left(\: \ket{+_{\mathcal{X}}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_+  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right) \\ \nonumber
-  &+ P^{S_z}_- \otimes \left( \: \ket{-_{\mathcal{X}}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_-  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right)
+To exemplify use of the measurement scheme, we revisit Experiment 1. Reaclling TODO REF, the result of the experiment is determined by the final location of the electron; spin-up and spin-down particles are deflected in opposing directions to different ``outputs'' of the analyzer. We name position states of interest; $\ket{\varnothing_\mathcal{X}}$ represents the localization at the beginning of the analyzer (which we call the ``ready'' position), while $\ket{+_{\mathcal{X}}}$ and $\ket{-_{\mathcal{X}}}$ represent localization at the spin-up and spin-down output regions, respectively. Numerous papers detail these position states in terms of Gaussian wave packets \cite{Venugopalan}, but for simplicity we leave them abstracted. It is the purpose of the Stern-Gerlach experiment to seperate spin-up and spin-down particles into spatially distinct regions, so we assert that the named position states are mutually orthonormal:
+\begin{align}
+  \braket{i_\mathcal{X}| j_\mathcal{X}} &= \delta_{i,j}
 \end{align}
 
-Focusing on the $H_\mathcal{X}$ component, the first term maps TODO.
+We introduce an operator that correlates the position states with spin eigenstates in explicit form:
+\begin{align} \label{eq: Experiment 1 unitary operator}
+  U(t_1, t_0) &= P^{S_z}_+ \otimes \left(\: \ket{+_{\mathcal{X}}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_+  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right) \\ \nonumber
+  &\phantom{{}={}} + P^{S_z}_- \otimes \left( \: \ket{-_{\mathcal{X}}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_-  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right)
+\end{align}
+
+The $P^{S_z}_\pm$ component selects the up or down spin state, while the corresponding $H_\mathcal{X}$ component correlates the $\pm$ position states. The $\ket{\pm_\mathcal{X}}\bra{\varnothing_\mathcal{X}}$ term maps the ``ready'' position state with the up or down position state, while the $I_\mathcal{X} - P^\mathcal{X}_\pm - P^\mathcal{X}_\varnothing$ terms leave position states distinct from $\ket{\pm_\mathcal{X}}$ and $\ket{\varnothing_\mathcal{X}}$ unaffected.
 
 Starting with a general spin state, the final state is
 \begin{align} \label{eq: Experiment 1 final state}
@@ -296,7 +297,7 @@ Starting with a general spin state, the final state is
   &= \nonumber P^{S_z}_+ \ket{\psi_s} \otimes \ket{+_{\mathcal{X}}} \: \bm{+} \: P^{S_z}_- \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}
 \end{align}
 
-At the instant measurement begins $t_0$, the position state is $\ket{\varnothing_\mathcal{X}}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the position state is either $\ket{+_{\mathcal{X}}}$ or $\ket{-_{\mathcal{X}}}$, realized with spin-up and spin-down spin states respectively. Notice that the final sum does not contain any terms representing incorrect correlations between spin and position states (such as $ P^{S_z}_+ \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}$).  Consequently, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_\mathcal{X}$ (as the inital state was). This is the definition of \textit{entanglement}; the von Neumann measurement scheme describes the measurement process as entanglement. $U(t_1, t_0)$ is \textit{the} unitary operator accomplishing the desired correlation, as evident by $UU^\dagger = I$.
+At the instant measurement begins $t_0$, the position state is $\ket{\varnothing_\mathcal{X}}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the position state is either $\ket{+_{\mathcal{X}}}$ or $\ket{-_{\mathcal{X}}}$, realized with spin-up and spin-down spin states respectively. Notice that the final sum does not contain any terms representing incorrect correlations between spin and position states (such as $ P^{S_z}_+ \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}$). The presence of these terms would suggest that spin-up particles could be found in the spin-down region, or vice versa; if spin state cannot be deduced from the position state, then a good measurement has not been made. The absence of these terms means that we can deduce the spin state from the position state. Furthermore, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_\mathcal{X}$ (as the inital state was). This is the definition of \textit{entanglement}; the von Neumann measurement scheme describes the measurement process as entanglement of two independent systems.
 
 The von Neumann scheme is usually written as a linear map:
 \begin{align} \label{eq: general final state}
@@ -305,7 +306,7 @@ The von Neumann scheme is usually written as a linear map:
 \end{align}
 where $n = +, -$.
 
-Notice that the initial state is a single tensor product, while the final state is a sum of tensor products. The coherence initially present only in the spin state is extended to the composite spin-momentum system. This process is represented schematically in TOD ref; the initial state branches into two distinct outcomes, each represented by a term in the final state.
+Notice that the initial state is a single tensor product, while the final state is a sum of tensor products. The coherence initially present only in the spin state is extended to the composite spin-momentum system. This process is represented schematically in \autoref{Figure:vnm experiment 1}; the initial state branches into two distinct outcomes, each represented by a term in the final state.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -328,24 +329,20 @@ Notice that the initial state is a single tensor product, while the final state 
 \end{tikzpicture}
 
 \caption[Insert an abbreviated caption here to show in the List of Figures]
-{The Stern-Gerlach experiment as described by the von Neumann measurement scheme. Each measurement outcome corresponds to a term in the time-evolved state (\autoref{eq: Experiment 1 final state}). Notice that the measurement interaction results in a branching structure, represented here as a tree graph with the apparatus as a node.}
-\label{Figure:Measurement:DetectorStates}
+{The Stern-Gerlach experiment as described by the von Neumann measurement scheme. Each measurement outcome corresponds to a term in the time-evolved state (\autoref{eq: Experiment 1 final state}). Notice that the measurement interaction results in a branching structure, which is recapitulated spatially by the Stern-Gerlach experiment.}
+\label{Figure:vnm experiment 1}
 \end{figure}
 
 \section{Preferred Basis Problem}
 
-By describing measurement as a unitary process, we have eliminated many aspects of the quantum measurement problem. TODO cite specific examples. However, there are two overarching problems with interpretation of the final state of the von Neumann measurement scheme. These are called the \textit{preferred basis problem} and the \textit{problem of outcomes} in literature \cite{Schlosshauer}\cite{Wang}. The problem of outcomes remains an open research question, and potential solutions lay outside the scope of this thesis. The preferred basis problem can be solved using the tools developed so far, so we show how it may be solved by including the apparatus in our measurement model.
+By describing measurement as a unitary process, we have eliminated many aspects of the quantum measurement problem. TODO cite specific examples. However, there are two overarching problems with interpretation of the entangled state resulting from the von Neumann measurement scheme. These are called the \textit{preferred basis problem} and the \textit{problem of outcomes} in literature \cite{Schlosshauer}\cite{Wang}. A potential solution includes interaction with the environment in the measurement model, and uses tools developed in this thesis so far. The problem of outcomes remains an open research question, and potential solutions lay outside the scope of this thesis.
 
-The preferred basis problem arises from the ability to write the final state in \autoref{eq: general final state} using different bases:
+The preferred basis problem arises from the ability to write the final state in \autoref{eq: general final state} in the same form, but using a different basis:
 \begin{align}  \label{eq: preferred basis state general}
   \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right) = \sum_{n}\left({P^{S_z}_{n}}' \ket{\psi_s} \otimes \ket{{n_\mathcal{X}}'}\right) =...
 \end{align}
 
-Such a case is exemplified using Experiment 1.
-
-\subsection{Experiment 1}
-
-Consider setting the initial spin state to spin-up in the $x$ direction:
+Such a case is exemplified using Experiment 1. Consider setting the initial spin state to spin-up in the $x$ direction:
 \begin{align}
   \ket{\psi_s} = \ket{+_{S_x}} = \frac{\ket{+_{S_z}} + \ket{-_{S_z}}}{\sqrt{2}}
 \end{align}
@@ -361,7 +358,7 @@ Similar to the $S_x$ eigenstates, we define orthonormal position states
   \ket{-_{\mathcal{X}_x}} = \frac{\ket{+_{\mathcal{X}}} - \ket{-_{\mathcal{X}}}}{\sqrt{2}}
 \end{align}
 
-so the final state can be written
+so that the final state can be written
 \begin{align} \label{eq:preferred basis state x}
   \ket{\psi'} &= \frac{ \left(\frac{\ket{+_{S_x}} + \ket{-_{S_x}}}{\sqrt{2}} \otimes \frac{\ket{+_{\mathcal{X}_x}} + \ket{-_{\mathcal{X}_x}}}{\sqrt{2}} \right) +  \left(\frac{\ket{+_{S_x}} - \ket{-_{S_x}}}{\sqrt{2}} \otimes \frac{\ket{+_{\mathcal{X}_x}} - \ket{-_{\mathcal{X}_x}}}{\sqrt{2}} \right) }{\sqrt{2}} \\ \nonumber
   \ket{\psi'} &= \frac{\ket{+_{S_x}} \otimes \ket{+_{\mathcal{X}_x}} + \ket{-_{S_x}} \otimes \ket{-_{\mathcal{X}_x}}}{\sqrt{2}}
@@ -369,27 +366,34 @@ so the final state can be written
 
 \autoref{eq:preferred basis state x} matches \autoref{eq:preferred basis state z} in form; it appears that the measurement process of spin along the $z$ axis has entangled orthonormal position states with spin states along the $x$ axis. If we regard such an entanglement as the measurement process, the von Neumann measurement scheme violates the princple of complementarity by simultaneously measuring $S_z$ and $S_x$. We know the experimental setup was configured to measure $S_z$, but nothing in the theory singles out $S_z$ as the \textit{preferred basis}.
 
-Returning to the general problem \autoref{eq: preferred basis state general}, we note that $\{ \ket{n_s} \}$ and $\{ \ket{n_\mathcal{X}} \}$ are orthognal sets, so $\ket{\psi'}$ is a biorthongal system. The biorthogonal decomposition theorem states that alternate bases $\{ \ket{n'_s} \}$ and $\{ \ket{n'_\mathcal{X}} \}$ exist when $\braket{n_s | \psi_s}$ are not all distinct \cite{Elby}. Limiting this condition to normalized states of spin-$\frac{1}{2}$ systems, states with coefficients $\braket{n_s | \psi_s} = \frac{1}{\sqrt{2}}$ for both $n = +$ and $n = -$ are subject to the preferred basis problem as shown. Since every state in $\mathcal{H}$ can be expressed in this form by expansion in the pertinent basis, the system is always subject to the preferred basis problem.
-
-\section{Inselection}
-
-To solve this problem, we need only to look back to the original phrasing of the von Neumann measurement scheme, where measurement is described as the entanglement of a microscopic system with a macroscopic measuring apparatus \cite{Neumann}. Many descriptions of non-unitary Stern-Gerlach measurement equate the electron position system with the apparatus itself\cite{Venugopalan}. This is a reasonable abstraction, as the position of the electron is used to ``read off'' the result of the measurement. However, this approach is misleading, because it conflates two distinct physical systems; the apparatus, and the position system belonging to the electron. By labeling the position system as the ``apparatus'', the degree of freedom corresponding to the actual apparatus is effectively ignored.
-
-The preferred basis is most precisely solved by formalizing the spin-apparatus entanglement just as we did with spin and position. Newton's third law asserts that the force exerted on the electron by the apparatus magnet is paired with a force exerted on the magnet by the electron. The effect of torque exerted on the magnet is represented by the state of the apparatus. Similar to the position states, we define ``up'', ``down'', and ``ready'' apparatus states $\{\ket{+_a}, \ket{-_a}, \ket{\varnothing_a}\}$ and assert orthonormality. An entangled spin-position-appartus system takes the form
-\begin{align}
-  \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_a} \right)
-\end{align}
-after measurement. While systems in the form \autoref{eq: general final state} do not generally have unique decompositions, systems with three or more components do by the triorthongal decomposition theorem, so long as all three components are expanded in orthongal sets \cite{Elby}. Using this result, we cannot write the final state in another basis:
-\begin{align}
-  \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_a} \right) \neq \sum_{n}\left({P^{S_z}_n}'\ket{\psi_s} \otimes \ket{{n_\mathcal{X}}'} \otimes \ket{{n_a}'} \right)
-\end{align}
-Since there is the only possible way to write $\ket{\psi'}$, the preferred basis has been chosen by including interaction with the apparatus. Solving the preferred basis problem by formalizing the system-apparatus interaction is called \textit{interaction induced superselection} or \textit{inselection} \cite{Wang}.
+Returning to the general problem \autoref{eq: preferred basis state general}, we note that $\{ \ket{n_s} \}$ and $\{ \ket{n_\mathcal{X}} \}$ are orthogonal sets, so $\ket{\psi'}$ is a biorthogonal system. The biorthogonal decomposition theorem states that alternate bases $\{ \ket{n'_s} \}$ and $\{ \ket{n'_\mathcal{X}} \}$ satisfying \autoref{eq: preferred basis state general} exist when $\braket{n_s | \psi_s}$ are not all distinct \cite{Elby}. Limiting this condition to normalized states of spin-$\frac{1}{2}$ systems, states with coefficients $\braket{n_s | \psi_s} = \frac{1}{\sqrt{2}}$ for both $n = +$ and $n = -$ are subject to the preferred basis problem as shown. Since every state in $\mathcal{H}$ can be expressed in this form by expansion in the pertinent basis, the system is always subject to the preferred basis problem.
 
 \section{Einselection}
 
-A more established and compatible approach uses the environment to select the preferred basis. This approach is called \textit{environment induced superselection} or \textit{einselection} \cite{Zurek}. The environment consists of every imaginable system other than the electron; because this necessarily includes the apparatus, inclusion of the environment selects a preferred basis.
+While systems in the form \autoref{eq: general final state} do not generally have unique decompositions, systems with three or more components do by the triorthogonal decomposition theorem, so long as all three components are expanded in two orthogonal (and one non-colinear) bases \cite{Elby}. We open the spin-position system to interaction with some third system $\mathcal{H}_\epsilon$. Asserting that during measurement, $\ket{\psi_\epsilon}$ is entangled with the $\ket{\psi_s}$ just as $\ket{\psi_\mathcal{X}}$ is entangled with $\ket{\psi_s}$,
+\begin{align} \label{eq:selected basis}
+  \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_\epsilon} \right) \neq \sum_{n}\left({P^{S_z}_n}'\ket{\psi_s} \otimes \ket{{n_\mathcal{X}}'} \otimes \ket{{n_\epsilon}'} \right).
+\end{align}
+Since there is no other basis into which $\ket{\psi'}$ can expand to this form, the preferred basis has been selected by including a third system that also undergoes von Neumann measurement. But what is this system?
 
-The apparatus state is entangled with the spin state during measurement, and then returns to the ready state after measurement. The electron-apparatus system has no memory of its prior states; a given state only describes the system at one instant in time. However, the electron-apparatus system is in constant interaction with a multitude of other quantum systems surrounding it, the composition of which we call the environment. The environment continuously records \textit{which-state information} about the electron and apparatus \cite{Schlosshauer}. When the electron is realized with spin-up or spin-down, there are causal effects in the environment that encode the history of the electron. We can think of the environment as constantly interacting with our system to establish ``facts of the universe''.
+For guidance, we look back to the original phrasing of the von Neumann measurement scheme, where measurement is described as the entanglement of a microscopic system with a macroscopic measuring apparatus \cite{Neumann}. Many descriptions of Stern-Gerlach measurement interpret the electron position system as the apparatus itself \cite{Venugopalan}. This is a reasonable abstraction, as the position of the electron is used to ``read off'' the result of the measurement. However, this approach is misleading, because it conflates two distinct physical systems; the apparatus, and the position system belonging to the electron. By labeling the position system as the ``apparatus'', the degree of freedom corresponding to the actual apparatus is effectively ignored.
+
+Newton's third law asserts that an interaction consists of equal and opposite actions between two systems. For the Stern-Gerlach experiment, the interaction between the analyzer magnet and the electron affects both the electron and the magnet, yet we have only described the effect on the electron. An approach to the preferred basis problem interprets the third system $H_\epsilon$ as the apparatus, so that \autoref{eq:selected basis} also describes the effect on the magnet from the interaction. Selecting a basis by acknowledging the hidden degree of freedom for the apparatus has been proposed under the name \textit{interaction induced superselection} (or \textit{inselection})\cite{Wang}.
+
+A much more established approach interprets the third system as the \textit{environment}, which consists of every imaginable system other than the electron. This approach is called \textit{environment induced superselection} or \textit{einselection}. Imagine every system that collides with the electron (gas molecules, photons, ...); the collision's occurrence depends on the electron's trajectory (which is dependent on its spin). Given omnipotent knowledge of every system's interaction with the electron, one could deduce its spin state. When the electron is realized with spin-up or spin-down, there are causal effects in the environment that encode the electron's history; we say that the environment continuously records \textit{which-state information} about the system \cite{Schlosshauer}. We can think of the environment as constantly interacting with our system to establish the ``facts of the universe'' about the electron.
+
+Because the environment necessarily includes the apparatus, the
+Rather than framing inselection as a different approach from einselection, we suggest that it describes a mechanism of basis selection that is comptabile with (but more precise than) einselection. Because the environment includes all other systems interacting with the electron, the interaction with the basis e inclusion of the apparatus (which \textit{must} exist by Newton's third law) selects a basis
+
+
+Ein is more established, includes added benefit of record keeping. We discussed inselection to introduce how extending entanglement to  environment works
+
+A suggested approach argues that \autoref{eq: general final state} fails to account for the entanglement of the measuring apparatus with the electron. \autoref{eq: general final state} accounts for the effect of the  Newton's third law tells us that the force exerted on the electron by the apparatus magnet is paired with a force exerted on the magnet by the electron. While we can describe the effect on the electron using $\ket{\psi_s} \otimes \ket{\psi_\mathcal{X}}$, we
+
+How could this go unnoticed? Perhaps because previous explanatoin suck. Not well established, but ...
+If something that must exist solves the preferred basis problem, it is more precise to say that it does vs something that. Inselection could be  a more precise mechanism that is normally obscured in einselection.
+
+ Selection of the preferred basis problem by formalizing the system-environment interaction is called \textit{environment induced superselection} or \textit{einselection} \cite{Zurek}.
 
 We now formalize the spin-position-environment interaction, similar to how the spin-position correlation implied in the projection postulate was formalized. We name $\ket{\varnothing_\epsilon}$ representing the environment's recording of the apparatus in the ready state only, and $\ket{\pm_\epsilon}$ representing the environment's recording of the apparatus in spin-up or spin-down. Representing classically distinct outcomes, we assert orthonormality
 \begin{align}
@@ -455,7 +459,7 @@ This experiment is visualized schematically in \autoref{fig: Experiment 1 insele
 
 \section{Consecutive Measurements}
 
-In \autoref{standared consecutive measurements}, we applied the projection postulate succesively to account for consecutive measurements. When measurement was conditional on a prior result, we applied the postulate only to states routed to the second analyzer. The von Neumann measurement scheme can also be applied succesively, and is used on a term-by-term basis to account for conditional measurement.
+In \autoref{standard consecutive measurements}, we applied the projection postulate succesively to account for consecutive measurements. When measurement was conditional on a prior result, we applied the postulate only to states routed to the second analyzer. The von Neumann measurement scheme can also be applied succesively, and is used on a term-by-term basis to account for conditional measurement.
 
 \subsection{Experiment 2}
 Now the environment must record the state of two apparatuses. To simplify this, we seperate the components of the environment responsible for recording each apparatus
@@ -531,5 +535,5 @@ Because the environment is used as the third degree of freedom, we do not have t
 
 \caption[Insert an abbreviated caption here to show in the List of Figures]
 {Schematic of consecutive measurement with spin, position and environment degrees of freedom. Notice the temporary encoding of measurement results in position states, and persistent encoding of measurement results in environment states.}
-\label{Figure:Measurement:labelthis2}
+\label{Figure:Measurement:consecutive final}
 \end{figure}
