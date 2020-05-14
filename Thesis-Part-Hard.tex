@@ -7,7 +7,7 @@ The probability postulate makes predictions about the results of the standard de
 
 The \textit{consistent histories} approach extends the probability postulate to make predictions about  more general \textit{quantum histories} rather than measurement results. This is accomplished by modifying both the formalism and interpretation of quantum mechanics; hence, consistent histories is called an ``approach'' to quantum mechanics.
 
-First, we rearticulate some of the foundational mathematics and reasoning originally proposed by Robert Griffiths in 1984 TODO CITE. Then, we further develop the approach to reproduce the standard predictions of Stern-Gerlach experiments 1 and 2. This is done using the perspective of Murray Gell-Mann and James Hartle, who independently published the same ideas in 199TODO under the name ``decoherent histories''.
+First, we rearticulate some of the foundational mathematics and reasoning originally proposed by Robert Griffiths in 1984 \cite{old_griffiths}. Then, we further develop the approach to reproduce the standard predictions of Stern-Gerlach experiments 1 and 2. This is done using the perspective of Murray Gell-Mann and James Hartle, who independently published similar ideas in 1990 under the name ``decoherent histories'' \cite{gell}.
 
 % TODO: find place for this:
 % In this thesis, we are careful to distinguish between formalism and interpretation. The formalism of a theory consists of the mathematical objects used to make predictions; for quantum theory, . Because consistent histories modifies both the formalism and interpretation of quantum mechanics, we refer to it as an approach. Formalism: all time evolution is unitary, . Interpretation: when to use Born rule, language of what objects mean (class operators characterize histories).
@@ -20,24 +20,24 @@ First, we rearticulate some of the foundational mathematics and reasoning origin
 
 % We will see later that without apparatus degree of freedom, we could not make histories TODO. So, the inability of our model to retain information about a state is a direct consequence of the incompleteness of our system, not a fundamental issue of quantum mechanics. TODO: introduce decoherence.
 
-\section{Events and Histories}
+\section{Events and Histories} \label{events}
 
 % A \textit{quantum property} is a true or false statement about a physical variable. Recalling Experiment 1, we found that the system will posses one of two properties at the end of measurement:
 % \begin{itemize}
-%   \item ``Spin along the $z$ axis is $\frac{\hbar}{2}$''
-%   \item ``Spin along the $z$ axis is $-\frac{\hbar}{2}$''
+%   \item ``Spin along the $\hat{z}$ axis is $\frac{\hbar}{2}$''
+%   \item ``Spin along the $\hat{z}$ axis is $-\frac{\hbar}{2}$''
 % \end{itemize}
 %
-% A property corresponds to a subspace of the Hilbert space. For example, the subspace corresponding to the spin-up property is only $\{\ket{+}\}$, while the subspace corresponding to the property ``spin along the $z$ axis is either up or down'' is $\{\ket{+}, \ket{-}\}$. Notice that this does not include linear combinations of $\ket{+}$ and $\ket{-}$; only pure states are interpreted as having definite properties.
+% A property corresponds to a subspace of the Hilbert space. For example, the subspace corresponding to the spin-up property is only $\{\ket{+}\}$, while the subspace corresponding to the property ``spin along the $\hat{z}$ axis is either up or down'' is $\{\ket{+}, \ket{-}\}$. Notice that this does not include linear combinations of $\ket{+}$ and $\ket{-}$; only pure states are interpreted as having definite properties.
 
-In probability theory, a sample space consists of an exhaustive set of mutually exclusive outcomes, called \textit{events}. In quantum mechanics, the sample space for a physical variable is found by decomposing the identity in that variable's basis. Each term in the decomposition represents a \textit{quantum event}. For example, the sample space of $S_z$ consists of the terms in
+As noted in \autoref{og experiment 1}, a sample space consists of an exhaustive set of mutually exclusive outcomes, called \textit{events}. In quantum mechanics, the sample space for a physical variable is found by decomposing the identity in that variable's basis. Each term in the decomposition represents a \textit{quantum event}. For example, the sample space of $S_z$ consists of the terms in
 \begin{align}
   I = \sum_i P^{S_z}_i = P^{S_z}_+ + P^{S_z}_-
 \end{align}
 
-Events exist within the context of a particular sample space. Consequently, we can  use logical reasoning to make conjuctive or negative statements about events. For example, the event for ``spin is either up or down'' is the sum of spin-up and spin-down events, $P^z_+ + P^z_- = I$. Note that asserting that the system is either spin-up or spin-down is the conjunction of all outcomes in the sample space, so it is equivalent to asserting nothing at all.
+Events exist within the context of a particular sample space. Consequently, we can use logical reasoning to make conjunctive or negative statements about events. For example, the event for ``spin is either up or down'' is the sum of spin-up and spin-down events, $P^{S_z}_+ + P^{S_z}_- = I$. Note that asserting that the system is either spin-up or spin-down is the conjunction of all outcomes in the sample space, so it is equivalent to asserting nothing at all.
 
-A \textit{quantum history} is a set of events at sequential times. We only need to specify events of interest; as finite sets, histories necessarily ignore an infinite amount of insignificant events. For Experiment 1, the events of interest are those immediately before and after measurement in the $z$ analyzer. The histories for measuring spin-up and spin-down are
+A \textit{quantum history} is a set of events at sequential times. We only need to specify events of interest; as finite sets, histories necessarily ignore an infinite amount of insignificant events. For Experiment 1, the events of interest are those immediately before and after measurement in the $\hat{z}$ apparatus. The histories for measuring spin-up and spin-down are
 \begin{align}
   h_\pm &= \left( \left(P_{\psi_{S_z}} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right), \left(P^{S_z}_\pm \otimes P^\mathcal{X}_\pm \otimes P^\epsilon_\pm \right)  \right)
 \end{align}
@@ -54,8 +54,7 @@ so that the histories of interest are written
 
 Similarly, for Experiment 2, we identify histories for each outcome in \autoref{Figure:Measurement:consecutive final}
 \begin{align} \label{eq:Experiment 2 Histories}
-  h_{+_z, +_x} &= \left(P_\varnothing, P^z_+, P^x_+ \right) \\ \nonumber
-  h_{+_z, -_x} &= \left(P_\varnothing, P^z_+, P^x_- \right) \\ \nonumber
+  h_{+_z, \pm_x} &= \left(P_\varnothing, P^z_+, P^x_\pm \right) \\ \nonumber
   h_{-_z} &= \left(P_\varnothing, P^z_-\right)
 \end{align}
 
@@ -70,15 +69,15 @@ The standard probability postulate is written as the inner product of the system
 
 Now, we seek to make probabilistic predictions about the occurrence histories. If we could find an operator analogous to the $P^a_n$ that represents the occurrence of a history instead of a measurement result, the Born Rule could be extended to assign probabilities to histories without changing form. Such an operator would propagate an initial state through the events of a given history, similar to how the projector for $\ket{a_n}$ propagates an initial state to a measurement outcome.
 
-To exemplify finding this operator, we consider the history for measuring spin-up in both analyzers $h_{+_z, +_x}$ identified for Experiment 2 in \autoref{eq:Experiment 2 Histories}. We follow the path from the initial state to the final $+_x$ outcome in \autoref{Figure:Measurement:consecutive final}, operating on the initial state with unitary dynamics and event projectors along the way. The resulting state is called the \textit{branch wavefunction} for that history, labeled $\ket{\psi_{+_z, +_x}}$  First, we assert that the state initially occurs with the first event in the history
+To exemplify finding this operator, we consider the history for measuring spin-up in both apparatuss $h_{+_z, +_x}$ identified for Experiment 2 in \autoref{eq:Experiment 2 Histories}. We follow the path from the initial state to the final $+_x$ outcome in \autoref{Figure:Measurement:consecutive final}, operating on the initial state with unitary dynamics and event projectors along the way. The resulting state is called the \textit{branch wavefunction} for that history, labeled $\ket{\psi_{+_z, +_x}}$.  First, we assert that the system begins in the state corresponding to the first event in the history
 \begin{align}
   \ket{\psi_{+_z, +_z}} = P_\varnothing \: \ket{\psi}
 \end{align}
-Then, we assert that after evolution from $t_0$ to $t_1$, the event for measuring spin-up in the $z$ analyzer occurs
+Then, we assert that after evolution from $t_0$ to $t_1$, the event for measuring spin-up in the $\hat{z}$ apparatus occurs
 \begin{align}
   \ket{\psi_{+_z, +_x}} = P^{S_z}_+ \: U(t_1, t_0) \: P_\varnothing \: \ket{\psi}
 \end{align}
-Finally, we assert that after evolution from $t_1$ to $t_2$, the event for measuring spin-up in the $x$ analyzer occurs
+Finally, we assert that after evolution from $t_1$ to $t_2$, the event for measuring spin-up in the $\hat{x}$ apparatus occurs
 \begin{align}
   \ket{\psi_{+_z, +_x}} = P^{S_x}_+ \: U(t_2, t_1) \: P^{S_z}_+ \: U(t_1, t_0) \: P_\varnothing \: \ket{\psi}
 \end{align}
@@ -99,24 +98,22 @@ $\ket{\psi_{+_z, +_x}}$ represents the ``branch'' of the final system that evolv
 \end{align}
 Through its constituent Heisenberg projectors, the class operator brings together the events of a history with the unitary dynamics experienced by the system to characterize the occurrence of a history.
 
-In general, the class operator for a history consisting of $n$ events is defined by
+In general, the class operator for a history consisting of $n$ events is defined by \footnote{Conventionally, the class operator is written with projectors appearing in the same left-to-right reading order as the order of events in the history. By calling our operator $C_h^\dagger$, we invert this order so that the event projectors operate on the initial state in the same order as the events in the history.}
 \begin{align}
-  C_h^\dagger = P_n(t_n) \: P_{n-1}(t_{n-1}) \: ... \: P_0(t_0)
+  C_h^\dagger = P^{\alpha_n}_{{\alpha_k}_n}(t_n) \: P^{\alpha_{n-1}}_{{\alpha_k}_{n-1}}(t_{n-1})) \: ... \: P^{\alpha_0}_{{\alpha_k}_0}(t_0),
 \end{align}
-which corresponds to the branch wavefunction
+where the superscript $\alpha_n$ labels the physical variable for the event, and the subscript ${\alpha_k}_n$ labels the eigenvalue for the event.
+
+$C_h^\dagger$ corresponds to the branch wavefunction
 \begin{align}
   \ket{\psi_h} = U(t_n, t_0) C_h^\dagger \ket{\psi}
 \end{align}
 
-FOOTNOTE:
-Conventionally, this operator is written with projectors appearing in the same left-to-right reading order as the order of events in the history. By calling our operator $C_h^\dagger$, we invert this order so that the event projectors operate on the initial state in the correct order.
-
-To extend the probability postulate to make predictions about histories, we replace measurement result projector $P^a_n$ with the class operator $C_h^\dagger$
+To extend the probability postulate to make predictions about histories, we replace the measurement result projector $P^a_n$ with the class operator $C_h^\dagger$
 \begin{align} \label{eq:Extended Born Rule}
   \mathcal{P}(h_n) = \bra{\psi} C_h^\dagger \ket{\psi}
 \end{align}
-
-Exemplifying use of this extended Born Rule, we return to Experiment 1. The class operator for measuring spin-up or spin-down is
+\autoref{eq:Extended Born Rule} is the Born Rule extended to assign probabilities to the occurence of histories. Exemplifying use of this extended Born Rule, we return to Experiment 1. The class operator for measuring spin-up or spin-down is
 \begin{align}
   C_\pm^\dagger = P^{S_z}_\pm (t_1) \: P_\varnothing (t_0)
 \end{align}
@@ -135,13 +132,12 @@ $P_\varnothing (t_0)$ confirms that $\ket{\psi}$ is the correct initial state, s
   \mathcal{P}(\pm) &= \bra{\psi} P^{S_z}_\pm (t_1) \ket{\psi} \\ \nonumber
   &= \bra{\psi} U^\dagger(t_1, t_0) P^{S_z}_\pm U(t_1, t_0) \ket{\psi}
 \end{align}
-
-Substituting in the dynamics found for Experiment 1 in TODO REF, we find the factors
+Substituting in the time-evolved state found for Experiment 1 in \autoref{einselection experiment 1 state}, we find the factors
 \begin{align}
-  U(t_1, t_0) \ket{\psi} &= P^{S_z}_+ \ket{\psi_s} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_\epsilon} + P^{S_z}_- \ket{\psi_s} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_\epsilon} \\ \nonumber
-  \bra{\psi} U^\dagger(t_1, t_0) &= \bra{\psi_s}P^{S_z}_+ \otimes \bra{+_\mathcal{X}} \otimes \bra{+_\epsilon} + \bra{\psi_s}P^{S_z}_- \otimes \bra{-_\mathcal{X}} \otimes \bra{-_\epsilon}
+  U(t_1, t_0) \ket{\psi} &= \left(P^{S_z}_+ \ket{\psi_s} \otimes \ket{+_\mathcal{X}} \otimes \ket{+_\epsilon}\right) + \left(P^{S_z}_- \ket{\psi_s} \otimes \ket{-_\mathcal{X}} \otimes \ket{-_\epsilon} \right)\\ \nonumber
+  \bra{\psi} U^\dagger(t_1, t_0) &= \left(\bra{\psi_s}P^{S_z}_+ \otimes \bra{+_\mathcal{X}} \otimes \bra{+_\epsilon} + \bra{\psi_s}P^{S_z}_- \otimes \bra{-_\mathcal{X}} \otimes \bra{-_\epsilon}\right)
 \end{align}
-Applying the event projector the ``bra'' factor,
+Applying the event projector to the unitary operator,
 \begin{align}
   P^{S_z}_\pm U(t_1, t_0) \ket{\psi} &= P^{S_z}_\pm \ket{\psi_s} \otimes \ket{\pm_\mathcal{X}} \otimes \ket{\pm_\epsilon}
 \end{align}
@@ -158,7 +154,7 @@ We have reproduced the predictions of the standard Born Rule for Experiment 1 ma
 
 In standard quantum mechanics, the third postulate defines the subset of states corresponding to ``measurement results'', and the fourth postulate makes predictions about these states only. Now that we have extended the Born Rule to make predictions about histories, we must be careful about the context in which predictions are made.
 
-In \autoref{eq:reproducing born rule}, the extended Born Rule reproduces the probabilities of the standard Born Rule for Experiment 1. However, the extension goes on to make predictions about other outcomes. For example, we could ask about the probability that spin-up in the $x$ direction is measured using the history
+In \autoref{eq:reproducing born rule}, the extended Born Rule reproduces the probabilities of the standard Born Rule for Experiment 1. However, the extension goes on to make predictions about other outcomes. For example, we could ask about the probability that spin-up in the $\hat{x}$ direction is measured using the history
 \begin{align}
   h_{+_x} &= (P_\varnothing ,P_{+_x}),
 \end{align}
@@ -167,18 +163,18 @@ resulting in
   \mathcal{P}(h_{+_x}) &= \bra{\psi_h} C^\dagger_{+_x} \ket{\psi_h}  \\ \nonumber
   &= \bra{\psi_s} P^{S_x}_+ \ket{\psi_s},
 \end{align}
-which is non-zero in general. We could ask an infinite amount of similar questions, since the spin Hilbert space includes states representing spin-up along every direction in space TODO REF STATE SPACE SECTION. Consequently, our probabilities no longer sum to unity, which is not consistent with probaility theory. The cause of this inconsistency is that $P_{+_z}$ and $P_{+_x}$ belong to incompatible sample spaces, so we are comparing predictions made within different contexts.
+which is non-zero in general. We could ask an infinite amount of similar questions, since the spin Hilbert space includes states representing spin-up along every direction in space. Consequently, probabilities no longer sum to unity, which is inconsistent with probaility theory. The cause of this inconsistency is that $P_{+_z}$ and $P_{+_x}$ belong to incompatible sample spaces, so we are comparing predictions made within different contexts.
 
-In TODO REF 5.1, we defined events as elements of some specific sample space. The extended Born Rule assigns probabilities to sequences of events \textit{within the context of their sample spaces}. The idea of consistency conditions is to explicitly state the context in which preidctions are made.
-
-To establish such a context, we construct a sample space of histories by finding a set of histories that are mutually exclusive and exhaustive:
-\begin{align}
+In \autoref{events}, we defined events as elements of some specific sample space. The extended Born Rule assigns probabilities to sequences of events \textit{within the context of their sample spaces}. The idea of consistency conditions is to explicitly state the context in which preidctions are made. To establish such a context, we construct a sample space of histories by finding a set of histories that are mutually exclusive and exhaustive:
+\begin{align} \label{consistency conditions}
   S = \{h \}: \\ \nonumber
-  \sum_{h \in S} C_h^\dagger &= I \\ \nonumber
-  C_h^\dagger C_h' &= \delta_{h,h'} C_h \\
+  \sum_{h \in S} C_h &= I \\ \nonumber
+  C_{h'}^\dagger C_h &= \delta_{h,h'} C_h
 \end{align}
 
-A set of histories $S$ satisfying these conditions are called a \textit{consistent family} of histories. To find a consistent family for Experiment 1, we start by including the spin-up and spin-down histories:
+A set of histories $S$ satisfying these conditions are called a \textit{consistent family} of histories. Once a family is established, the extended Born rule assigns probabilities to the occurence of its histories that are consistent with probability theory. The consistency conditions \autoref{consistency conditions} provide objective criterion for when probabilites may be assigned, rather than subjective language about interaction with a ``classical measuring apparatus''; consequently, quantum theory has been extended to make predictions outside the narrow scope of measurement \cite{Craig}.
+
+To exemplify finding a consistent family, we return to Experiment 1. We start by including the spin-up and spin-down histories:
 \begin{align}
   S = \{ \left(P_\varnothing, P_{+_z} \right), \left(P_\varnothing, P_{-_x} \right)\}
 \end{align}
@@ -194,7 +190,7 @@ Finding the class operator that completes the set,
   C^\dagger_{I-\varnothing} &= I - \left(P_{\psi_s} \otimes P^\mathcal{X}_\varnothing \otimes P^\epsilon_\varnothing \right)
 \end{align}
 
-This is the class operator for any system not starting in the initial spin state, not starting in the ready position, or not starting with a ready environment. In other words, $C_{I-\varnothing}$ represents histories that start in some state other than the initial state. Even though these histories never occur, they must be included to complete the family; the prediction of non-occurrence of $h_{I - \varnothing}$ is part of the context.
+This is the class operator for any history not starting in the initial spin state, not starting in the ready position, or not starting with a ready environment. In other words, $C_{I-\varnothing}$ represents histories that start in some state other than the initial state. Even though these histories never occur, they must be included to complete the family; the prediction of non-occurrence of $h_{I - \varnothing}$ is part of the context.
 
 Due to the position system's continuous sample space, there are an infinite number of histories distinct from the initial state with zero chance of occurrence. We group these histories by starting with the identity (projecting onto all states) and removing the initial state only:
 \begin{align}
@@ -213,8 +209,7 @@ Now that we have an exhaustive set, we show that its histories are mutually excl
   &= U^\dagger(t_1, t_0) P_{+_z}P_{-_z} U(t_1, t_0) \\ \nonumber
   &= U^\dagger(t_1, t_0) \left( P^{S_z}_+ P^{S_z}_-  \otimes P^\mathcal{X}_+ P^\mathcal{X}_- \otimes P^\epsilon_+ P^\epsilon_- \right) U(t_1, t_0) \\ \nonumber
   &= 0
-\end{align}
-and
+\end{align} and
 \begin{align}
   C_{\pm_z}^\dagger C_{I-\varnothing} &= \left( P_{+_z}(t_1)  P_\varnothing(t_0) \right) \left(I-P_\varnothing\right) \\ \nonumber
   &= P_{+_z}(t_1)  \left(P_\varnothing - P_\varnothing \right)\\ \nonumber
@@ -265,7 +260,7 @@ The set $S$ is shown to be a consistent family of histories, so the predictions 
 % \end{align}
 
 \section{Conditional Probabilities}
-The configuration of Experiment 2 sends electrons to the second analyzer only if they measured spin-up in the first analyzer. This allowed us to assert that the state routed to the $x$ analyzer was spin-up with probability $1$; the purpose was to prepare an initial spin state $\ket{+}$ for the $S_x$ measurement. In \autoref{standard consecutive measurements}, probabilities were calculated one measurement at a time through piecewise application of the probability and projection postulates, with probability theory combining the results:
+The configuration of Experiment 2 sends electrons to the second apparatus only if they measured spin-up in the first apparatus. This allowed us to assert that the state routed to the $\hat{x}$ apparatus was spin-up with probability $1$; the purpose was to prepare an initial spin state $\ket{+_{S_z}}$ for the $S_x$ measurement. In \autoref{standard consecutive measurements}, probabilities were calculated one measurement at a time through piecewise application of the probability and projection postulates, with probability theory combining the results:
 \begin{align}
   \mathcal{P}(+_z \cap \pm_x) &= \mathcal{P}(+_z)\mathcal{P}(\pm_x) \\ \nonumber
   &= (1)\left(\frac{1}{2}\right)
@@ -275,7 +270,7 @@ In the consistent histories approach, it is crucial to exhaust all possible outc
 \begin{align}
   P(A|B) = \frac{\mathcal{P}(A\cap B)}{\mathcal{P}(B)}
 \end{align}
-Applying this to Experiment 2, the probabilites of measuring spin-up or spin-down at the $x$ analyzer given the measurement of spin-up at the $z$ analyzer are
+Applying this to Experiment 2, the probabilites of measuring spin-up or spin-down at the $\hat{x}$ apparatus given the measurement of spin-up at the $\hat{z}$ apparatus are
 \begin{align} \label{eq: conditional consecutive probability}
   P(\pm_x|+_z) &= \frac{{\mathcal{P}(+_z\cap \pm_x)}}{{\mathcal{P}(+_z)}} \\ \nonumber
   &= \frac{\mathcal{P}(h_{+_z, \pm_x})}{\mathcal{P}(h_{+_z})} \\ \nonumber
@@ -293,21 +288,21 @@ so that we can use the extended Born Rule to calculate $\mathcal{P}(h_{+_z, \pm_
 \end{align}
 As an intermediate calculation, we carry out branch selection
 \begin{align}
-   P_{\pm_x} U(t_2, t_1) P_{+_z} &= P^{S_x}_\pm P^{S_z}_+ \otimes E^\mathcal{X}_{+^2, +^1} E^\mathcal{X}_{+^1, \varnothing^1} \otimes I_{\epsilon_1} \otimes E^{\epsilon_2}_{+, \varnothing}
+   P_{\pm_x} U(t_2, t_1) P_{+_z} &= P^{S_x}_\pm P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{+^1, +^2} \mathcal{S}^\mathcal{X}_{\varnothing^1, +^1} \otimes I_{\epsilon_1} \otimes \mathcal{S}^{\epsilon_2}_{\varnothing, +}
 \end{align}
 and substituting the result into the probability expression
 \begin{align}
-  \mathcal{P}(+_z, \pm_x) &= \bra{\psi} U^\dagger(t_2, t_0) \left(P^{S_x}_\pm P^{S_z}_+ \otimes E^\mathcal{X}_{\pm^2, +^1} E^\mathcal{X}_{+^1, \varnothing^1} \otimes I_{\epsilon_1} \otimes E^{\epsilon_2}_{\pm, \varnothing} \right) U(t_1, t_0) \ket{\psi} \\ \nonumber
-  &= \bra{\psi}  U^\dagger(t_2, t_0) \left(P^{S_x}_\pm P^{S_z}_+ \otimes E^\mathcal{X}_{\pm^2, +^1} E^\mathcal{X}_{+^1, \varnothing^1}  E^{\mathcal{X}}_{+^1, \varnothing^1} \otimes E^{\epsilon_1}_{+, \varnothing} \otimes E^{\epsilon_2}_{\pm, \varnothing} \right) \ket{\psi}
+  \mathcal{P}(+_z, \pm_x) &= \bra{\psi} U^\dagger(t_2, t_0) \left(P^{S_x}_\pm P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{+^1, \pm^2} \mathcal{S}^\mathcal{X}_{\varnothing^1, +^1} \otimes I_{\epsilon_1} \otimes \mathcal{S}^{\epsilon_2}_{\varnothing, \pm} \right) U(t_1, t_0) \ket{\psi} \\ \nonumber
+  &= \bra{\psi}  U^\dagger(t_2, t_0) \left(P^{S_x}_\pm P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{+^1, \pm^2} \mathcal{S}^\mathcal{X}_{ \varnothing^1, +^1}  \mathcal{S}^{\mathcal{X}}_{\varnothing^1, +^1} \otimes \mathcal{S}^{\epsilon_1}_{\varnothing, +} \otimes \mathcal{S}^{\epsilon_2}_{\varnothing, \pm} \right) \ket{\psi}
 \end{align}
-Remembering that $E = E^\dagger$ and $EE^\dagger = I$, we use $EE = I$ to simplify
+Remembering that $\mathcal{S} = \mathcal{S}^\dagger$ and $\mathcal{S}\mathcal{S}^\dagger = I$, we use $\mathcal{S}\mathcal{S} = I$ to simplify
 \begin{align}
-  \mathcal{P}(+_z, \pm_x) &= \bra{\psi}  U^\dagger(t_2, t_0) \left(P^{S_x}_\pm P^{S_z}_+ \otimes E^\mathcal{X}_{\pm^2, +^1} \otimes E^{\epsilon_1}_{+, \varnothing} \otimes E^{\epsilon_2}_{\pm, \varnothing} \right) \ket{\psi} \\ \nonumber
-  &= \bra{\psi} \left(P^{S_z}_+ P^{S_x}_\pm P^{S_z}_+ \otimes E^\mathcal{X}_{\pm^2, \varnothing^2}E^\mathcal{X}_{\pm^2, \varnothing^2} \otimes E^{\epsilon_1}_{+, \varnothing} E^{\epsilon_1}_{+, \varnothing} \otimes E^{\epsilon_2}_{\pm, \varnothing} E^{\epsilon_2}_{\pm, \varnothing} \right) \ket{\psi} \\ \nonumber
+  \mathcal{P}(+_z, \pm_x) &= \bra{\psi}  U^\dagger(t_2, t_0) \left(P^{S_x}_\pm P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{+^1, \pm^2 } \otimes \mathcal{S}^{\epsilon_1}_{\varnothing, +} \otimes \mathcal{S}^{\epsilon_2}_{\varnothing, \pm} \right) \ket{\psi} \\ \nonumber
+  &= \bra{\psi} \left(P^{S_z}_+ P^{S_x}_\pm P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{\varnothing^2, \pm^2}\mathcal{S}^\mathcal{X}_{\pm^2, \varnothing^2} \otimes \mathcal{S}^{\epsilon_1}_{\varnothing, +} \mathcal{S}^{\epsilon_1}_{ \varnothing, +} \otimes \mathcal{S}^{\epsilon_2}_{\varnothing, \pm} \mathcal{S}^{\epsilon_2}_{\varnothing, \pm} \right) \ket{\psi} \\ \nonumber
   &= \bra{\psi} \left(P^{S_z}_+ P^{S_x}_\pm P^{S_z}_+ \otimes I_\mathcal{X}  \otimes I_{\epsilon_1} \otimes I_{\epsilon_2} \right) \ket{\psi} \\ \nonumber
   &= \bra{\psi_s} P^{S_z}_+ P^{S_x}_\pm P^{S_z}_+ \ket{\psi_s}
 \end{align}
-Similarly, the probabilities for measuring spin-down in the $z$ analyzer is
+Similarly, the probabilities for measuring spin-down in the $\hat{z}$ apparatus is
 \begin{align}
   \mathcal{P}(-_z) &= \bra{\psi_s} P^{S_z}_- \ket{\psi_s}
 \end{align}
@@ -351,8 +346,16 @@ and we have reproduced the standard predictions made in \autoref{eq:standard con
 %   &= P^{S_x}_+P^{S_z}_+ \ket{\psi_s} + P^{S_x}_- P^{S_z}_+ \ket{\psi_s} + P^{S_z}_- \ket{\psi_s}
 % \end{align}
 %
-\section{Interpretation}
-FOOTNOTE: Everett: many states is bullshit. Importance of formalism and interpretation.
+
+\section{Problem of Outcomes} \label{problem of outcomes}
+Throughout this thesis, we have been careful to distinguish between \textit{formalism}, which consists of the mathematical objects used to make predictions, and \textit{interpretation}, which surrounds those objects with words to give them physical meaning \cite{baumann}. When using the word \textit{approach}, we refer to a combined formalism and interpretation. In \autoref{Chapter 3}, we detailed the standard approach to quantum mechanics by describing its postulates, which prescribe mathematical objects and give them physical meaning. In \autoref{Chapter 4}, we formalized the dynamics of a unitary measurement scheme for the SG experiment. In this chapter, we have introduced the consistent histories approach to make probabilistic predictions about SG measurement outcomes. Now that we have developed an operational understanding of consistent histories, we revist the problem of outcomes mentioned in \autoref{vnms}.
+
+The interpretation of the coherency present in the final state of the von Neumann measurement scheme \label{eq: general final state} is an open and debated question. If we understand each term in the coherent state to be simultaneously present, why do we observe only one of these terms in definite measurement outcomes? What chooses a particular outcome, and what becomes of the others?
+
+The \textit{many-worlds} interpretation proposed by DeWitt \footnote{Many-worlds is often attributed to Hugh Everett III for the work in his doctoral thesis, published under the name \textit{``Relative State'' Formulation of Quantum Mechanics} \cite{everett}. However, what Everett presents is a formalism of the measurement process that does not rely on state collapse; he does not go on to interpret each outcome as belonging to separate universes. Everett disagreed with the many-worlds interpretation of his work \cite{barrett}, which was first published by Bryce DeWitt \cite{dewitt}. This case of miscrediting illustrates the confusion that follows from conflating formalism with interpretation.} asserts that each outcome occurs, but in seperate non-interacting copies of the universe. The probability that a Stern-Gerlach experiment measures spin-up is really the probability that the universe in which spin-up occurs is selected. It is difficult to accept that the entire universe splits upon each measurement interaction, especially since the interpretation does not describe a mechanism for the selection of a particular universe. However, if we keep in mind that 1. we experience only one outcome, and 2. there is nothing in quantum theory that singles out the outcome we experience, then many-worlds is a plausible explanation of what becomes of the other terms in \autoref{eq: general final state}.
+
+The consistent histories approach does not attempt to answer the problem of outcomes. Whatever mechanism may be at play for selecting an  outcome, it is ignored by making predictions about the occurence of histories rather than the state of the system. Consistent histories generalizes standard quantum mechanics so that measurement may be described as a physical process, while being cautious to avoid speculation about processes not yet understood. Consistent histories can be seen as a way to employ the math of many-worlds (Everett's relative-state formalism \cite{everett}) witout necessarily subscribing to its interpretive ideas. Looking forward, such a predictive framework may prove invaluable as researchers probe testable differences between the standard and relative-state formalisms \cite{baumann, proietti}.
+
 % %
 % All remaining content are outlines/notes.
 %
@@ -409,7 +412,7 @@ FOOTNOTE: Everett: many states is bullshit. Importance of formalism and interpre
 % Research for this section is complete. I expect writing this section to take 1-2 days of writing, to be done over spring break.
 %
 % \section{Standard Description}
-% Using the Born Rule, we calculate the probabilities of observing each final state in Figure 4.1. The first apparatus serves as a state preparation device with output $\ket{+}$. By the direction of the projection postulate, the state is renormalized upon each measurement. After measuring a property complementary to what is known (such as spin along $x$, knowing spin along $z$), any information known about the input state is lost; the input state instantaneously changes to the state corresponding to the observed quantity. Consequently, there is an equal probability of observing the final state as $\ket{+}$ or $\ket{-}$ at either final apparatus, even though the state was initially prepared as $\ket{+}$, since
+% Using the Born Rule, we calculate the probabilities of observing each final state in Figure 4.1. The first apparatus serves as a state preparation device with output $\ket{+}$. By the direction of the projection postulate, the state is renormalized upon each measurement. After measuring a property complementary to what is known (such as spin along $\hat{x}$, knowing spin along $\hat{z}$), any information known about the input state is lost; the input state instantaneously changes to the state corresponding to the observed quantity. Consequently, there is an equal probability of observing the final state as $\ket{+}$ or $\ket{-}$ at either final apparatus, even though the state was initially prepared as $\ket{+}$, since
 % \begin{align}
 %     \mathcal{P}_n &= |\braket{+|+}_y|^2 \\
 %                   &= |\braket{-|+}_y|^2 \\
@@ -433,10 +436,10 @@ FOOTNOTE: Everett: many states is bullshit. Importance of formalism and interpre
 %      square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
 %      port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
 %      wf/.style={rectangle, minimum height=1cm}]
-%     \apparatus{1}{2}{0}{$Z$};
+%     \apparatus{1}{2}{0}{$\hat{z}$};
 %     \apparatus{2}{5}{1.25}{$Y$};
-%     \apparatus{3}{10}{2.50}{$Z$};
-%     \apparatus{4}{10}{0}{$Z$};
+%     \apparatus{3}{10}{2.50}{$\hat{z}$};
+%     \apparatus{4}{10}{0}{$\hat{z}$};
 %
 %     \node[wf] (w0) at (0,0) {$\ket{\psi}$};
 %     \node[wf] (w1) at (15, 3.0) {${P^z}_+{P^y}_+{P^z}_+\ket{\psi} \otimes \ket{D_z}_+ \otimes \ket{D_y}_+ \otimes \ket{D_z}_+$};

@@ -27,7 +27,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Document properties.
-\def\DocumentTitle{A Spins-First Introduction to Consistent Histories and Decoherence}
+\def\DocumentTitle{The Consistent Histories Approach to the Stern-Gerlach Experiment}
 \def\AuthorName{Ian Wilson}
 
 % PDF settings and properties.
@@ -69,6 +69,21 @@ bookmarksnumbered}
     \refstepcounter{subsection}%
     \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}%
     \sectionmark{#1}}
+
+    \usetikzlibrary{shapes.geometric}
+    \usetikzlibrary{positioning}
+
+\newcommand\invisiblechapter[1]{%
+        \refstepcounter{chapter}%
+        \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+        \sectionmark{#1}}
+
+        \usetikzlibrary{shapes.geometric}
+        \usetikzlibrary{positioning}
+
+    \newcommand{\apparatus}[4]{\node[square node] (#1) at (#2,#3){#4};
+                               \node[port] (#1+) at (#2 + 0.375, #3 + 0.5){+};
+                               \node[port] (#1-) at (#2 + 0.375, #3 - 0.5){-};}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ACTUAL DOCUMENT.
