@@ -2,38 +2,38 @@
 
 In the previous chapter, we exposed two major deviations from classical behavior. The SG experiment implies the existence of quantized spin angular momentum, and consecutive measurements imply that spin components in independent directions have incompatible sample spaces. The goal of quantum theory is to predict and explain this new type of behavior.
 
-To show how this is done, we first consider the mathematical objects used to model physical systems and variables. For the Stern-Gerlach experiment, the system to model is the electron, and the physical variables of interest are its spin angular momentum along different axes. By comparing the objects used in classical and quantum mechanics, we will make sense of the first three postulates of quantum mechanics. Then, we introduce the remaining postulates to describe the standard approach to quantum measurement (in preparation of proposing revisions). Our presentation of these postulates is based on the ordering and language used in texts by Cohen-Tanoudji et al. \cite{cohen} and McIntyre\cite{mcintyre}.
+To show how this is done, we first consider the mathematical objects used to model physical systems and variables. For the Stern-Gerlach experiment, the system to model is the electron, and the physical variables of interest are its spin angular momentum along different axes. By comparing the objects used in classical and quantum mechanics, we will make sense of the first three postulates of quantum mechanics. Then, we introduce the remaining postulates to describe the standard approach to quantum measurement (in preparation of proposing revisions). Our presentation of these postulates is based on the ordering and language used in texts by Cohen-Tannoudji et al. \cite{cohen} and McIntyre\cite{mcintyre}.
 
 \section{Physical Variables and State Spaces}
 \subsection{Classical States} \label{classical states}
-Consider the spin angular momentum of an electron. Treating the electron as a classical system, its spin state is modeled by a vector $\vec{S} \in \mathbb{R}^3$:
+Consider the spin angular momentum of an electron. Treating the electron as a classical system, its spin state is modeled by a vector $\vec{S} \in \mathbb{R}^3$,
 \begin{align}
-\vec{S} = (S_x, S_y, S_z)
+\vec{S} = (S_x, S_y, S_z).
 \end{align}
 
 Each component $S_i$ is a physical variable representing the magnitude of the spin in the $\hat{i}$ direction.
 
-$\vec{S}$ specifies the spin in any direction using the inner product of the state space $\mathbb{R}^3$:
+$\vec{S}$ specifies the spin in any direction using the inner product of the state space $\mathbb{R}^3$,
 \begin{align}
-S_n(\vec{S}) = \vec{S} \cdot \hat{n}
+S_n(\vec{S}) = \vec{S} \cdot \hat{n}.
 \end{align}
 
 We see that in classical mechanics, physical variables are modeled using functions. Each function $S_n$ maps a spin state $\vec{S}$ to a real scalar representing the component of spin in the $\hat{n}$ direction.
 
-What makes classial mechanics familiar to everyday experience boils down to intuitive but important properties of the state space $\mathbb{R}^3$:
+What makes classical mechanics familiar to everyday experience boils down to intuitive but important properties of the state space $\mathbb{R}^3$:
 \begin{itemize}
 \item For any direction $\hat{n}$, $\vec{S}$ determines spin $S_n$
 \item $S_n$ can be any real value
 \end{itemize}
 
-Because $\vec{S}$ determines spin in any direction, the sample spaces for spin in any two directions $\hat{n}$ and $\hat{m}$ are compatible. Spin states in $\mathbb{R}^3$ are interpreted physically as the electron posessing definite values for every $S_n$ at an instant in time.
+Because $\vec{S}$ determines spin in any direction, the sample spaces for spin in any two directions $\hat{n}$ and $\hat{m}$ are compatible. Spin states in $\mathbb{R}^3$ are interpreted physically as the electron possessing definite values for every $S_n$ at an instant in time.
 
-In addition to spin states determing all $S_n$, the state space allows $S_n$ to take on any real value. There are no fundamental restrictions on which real numbers $S_n$ could be; its sample space is continuous and infinitely large.
+In addition to spin states determining all $S_n$, the state space allows $S_n$ to take on any real value. There are no fundamental restrictions on which real numbers $S_n$ could be; its sample space is continuous and infinitely large.
 
 \subsection{Quantum States}
 In the previous chapter, we exposed deviation from classical behavior when measuring components of electron spin. Only two results are observed; $\frac{\hbar}{2}$ (spin-up), and $-\frac{\hbar}{2}$ (spin-down). $S_n$ is a quantized physical variable; its sample space is discrete and finite.
 
-Furthermore, consecutive measurements show that the spin state does not determine spin in some general direction $S_n$. All we may know about the system at one instant in time is the spin magnitude in one direction. The inabilitiy to simultaneously determine spin in two independent directions $\hat{n}$ and $\hat{m}$ is reflected through $S_n$ and $S_m$ having incompatible sample spaces.
+Furthermore, consecutive measurements show that the spin state does not determine spin in some general direction $S_n$. All we may know about the system upon measurement is the spin magnitude in one direction. The inability to simultaneously determine spin in two independent directions $\hat{n}$ and $\hat{m}$ is reflected through $S_n$ and $S_m$ having incompatible sample spaces.
 
 In response to this new behavior, we must change the mathematical objects used to represent system states and physical variables. Specifically, the sample space of $S_n$ must restrict observable values to spin up and spin down, and $S_n$ and $S_m$ must have incompatible sample spaces. In combination, the first three postulates of quantum mechanics take care of these differences between classical and quantum systems.
 
@@ -43,7 +43,7 @@ Quantum mechanics postulates that a system's state is completely described by a 
     The state of a physical system is defined by specifying an abstract vector $\ket{\psi}$ in a Hilbert state space $\mathcal{H}$.
 \end{Thm:Postulate}
 
-For electron spin systems, the two-dimensional Hilbert space consists of all linear combinations of spin-up and spin-down:
+For electron spin systems, the two-dimensional Hilbert space consists of all linear combinations of spin-up and spin-down,
 \begin{align}
   \ket{\psi} &\in \mathcal{H} \\ \nonumber
   \ket{\psi} &= \alpha\ket{+_{S_z}} + \beta\ket{-_{S_z}}
@@ -52,7 +52,7 @@ where $\alpha, \beta \in \mathbb{C}$.
 
 $\mathcal{H}$ is an abstract state space; components of $\ket{\psi}$ cannot be interpreted as physical variables as they are for the classical spin state $\vec{S}$. So, we introduce physical meaning with more postulates.
 \invisiblesubsubsection{Postulate 2 (Physical Variables as Operators)}
-The second posulate of quantum mechanics states that physical variables are described by linear operators.
+The second postulate of quantum mechanics states that physical variables are described by linear operators.
 \begin{Thm:Postulate}{2}
     Every physical variable $\mathcal{A}$ is described by an operator $A$ acting in $\mathcal{H}$.
 \end{Thm:Postulate}
@@ -64,50 +64,57 @@ Explaining the second postulate is easiest in tandem with the third postulate.
 
 The operator representing $S_z$ correlates elements of a finite sample space (eigenvalues) with particular system states (eigenstates). Consequently, a state can only be interpreted as having a definite $S_z$ magnitude if it is an eigenstate of the $S_z$ operator. Written in the basis of its own eigenstates,
 \begin{align}
-    S_z = \frac{\hbar}{2}\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}
+    S_z = \frac{\hbar}{2}\begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
 \end{align}
 This operator correlates $\hat{z}$ spin-up $\left(S_z \ket{\psi} = \frac{\hbar}{2}\ket{\psi}\right)$ with eigenstate
-\begin{align}
-    \ket{\psi} = \ket{+_{S_z}} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}
+\begin{align} \label{eq:z up state}
+    \ket{\psi} = \ket{+_{S_z}} = \begin{bmatrix} 1 \\ 0 \end{bmatrix},
 \end{align}
 and $\hat{z}$ spin-down $\left(S_z \ket{\psi} = \frac{-\hbar}{2}\ket{\psi}\right)$ with eigenstate
 \begin{align}
-    \ket{\psi} = \ket{-_{S_z}} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+    \ket{\psi} = \ket{-_{S_z}} = \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
 \end{align}
 Here, the subscript $S_z$ reminds us of the physical variable for which $\ket{\pm_{S_z}}$ is an eigenstate.
 
-Similarly, we write the operator representing $S_x$ in the $S_z$ basis:
+Similarly, we write the operator representing $S_x$ in the $S_z$ basis,
 \begin{align}
-    S_x = \frac{\hbar}{2}\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+    S_x = \frac{\hbar}{2}\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}.
 \end{align}
 This operator correlates $\hat{x}$ spin-up $\left(S_x \ket{\psi} = \frac{\hbar}{2} \ket{\psi}\right)$ with eigenstate
-\begin{align}
-    \ket{\psi} = \ket{+_{S_x}} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix}
+\begin{align} \label{eq:x up state}
+    \ket{\psi} = \ket{+_{S_x}} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ 1 \end{bmatrix},
 \end{align}
 and $\hat{x}$ spin-down $\left(S_x \ket{\psi} = \frac{-\hbar}{2} \ket{\psi}\right)$ with eigenstate
-\begin{align}
-    \ket{\psi} = \ket{-_{S_x}} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix}
+\begin{align} \label{eq:x down state}
+    \ket{\psi} = \ket{-_{S_x}} = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 \\ -1 \end{bmatrix}.
 \end{align}
 
-Operators for $S_z$ and $S_x$ share no common eigenstates, so no state can posses definite values for both variables. In general, operators for any two spin components $S_i$ and $S_j$ do not share common eigenstates with each other; in other words, $S_i$ and $S_j$ have incompatible sample spaces. $S_i$ and $S_j$ are called \textit{complementary} variables.
+Operators for $S_z$ and $S_x$ share no common eigenstates, hence they do not commute,
+\begin{align}
+  [S_z, S_x] = S_zS_x - S_xS_z \neq 0,
+\end{align}
+and no state can posses definite values for both variables. In general, operators for any two spin components $S_i$ and $S_j$ do not share common eigenstates with each other; in other words, $S_i$ and $S_j$ have incompatible sample spaces. $S_i$ and $S_j$ are called \textit{complementary} variables.
+
+
 
 By representing physical variables with operators rather than functions, sample spaces may become quantized and may be incompatible with each other. These features are necessary for predicting the results of electron spin measurements.
 
 \subsection{Linearity}
-Like the classical state space, the Hilbert space is linear. However, linear combinations are not interpreted in the same intuitive way. Consider summing two classical spin states with components of equal and opposite magnitude $\vec{S_1} = (a, 0, 0)$ and $\vec{S_2} = (-a, 0, 0)$.
+Like the classical state space, the Hilbert space is linear. However, linear combinations are not interpreted in the same intuitive way. Consider summing two classical spin states with components of equal and opposite magnitude $\vec{S_1} = (a, 0, 0)$ and $\vec{S_2} = (-a, 0, 0)$,
 \begin{align}
-  \vec{S} = \vec{S_1} + \vec{S_2} = (0, 0, 0)
+  \vec{S} = \vec{S_1} + \vec{S_2} = (0, 0, 0).
 \end{align}
 $\vec{S}$ is interpreted as the electron having no spin in any direction.
 
-Now consider summing two quantum spin states represnting spin in equal but opposite directions $\ket{\psi_1} = \ket{+_{S_z}}$ and $\ket{-_{S_z}}$.
+Now consider summing two quantum spin states representing spin in equal but opposite directions $\ket{\psi_1} = \ket{+_{S_z}}$ and $\ket{-_{S_z}}$,
 \begin{align}
   \ket{\psi} = \ket{\psi_1} + \ket{\psi_2} = \ket{+_{S_z}} + \ket{-_{S_z}},
 \end{align}
 which we renormalize to
 \begin{align}
-  \ket{\psi} = \frac{1}{\sqrt{2}} \left(\ket{+_{S_z}} + \ket{-_{S_z}} \right),
+  \ket{\psi} = \frac{1}{\sqrt{2}} \left(\ket{+_{S_z}} + \ket{-_{S_z}} \right).
 \end{align}
+
 Though states of equal and opposite spin magnitudes have been summed, $\ket{\psi}$ is not interpreted as having zero spin. Instead, the spin-up and spin-down components are in some sense simultaneously present. Strictly speaking, $\ket{\psi}$ has no definite value for $S_z$, recalling that only eigenstates of the $S_z$ operator may be interpreted as having definite $S_z$ values. In linear combinations such as this, we say there is \textit{coherence} between spin-up and spin-down components. Coherent superpositions have no classical analog.
 
 \section{Copenhagen Description of Measurement}
@@ -118,23 +125,23 @@ The probability postulate (also known as the Born Rule) assigns a probability di
 \begin{Thm:Postulate}{4}
     When measuring physical variable $A$, the probability $\mathcal{P}(n)$ of obtaining result $a_n$ corresponding to $\ket{a_n}$  is equal to
      \begin{align}
-        \mathcal{P}(n) = |\braket{a_n|\psi}|^2
+        \mathcal{P}(n) = |\braket{a_n|\psi}|^2.
     \end{align}
 \end{Thm:Postulate}
 
 \invisiblesubsection{Postulate 5 (Projection Postulate)}
 
-The fifth postualte (known as the projection postulate) describes a system's evolution upon measurement. Contingent upon the system's interaction with a ``classical apparatus'', measurement instantaneously changes the state of the system to some eigenstate of the variable being measured, with a probability of occurrence given by the Born Rule.
+The fifth postulate (known as the projection postulate) describes a system's evolution upon measurement. Contingent upon the system's interaction with a ``classical apparatus'', measurement instantaneously changes the state of the system to some eigenstate of the variable being measured, with a probability of occurrence given by the Born Rule.
 
 \begin{Thm:Postulate}{5} \label{projection postulate}
     If the measurement of the physical variable $\mathcal{A}$ on the system in the state $\ket{\psi}$ gives the result $a_n$, the state of the system immediately after the measurement is the normalized projection
     \begin{align}
-        \ket{\psi^\prime} = \frac{P^a_n\ket{\psi}}{\sqrt{\bra{\psi}P^a_n\ket{\psi}
+        \ket{\psi^\prime} = \frac{P^A_n\ket{\psi}}{\sqrt{\bra{\psi}P^A_n\ket{\psi}
         }}
     \end{align}
     onto the subspace associated with $a_n$.
 \end{Thm:Postulate}
-Here, $P^a_n = \ket{a_n}\bra{a_n}$ is the projection operator for the $\ket{a_n}$ state. The superscript $a$ labels the observable, while the subscript $n$ labels a particular eignevalue of that observable. By this postulate, the initial state $\ket{\psi}$ instantaneously evolves to $\ket{a_n}$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
+Here, $P^A_n = \ket{a_n}\bra{a_n}$ is the projection operator for the $\ket{a_n}$ state. The superscript $A$ labels the observable, while the subscript $n$ labels a particular eigenvalue of that observable. By this postulate, the initial state $\ket{\psi}$ instantaneously evolves to $\ket{a_n}$ upon measurement. This process is known as \textit{state collapse} or \textit{wavefunction collapse}.
 
 \subsection{Experiment 1}\label{Standard Experiment 1}
 Consider a measurement result for the $\hat{z}$ component of spin. By the third postulate, the result is either spin-up or spin-down. The projection postulate gives the possible final states
@@ -166,8 +173,8 @@ which is visualized in \autoref{Figure:Measurement:Copenhagen Experiment 1}. The
     \draw[line width=0.5mm] (1-) -- (w2);
 \end{tikzpicture}
 
-\caption[Insert an abbreviated caption here to show in the List of Figures]
-{Stern-Gerlach Experiment 1 as described by the Copenhagen description of measurement. TODO CAPTION. }
+\caption[Standard approach to Stern-Gerlach Experiment 1]
+{Stern-Gerlach Experiment 1 as described by the standard measurement scheme. When a general initial spin state is measured, it instantaneously evolves to an eigenstate of $S_z$ (either spin-up or spin-down). }
 \label{Figure:Measurement:Copenhagen Experiment 1}
 \end{figure}
 
@@ -181,7 +188,7 @@ which is visualized in \autoref{Figure:Measurement:Copenhagen Experiment 1}. The
     \apparatus{1}{3}{0}{$\hat{z}$};
     \apparatus{2}{6}{1.5}{$\hat{x}$};
 
-    \node[wf] (w0) at (0,0) {$\ket{\psi}$};
+    \node[wf] (w0) at (0,0) {$\ket{\psi_s}$};
     \node[wf] (w1) at (8, 2.0) {$\ket{+_{S_x}}$};
     \node[wf] (w2) at (8, 1.0) {$\ket{-_{S_x}}$};
 
@@ -192,14 +199,14 @@ which is visualized in \autoref{Figure:Measurement:Copenhagen Experiment 1}. The
     \draw[line width=0.5mm] (2+) -- (w1);
     \draw[line width=0.5mm] (2-) -- (w2);
 \end{tikzpicture}
-\caption[Insert an abbreviated caption here to show in the List of Figures]
-{The Stern-Gerlach experiment as described by the standard measurement scheme. Notice that each measurement outcome is renormalized, so some information about the state prior to measurement is lost.}
+\caption[Standard approach to Stern-Gerlach Experiment 2]
+{Stern-Gerlach Experiment 2 as described by the standard measurement scheme. Notice that each measurement outcome is re-normalized, so information about the state prior to measurement is lost.}
 \label{Figure:Measurement:Copenhagen Experiment 2}
 \end{figure}
 
-Now we consecutively measure spin as shown in \autoref{Figure:Measurement:Copenhagen Experiment 2}. Electrons measured spin-down by the first apparatus are discared, while electrons measured spin-up are routed to another apparatus. The first apparatus effectively prepares an initial state of $\ket{+_{S_z}}$ for the second apparatus. Using the projection postulate, the state after the first measurement is
+Now we consecutively measure spin as shown in \autoref{Figure:Measurement:Copenhagen Experiment 2}. Electrons measured spin-down by the first apparatus are discarded, while electrons measured spin-up are routed to another apparatus. The first apparatus effectively prepares an initial state of $\ket{+_{S_z}}$ for the second apparatus. Using the projection postulate, the state after the first measurement is
 \begin{align}
-    \ket{\psi^\prime} &= \frac{{P^{S_z}_+}\ket{\psi}}{\sqrt{\bra{\psi}P^{S_z}_+\ket{\psi}}} = \ket{+_{S_z}}
+    \ket{\psi^\prime} &= \frac{{P^{S_z}_+}\ket{\psi}}{\sqrt{\bra{\psi}P^{S_z}_+\ket{\psi}}} = \ket{+_{S_z}}.
 \end{align}
 Similarly, the possible output states from the second apparatus are
 \begin{align}
@@ -207,14 +214,19 @@ Similarly, the possible output states from the second apparatus are
 \end{align}
 or
 \begin{align}
-  \ket{\psi^{\prime\prime}} &= \frac{P^{S_x}_-\ket{+_{S_z}}}{\sqrt{\bra{+_z}P^{S_x}_-\ket{+_{S_z}}}} = \ket{-_{S_x}}
+  \ket{\psi^{\prime\prime}} &= \frac{P^{S_x}_-\ket{+_{S_z}}}{\sqrt{\bra{+_z}P^{S_x}_-\ket{+_{S_z}}}} = \ket{-_{S_x}}.
 \end{align}
 
 Because we ignore spin-down particles from the first measurement, we are certain that particles entering the second apparatus are in the spin-up state $\left(\mathcal{P}(+_{S_z}) = 1 \right)$. The probabilities assigned to each state leaving the $S_x$ Stern-Gerlach device are
 \begin{align} \label{eq:standard conditional probabilites}
     \mathcal{P}(+_{S_z} \cap \pm_{S_x}) &= \mathcal{P}(+_{S_z})\mathcal{P}(\pm_{S_x})  \\ \nonumber
-    &= (1)\left(|\braket{\pm_{S_x}|+_{S_z}}|^2\right) \\ \nonumber
-    &= \frac{1}{2} .
+    &= (1)\left(|\braket{\pm_{S_x}|+_{S_z}}|^2\right).
+\end{align}
+Using \autoref{eq:z up state}, \autoref{eq:x up state}, and \autoref{eq:x down state} to evaluate the inner product,
+\begin{align}
+  \mathcal{P}(+_{S_z} \cap \pm_{S_x}) &= (1)\left(\left|
+\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & \pm 1 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} \right|^2 \right) \\ \nonumber
+  &= \frac{1}{2}.
 \end{align}
 
 \section{Dynamics}
@@ -225,28 +237,30 @@ In a mechanical theory, the equations of motion (or \textit{dynamics}) describe 
 
 These dynamics are deterministic, meaning that they can be represented by a one-to-one map from initial to final states.
 
-The projection postulate describes one type of dynamics, which apply only during measurement. When applied, information about the initial state is lost as the state instantaneously becomes an eigenstate of the measured variable. The map from initial to final states is not one-to-one; ``collapse dynamics'' are non-unitary.
+In quantum mechanics, the projection postulate describes one type of dynamics, which apply only during measurement. When applied, information about the initial state is lost as the state instantaneously becomes an eigenstate of the measured variable. The map from initial to final states is not one-to-one; ``collapse dynamics'' are non-deterministic.
 
-Quantum theory postulates an another type of dynamics that are analogous to Newton's law of motion. These dynamics are deterministic, and apply at all times between measurements.
-
+Quantum theory postulates another type of dynamics that are analogous to Newton's law of motion. These dynamics are deterministic, and apply at all times between measurements.
 \invisiblesubsubsection{Postulate 6 (Unitary Dynamics)}
 \begin{Thm:Postulate}{6}
   The time evolution of a quantum system $\ket{\psi}$ is determined by the Hamiltonian operator $H(t)$ through the Schrödinger equation
   \begin{align}
-    i\hbar \frac{d}{dt} \ket{\psi(t)} = H(t)\ket{\psi(t)}
+    i\hbar \frac{d}{dt} \ket{\psi(t)} = H(t)\ket{\psi(t)},
   \end{align}
 \end{Thm:Postulate}
+Time evolution operators $U$ satisfying the Schrödinger equation are \textit{unitary}, meaning that $UU^\dagger = I$ \cite{Griffiths}. The ability to reverse time evolution with $U^\dagger$ implies that $U$ is a one-to-one map, reflecting deterministic dynamics.
 
 \chapter{Measurement} \label{Chapter 4}
 
-The projection postulate introduces foundational assumptions to describe the measurement process. The principle of Occam's razor says that, in general, a theory is strengthened by making as few assumptions as possible. In classical mechanics, there are no foundational assumptions made to describe measurement, and dynamics are deterministic; this motivates the pursuit to describe quantum measurement as a unitary process without using the projection postulate.
+The projection postulate introduces foundational assumptions to describe the measurement process. The principle of Occam's razor says that, in general, a theory is strengthened by making as few assumptions as possible. This motivates the pursuit to describe quantum measurement without using the projection postulate, and as a unitary process instead.
 
-In this chapter, we further motivate elimination of the projection postulate by summarizing some issues and limitations surrounding state collapse. Then, we propose a unitary measurement model for the SG experiment that implements the scheme proposed by John von Neumann in 1932 \cite{Neumann}. This scheme brings its own interpretational issues, which we use to motivate the introduction of the enivronment into our measurement model. To conclude, we apply our model to SG Experiment 2.
+In this chapter, we further motivate elimination of the projection postulate by summarizing some issues and limitations surrounding state collapse. Then, we propose a unitary measurement model for the SG experiment that implements the scheme proposed by John von Neumann in 1932 \cite{Neumann}. This scheme brings its own interpretational issues, which we use to motivate the introduction of the environment into our measurement model. To conclude, we apply our model to SG Experiment 2.
 
 \section{Issues with State Collapse}
-The projection postulate relies on ambiguous definitions. State collapse occurs upon ``interaction with a classical measuring apparatus'', yet there is no specification of such a system. Classical systems are not described by the theory, yet they play a fundamental role in the measurement process \cite{landau}. This ambiguity makes quantum mechanics exploitable to anthropocentric reasoning and vulnerable to misrepresentation. Suggestions that atomic properties may be understood only through their interactions with human or ``man-like'' brains are widespread in both popular \cite{Capra} and scientific \cite{stapp} literature. It has been argued that many of the pseudoscientific metaphysics that mislead public understanding of quantum physics arise from these ideas \cite{stenger}.
+The projection postulate relies on ambiguous definitions. State collapse occurs upon ``interaction with a classical measuring apparatus'', yet no objective criterion identifying such a system is provided. Classical systems are not described by the theory, yet they play a fundamental role in the measurement process \cite{landau}. This ambiguity makes quantum mechanics exploitable to anthropocentric reasoning and vulnerable to misrepresentation. Suggestions that atomic properties may be understood only through their interactions with human or ``man-like'' brains are widespread in both popular \cite{Capra} and scientific \cite{stapp} literature. It has been argued that many of the pseudo-scientific metaphysics that mislead public understanding of quantum physics arise from these ideas \cite{stenger}.
 
-The trouble with the the ``classical measuring apparatus'' continues when thinking about the early universe. Nothing resembling such an apparatus could exist shortly after the big bang, so the standard approach to quantum mechanics is incapable of making any predictions during this time \cite{Craig}. Furthermore, the emergence of time asymmetric processes cannot be properly studied within the standard approach, as the state collapse mechanism is not reversible \cite{mann}. After measurement, information about the initial state is lost; this injects time asymmetry into the foundations of quantum mechanics, making arrows of time postulated rather than emergent.
+The trouble with the ``classical measuring apparatus'' continues when thinking about the early universe. Nothing resembling such an apparatus could exist shortly after the big bang, so the standard approach to quantum mechanics is incapable of making any predictions during this time \cite{Craig}. Standard quantum mechanics is also incapable of answering any questions about closed systems (such as the universe itself); without a ``classical observer'' outside of the system making measurements, no predictions are made \cite{Craig}.
+
+Furthermore, the emergence of time asymmetric processes cannot be properly studied within the standard approach, as the state collapse mechanism is not reversible \cite{mann}. After measurement, information about the initial state is lost; this injects time asymmetry into the foundations of quantum mechanics, making arrows of time postulated rather than emergent.
 
 The issues with interpretation of state collapse and the limitations of non-unitary dynamics in general are indicators that the projection postulate is formulated with ignorance of some underlying process. Describing measurement as a unitary process instead is desirable for multiple reasons. We could assume less about the nature of measurement; humans and classical measurement apparatuses would no longer play a special role indescribable by the theory. Quantum mechanics could then make predictions about the early universe and situations without measuring apparatuses. With dynamics symmetric in time, the emergence of the arrow of time could be properly studied.
 
@@ -255,19 +269,19 @@ To begin describing this process, we discard the projection postulate and descri
 % This attitude towards quantum measurement prompted Einstein to ask a colleague if they believed that the moon existed only when they looked at it \cite{Pais}. In this thesis, we assert that the moon does exist, even when not directly observed by a human. Instead, we allow a multitude of non-living systems to continuously ``measure'' the moon. This is done using the \textit{von Neumann measurement scheme}, which describes measurement as a physical process involving two quatum systems, neither of which need be human or a ``classical measuring apparatus''.
 
 \section{von Neumann Measurement Scheme} \label{vnms}
-In the discussion of Stern-Gerlach experiments, the position of the electron played an implicit role in measurement. So far, we have deduced measurement results using the localization of the electrons in the spin-up or spin-down regions of a detection screen. The primary measurement is that of position, which is used to imply the spin state, yet position as a system is never formalized.
+In the discussion of Stern-Gerlach experiments, the position of the electron played an implicit role in measurement. So far, we have deduced measurement results using the localization of the electrons in the spin-up or spin-down regions of a detection screen. The primary measurement is that of position, which is used to imply the spin state. However, position has been formally ignored so far.
 
 Our goal is to formalize the correlation of position and spin eigenstates observed in Stern-Gerlach experiments. We start by representing the electron with a composite spin-position system,
 \begin{align}
-  \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X}
+  \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X}.
 \end{align}
 
-Revisting Experiment 1, the result of the measurement is determined by the final location of the electron; spin-up and spin-down particles are deflected in opposing directions to different ``outputs'' of the apparatus. We name position states of interest; $\ket{\varnothing_\mathcal{X}}$ represents the localization at the beginning of the magnetic field (which we call the ``ready'' position), while $\ket{+_{\mathcal{X}}}$ and $\ket{-_{\mathcal{X}}}$ represent localization at the spin-up and spin-down output regions, respectively. Numerous papers detail these position states in terms of Gaussian wave packets \cite{Venugopalan}, but for simplicity we leave them abstracted. It is the purpose of the Stern-Gerlach experiment to seperate spin-up and spin-down particles into spatially distinct regions, so we assert that the named position states are mutually orthonormal:
+Revisiting Experiment 1, the result of the measurement is determined by the final location of the electron; spin-up and spin-down particles are deflected in opposing directions to different ``outputs'' of the apparatus. We name position states of interest; $\ket{\varnothing_\mathcal{X}}$ represents the localization at the beginning of the magnetic field (which we call the ``ready'' position), while $\ket{+_{\mathcal{X}}}$ and $\ket{-_{\mathcal{X}}}$ represent localization at the spin-up and spin-down output regions, respectively. Numerous papers detail these position states in terms of Gaussian wave packets \cite{Venugopalan}, but for simplicity we leave them abstracted. It is the purpose of the Stern-Gerlach experiment to separate spin-up and spin-down particles into spatially distinct regions, so we assert that the named position states are mutually orthonormal,
 \begin{align}
-  \braket{i_\mathcal{X}| j_\mathcal{X}} &= \delta_{i,j}
+  \braket{i_\mathcal{X}| j_\mathcal{X}} &= \delta_{i,j}.
 \end{align}
 
-We now introduce a unitary operator that correlates the position states with spin eigenstates,
+We now introduce a unitary operator that correlates the position states with $S_z$ eigenstates,
 \begin{align} \label{eq: Experiment 1 unitary operator}
   U(t_1, t_0) &= P^{S_z}_+ \otimes \left(\: \ket{+_{\mathcal{X}}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{+_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_+  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right) \\ \nonumber
   &\phantom{{}={}} + P^{S_z}_- \otimes \left( \: \ket{-_{\mathcal{X}}}\bra{\varnothing_\mathcal{X}} \: \bm{+} \: \ket{\varnothing_\mathcal{X}}\bra{-_\mathcal{X}} \: \bm{+} \: I_\mathcal{X} \: \bm{-} \: P^\mathcal{X}_-  \: \bm{-} \: P^\mathcal{X}_\varnothing \: \right).
@@ -276,13 +290,29 @@ The $P^{S_z}_\pm$ component selects the $\pm$ component of the spin state, while
 
 Notice that the $\mathcal{H}_\mathcal{X}$ operators are nearly the identity operator, with the exception of swapping ``ready'' and $\pm$ position states. To shorten future calculations, we define the \textit{swaperator}
 \begin{align}
-  \mathcal{S}^i_{\varnothing, \pm} &= \ket{\pm_i}\bra{\varnothing_i} + \ket{\varnothing_i}\bra{\pm_i} + I_i - P^i_\pm - P^i_\varnothing
+  \mathcal{S}^A_{\varnothing, \pm} &= \ket{\pm_A}\bra{\varnothing_A} + \ket{\varnothing_A}\bra{\pm_A} + I_A - P^A_\pm - P^A_\varnothing,
 \end{align}
-so that the unitary operator is written as
+where the superscript $A$ labels the observable, and the subscript $\varnothing, \pm$ labels the states being swapped. The unitary operator is now written as
 \begin{align}
   U(t_1, t_0) &= \left(P^{S_z}_+ \otimes \mathcal{S}^{\mathcal{X}}_{\varnothing, +}\right) + \left(P^{S_z}_- \otimes \mathcal{S}^{\mathcal{X}}_{\varnothing, -}\right).
 \end{align}
-Note that, like the identity operator, $\mathcal{S}$ is Hermitian $\left(\mathcal{S}^\dagger = \mathcal{S}\right)$ and unitary $\left( \mathcal{S}^\dagger \mathcal{S} = I \right)$. Using these properties, we confirm the unitarity of $U(t_1, t_0)$:
+Note that, like the identity operator, $\mathcal{S}$ is Hermitian
+\begin{align}
+  \mathcal{S}^\dagger &= \left(\ket{\pm_A}\bra{\varnothing_A} + \ket{\varnothing_A}\bra{\pm_A} + I_A - P^A_\pm - P^A_\varnothing \right)^\dagger \\ \nonumber
+  &= \ket{\pm_A}\bra{\varnothing_A}^\dagger + \ket{\varnothing_A}\bra{\pm_A}^\dagger + I_A^\dagger - {P^A_\pm}^\dagger - {P^A_\varnothing}^\dagger \\ \nonumber
+  &= \ket{\varnothing_A}\bra{\pm_A} + \ket{\pm_A}\bra{\varnothing_A} + I_A - P^A_\pm - P^A_\varnothing \\ \nonumber
+  &=\mathcal{S}
+\end{align}
+and unitary
+\begin{align}
+  \mathcal{S}^\dagger \mathcal{S} &= \mathcal{S}\mathcal{S} \\ \nonumber
+  &= \left(\ket{\pm_A}\bra{\varnothing_A} + \ket{\varnothing_A}\bra{\pm_A} + I_A - P^A_\pm - P^A_\varnothing \right) \mathcal{S} \\ \nonumber
+  &= \ket{\pm_A}\bra{\varnothing_A}\mathcal{S} + \ket{\varnothing_A}\bra{\pm_A} \mathcal{S} + I_A\mathcal{S} - P^A_\pm\mathcal{S} - P^A_\varnothing \mathcal{S} \\ \nonumber
+  &= P^A_\pm  + P^A_\varnothing  + \mathcal{S} -\ket{\pm_A}\bra{\varnothing_A} -\ket{\varnothing_A}\bra{\pm} \\ \nonumber
+  &= P^A_\pm  + P^A_\varnothing  + \left(\ket{\pm_A}\bra{\varnothing_A} + \ket{\varnothing_A}\bra{\pm_A} + I_A - P^A_\pm - P^A_\varnothing \right) -\ket{\pm_A}\bra{\varnothing_A} -\ket{\varnothing_A}\bra{\pm} \\ \nonumber
+  &= I_A.
+\end{align}
+Using these properties, we confirm the unitarity of $U(t_1, t_0)$:
 \begin{align}
   U^\dagger(t_1, t_0) U(t_1, t_0) &=  \left({P^{S_z}_+}^\dagger {P^{S_z}_+} \otimes {\mathcal{S}^{\mathcal{X}}_{\varnothing, +}}^\dagger \mathcal{S}^{\mathcal{X}}_{\varnothing, +} \right) + \left({P^{S_z}_-}^\dagger P^{S_z}_- \otimes {\mathcal{S}^{\mathcal{X}}_{\varnothing, -}}^\dagger {\mathcal{S}^{\mathcal{X}}_{\varnothing, -}}\right) \\ \nonumber
   &= \left({P^{S_z}_+} \otimes I_\mathcal{X}\right) + \left({P^{S_z}_-} \otimes I_\mathcal{X}\right) \\ \nonumber
@@ -293,21 +323,21 @@ Note that, like the identity operator, $\mathcal{S}$ is Hermitian $\left(\mathca
 Starting with a general spin state, the final state is
 \begin{align} \label{eq: Experiment 1 final state}
   U(t_1, t_0)\ket{\psi_s} & =  U(t_1, t_0) \left(\ket{\psi_s} \otimes \ket{\varnothing_\mathcal{X}} \right) \\
-  &= \nonumber P^{S_z}_+ \ket{\psi_s} \otimes \ket{+_{\mathcal{X}}} \: \bm{+} \: P^{S_z}_- \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}
+  &= \nonumber P^{S_z}_+ \ket{\psi_s} \otimes \ket{+_{\mathcal{X}}} \: \bm{+} \: P^{S_z}_- \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}.
 \end{align}
 
-At the instant measurement begins $t_0$, the position state is $\ket{\varnothing_\mathcal{X}}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the position state is either $\ket{+_{\mathcal{X}}}$ or $\ket{-_{\mathcal{X}}}$, realized with spin-up and spin-down spin states respectively. Notice that the final sum does not contain any terms representing incorrect correlations between spin and position states (such as $ P^{S_z}_+ \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}$). The presence of these terms would suggest that spin-up particles could be found in the spin-down region, or vice versa; if spin state cannot be deduced from the position state, then a good measurement has not been made. The absence of these terms means that we can deduce the spin state from the position state. Furthermore, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_\mathcal{X}$ (as the inital state was). This is the definition of \textit{entanglement}; the von Neumann measurement scheme describes the measurement process as entanglement of two independent systems.
+At the instant measurement begins $t_0$, the position state is $\ket{\varnothing_\mathcal{X}}$ as the electron enters the magnetic field. At the instant measurement ends $t_1$, the position state is either $\ket{+_{\mathcal{X}}}$ or $\ket{-_{\mathcal{X}}}$, realized with spin-up and spin-down spin states respectively. Notice that the final sum does not contain any terms representing incorrect correlations between spin and position states (such as $ P^{S_z}_+ \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}}$). The presence of these terms would suggest that spin-up particles could be found in the spin-down region, or vice versa; if spin state cannot be deduced from the position state, then a good measurement has not been made. The absence of these terms means that we can deduce the spin state from the position state. Furthermore, the final state cannot be written as the tensor product of a state in $\mathcal{H}_s$ and a state in $\mathcal{H}_\mathcal{X}$ (as the initial state was). This is the definition of \textit{entanglement} of spin and position; the von Neumann measurement scheme describes the measurement process as entanglement of two independent degrees of freedom.
 
 The von Neumann scheme is usually written as a linear map \cite{Schlosshauer}:
 \begin{align} \label{eq: general final state}
     \nonumber U(t_1, t_0): \\
-    & \ket{\psi} = \left(\sum_{n} P^{S_z}_n\ket{\psi_s}\right) \otimes \ket{\varnothing_\mathcal{X}} \mapsto \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right)
+    & \ket{\psi} = \left(\sum_{n} P^{S_z}_n\ket{\psi_s}\right) \otimes \ket{\varnothing_\mathcal{X}} \mapsto \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right),
 \end{align}
 where $n = +, -$.
 
 Notice that the initial state is a single tensor product, while the final state is a sum of tensor products. The coherence initially present only in the spin system is extended to the spin-position system. This process is represented schematically in \autoref{Figure:vnm experiment 1}; the initial state branches into two distinct outcomes, each represented by a term in the final state.
 
-If the final state of the von Neumann measurement scheme is a coherent state, then why do we observe definite measurements of spin components? Each possible outcome of measurement is simultaneously present in the final state, yet we only experience one of these outcomes. How this occurs is an open research question, known as the \textit{problem of outcomes}. We revisit this problem in \autoref{problem of outcomes}.
+If the final state of the von Neumann measurement scheme (\autoref{eq: Experiment 1 final state}) is a coherent state, then why do we observe definite measurements of spin components? Each possible outcome of measurement is simultaneously present in the final state, yet we only experience one of these outcomes. How this occurs is an open research question, known as the \textit{problem of outcomes}. We revisit this problem in \autoref{problem of outcomes}.
 \begin{figure}
 \centering\CaptionFontSize
 \begin{tikzpicture}[shorten >=1pt,auto, thick,
@@ -328,25 +358,25 @@ If the final state of the von Neumann measurement scheme is a coherent state, th
     \draw[line width=0.5mm] (1-) -- (w2);
 \end{tikzpicture}
 
-\caption[Insert an abbreviated caption here to show in the List of Figures]
-{The Stern-Gerlach experiment as described by the von Neumann measurement scheme. Each measurement outcome corresponds to a term in the time-evolved state (\autoref{eq: Experiment 1 final state}). Notice that the measurement interaction results in a branching structure, which is recapitulated spatially by the Stern-Gerlach experiment.}
+\caption[Unitary measurement for Stern-Gerlach Experiment 1]
+{The Stern-Gerlach experiment as described by the von Neumann measurement scheme. Each measurement outcome corresponds to a term in the time-evolved state (\autoref{eq: Experiment 1 final state}). Notice that the measurement interaction results in a branching structure, which is recapitulated spatially by the Stern-Gerlach apparatus.}
 \label{Figure:vnm experiment 1}
 \end{figure}
 
 \section{Preferred Basis Problem}
-In addition to the ambiguity of which term in \autoref{eq: general final state} actually occurs, there is ambiguity in which basis \autoref{eq: general final state} is written in. The \textit{preferred basis problem} arises from the ability to write the final state in the same form, but using a different basis:
+In addition to the ambiguity of which term in \autoref{eq: general final state} actually occurs, there is ambiguity in which basis \autoref{eq: general final state} is written in. The \textit{preferred basis problem} arises from the ability to write the final state in the same form, but using a different basis,
 \begin{align}  \label{eq: preferred basis state general}
-  \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right) = \sum_{n}\left({P^{S_z}_{n}}' \ket{\psi_s} \otimes \ket{{n_\mathcal{X}}'}\right)
+  \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}}\right) = \sum_{n}\left({P^{S_z}_{n}}' \ket{\psi_s} \otimes \ket{{n_\mathcal{X}}'}\right).
 \end{align}
 
-Such a case is exemplified using Experiment 1. Consider setting the initial spin state to spin-up in the $\hat{x}$ direction:
+Such a case is exemplified using Experiment 1. Consider setting the initial spin state to spin-up in the $\hat{x}$ direction,
 \begin{align}
-  \ket{\psi_s} = \ket{+_{S_x}} = \frac{\ket{+_{S_z}} + \ket{-_{S_z}}}{\sqrt{2}}
+  \ket{\psi_s} = \ket{+_{S_x}} = \frac{\ket{+_{S_z}} + \ket{-_{S_z}}}{\sqrt{2}}.
 \end{align}
 
 The final state by \autoref{eq: Experiment 1 unitary operator} is
 \begin{align} \label{eq:preferred basis state z}
-  \ket{\psi'} = \frac{\ket{+_{S_z}}\otimes\ket{+_{\mathcal{X}}} + \ket{-_{S_z}}\otimes\ket{-_{\mathcal{X}}}}{\sqrt{2}}
+  \ket{\psi'} = \frac{\ket{+_{S_z}}\otimes\ket{+_{\mathcal{X}}} + \ket{-_{S_z}}\otimes\ket{-_{\mathcal{X}}}}{\sqrt{2}}.
 \end{align}
 
 Similar to the $S_x$ eigenstates, we define orthonormal position states
@@ -358,16 +388,16 @@ Similar to the $S_x$ eigenstates, we define orthonormal position states
 so that the final state can be written
 \begin{align} \label{eq:preferred basis state x}
   \ket{\psi'} &= \frac{ \left(\frac{\ket{+_{S_x}} + \ket{-_{S_x}}}{\sqrt{2}} \otimes \frac{\ket{+_{{\mathcal{X}}_x}} + \ket{-_{{\mathcal{X}}_x}}}{\sqrt{2}} \right) +  \left(\frac{\ket{+_{S_x}} - \ket{-_{S_x}}}{\sqrt{2}} \otimes \frac{\ket{+_{{\mathcal{X}}_x}} - \ket{-_{{\mathcal{X}}_x}}}{\sqrt{2}} \right) }{\sqrt{2}} \\ \nonumber
-  \ket{\psi'} &= \frac{\ket{+_{S_x}} \otimes \ket{+_{{\mathcal{X}}_x}} + \ket{-_{S_x}} \otimes \ket{-_{{\mathcal{X}}_x}}}{\sqrt{2}}
+  \ket{\psi'} &= \frac{\ket{+_{S_x}} \otimes \ket{+_{{\mathcal{X}}_x}} + \ket{-_{S_x}} \otimes \ket{-_{{\mathcal{X}}_x}}}{\sqrt{2}}.
 \end{align}
 
-\autoref{eq:preferred basis state x} matches \autoref{eq:preferred basis state z} in form; it appears that the measurement process of spin along the $\hat{z}$ axis has entangled orthonormal position states with spin states along the $\hat{x}$ axis. If we regard such an entanglement as the measurement process, the von Neumann measurement scheme violates the princple of complementarity by simultaneously measuring $S_z$ and $S_x$. We know the experimental setup was configured to measure $S_z$, but nothing in the theory singles out $S_z$ as the preferred basis.
+\autoref{eq:preferred basis state x} matches \autoref{eq:preferred basis state z} in form; it appears that the measurement process of spin along the $\hat{z}$ axis has entangled orthonormal position states with spin states along the $\hat{x}$ axis. If we regard such an entanglement as the measurement process, the von Neumann measurement scheme violates the principle of complementarity by simultaneously measuring $S_z$ and $S_x$. We know the experimental setup was configured to measure $S_z$, but nothing in the theory singles out $S_z$ as the preferred basis.
 
 Returning to the problem \autoref{eq: preferred basis state general}, we note that $\{ \ket{n_s} \}$ and $\{ \ket{n_\mathcal{X}} \}$ are orthogonal sets, so $\ket{\psi'}$ is a biorthogonal system. The biorthogonal decomposition theorem states that alternate bases $\{ \ket{n'_s} \}$ and $\{ \ket{n'_\mathcal{X}} \}$ satisfying \autoref{eq: preferred basis state general} exist when $\braket{n_s | \psi_s}$ are not all distinct \cite{Elby}. Limiting this condition to normalized states of spin-$\frac{1}{2}$ systems, states with coefficients $\braket{n_s | \psi_s} = \frac{1}{\sqrt{2}}$ for both $n = +$ and $n = -$ are subject to the preferred basis problem as shown. Since every state in $\mathcal{H}$ can be expressed in this form by expansion in the pertinent basis, the system is always subject to the preferred basis problem.
 
 \section{Einselection}
 
-While systems in the form \autoref{eq: general final state} do not generally have unique decompositions, systems with three or more components do by the triorthogonal decomposition theorem, so long as all three components are expanded in two orthogonal (and one non-colinear) bases \cite{Elby}. We open the spin-position system to interaction with some third system $\mathcal{H}_\epsilon$. Asserting that during measurement, $\ket{\psi_\epsilon}$ is entangled with the $\ket{\psi_s}$ just as $\ket{\psi_\mathcal{X}}$ is entangled with $\ket{\psi_s}$,
+While systems in the form \autoref{eq: general final state} do not generally have unique decompositions, systems with three or more components do by the triorthogonal decomposition theorem, so long as all three components are expanded in two orthogonal (and one non-collinear) bases \cite{Elby}. We open the spin-position system to interaction with some third system $\mathcal{H}_\epsilon$. Asserting that during measurement, $\ket{\psi_\epsilon}$ is entangled with the $\ket{\psi_s}$ just as $\ket{\psi_\mathcal{X}}$ is entangled with $\ket{\psi_s}$,
 \begin{align} \label{eq:selected basis}
   \ket{\psi'} = \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_\epsilon} \right) \neq \sum_{n}\left({P^{S_z}_n}'\ket{\psi_s} \otimes \ket{{n_\mathcal{X}}'} \otimes \ket{{n_\epsilon}'} \right).
 \end{align}
@@ -389,13 +419,13 @@ for $i,j = \varnothing, +, -$.
 Idealizing the environment as a perfect record keeper, the dynamics must map
 \begin{align} \label{eq: unitary operator inselection}
     \nonumber U(t_1, t_0): \\
-    & \ket{\psi} = \left(\sum_{n} P^{S_z}_n\ket{\psi_s}\right) \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_\epsilon} \mapsto \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_\epsilon} \right)
+    & \ket{\psi} = \left(\sum_{n} P^{S_z}_n\ket{\psi_s}\right) \otimes \ket{\varnothing_\mathcal{X}} \otimes \ket{\varnothing_\epsilon} \mapsto \sum_{n}\left(P^{S_z}_n\ket{\psi_s} \otimes \ket{n_\mathcal{X}} \otimes \ket{n_\epsilon} \right),
 \end{align}
 where $n= +,-$.
 
 Exemplifying this, we introduce the environment in Experiment 1 so that the state space is now composed of spin, position, and environment systems $\mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X} \otimes \mathcal{H}_\epsilon$. The unitary operator implementing \autoref{eq: unitary operator inselection} is
 \begin{align} \label{einselection experiment 1}
-  U(t_1, t_0) &= \left(P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{\varnothing, +} \otimes \mathcal{S}^\epsilon_{\varnothing, +} \right) + \left(P^{S_z}_- \otimes \mathcal{S}^\mathcal{X}_{\varnothing, -} \otimes \mathcal{S}^\epsilon_{\varnothing, -} \right)
+  U(t_1, t_0) &= \left(P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{\varnothing, +} \otimes \mathcal{S}^\epsilon_{\varnothing, +} \right) + \left(P^{S_z}_- \otimes \mathcal{S}^\mathcal{X}_{\varnothing, -} \otimes \mathcal{S}^\epsilon_{\varnothing, -} \right).
 \end{align}
 
 For a general initial spin state, this produces the final state
@@ -423,40 +453,40 @@ where each term represents a possible outcome of the experiment. This result is 
     \draw[line width=0.5mm] (1+) -- (w1);
     \draw[line width=0.5mm] (1-) -- (w2);
 \end{tikzpicture}
-\caption[Insert an abbreviated caption here to show in the List of Figures]
-{The most complete description of Experiment 1 presented, including position and environment degres of freedom. The seemingly redundant correlation of both position and environment states to spin states validifies the abstraction of the apparatus as the position system. However, formalizing the interaction with the environment provides a description of record keeping and selects a preferred basis.}
+\caption[Unitary measurement for Stern-Gerlach Experiment 1, including the electron-environment interaction]
+{The most complete description of Experiment 1 presented, including position and environment degrees of freedom. The seemingly redundant correlation of both position and environment states to spin states validifies the abstraction of the apparatus as the position system. However, formalizing the interaction with the environment provides a description of record keeping and selects a preferred basis.}
 \label{fig: Experiment 1 inselection}
 \end{figure}
 
 \section{Consecutive Measurements}
 
-In \autoref{standard consecutive measurements}, we applied the projection postulate succesively to account for consecutive measurements. Because we only proceeded to measure the $\hat{x}$ component of spin for electrons that initially measured spin-up for the $\hat{z}$ component, we did not subject spin-down states to the projection postulate again. By selectively applying the projection and probability postulates in succession, the results of consecutive measurement are predicted. The von Neumann measurement scheme can also be applied succesively, and is used on a term-by-term basis to account for measurements that occur on a condition of prior results. We exemplify this process using Experiment 2.
+In \autoref{standard consecutive measurements}, we applied the projection postulate successively to account for consecutive measurements. Because we only proceeded to measure the $\hat{x}$ component of spin for electrons that initially measured spin-up for the $\hat{z}$ component, we did not subject spin-down states to the projection postulate again. By selectively applying the projection and probability postulates in succession, the results of consecutive measurement are predicted. The von Neumann measurement scheme can also be applied successively, and is used on a term-by-term basis to account for measurements that occur on a condition of prior results. We exemplify this process using Experiment 2.
 
-Now, the environment must record the state of two separate measurements: the first measurement of spin along the $\hat{z}$ axis, and the second measurement of spin along the $\hat{x}$ axis. To simplify this, we seperate the components of the environment responsible for recording each measurement
+Now, the environment must record the state of two separate measurements: the first measurement of spin along the $\hat{z}$ axis, and the second measurement of spin along the $\hat{x}$ axis. To simplify this, we separate the components of the environment responsible for recording each measurement
 \begin{align}
-  \mathcal{H}_\epsilon = \mathcal{H}_{\epsilon_1} \otimes \mathcal{H}_{\epsilon_2}
+  \mathcal{H}_\epsilon = \mathcal{H}_{\epsilon_1} \otimes \mathcal{H}_{\epsilon_2},
 \end{align}
 so that the complete Hilbert space is
 \begin{align}
-  \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X} \otimes \mathcal{H}_{\epsilon_1} \otimes \mathcal{H}_{\epsilon_2}
+  \mathcal{H} = \mathcal{H}_s \otimes \mathcal{H}_\mathcal{X} \otimes \mathcal{H}_{\epsilon_1} \otimes \mathcal{H}_{\epsilon_2}.
 \end{align}
 We also name $+, -,$ and $\varnothing$ position states for the second apparatus, distinguishing them from positions state for the first apparatus. The position states of interest are now $\{ \ket{\varnothing_{\mathcal{X}}^1}, \ket{+_{\mathcal{X}}^1}, \ket{-_{\mathcal{X}}^1}, \ket{\varnothing_{\mathcal{X}}^2}, \ket{+_{\mathcal{X}}^2}, \ket{-_{\mathcal{X}}^2} \}$.
 
-The dynamics are unchanged from \autoref{einselection experiment 1} for the first measurement, with the identity acting on the second environment system to leave it unaffected:
+The dynamics are unchanged from \autoref{einselection experiment 1} for the first measurement, with the identity acting on the second environment system to leave it unaffected,
 \begin{align}
   U(t_1, t_0) &= P^{S_z}_+ \otimes \mathcal{S}^{\mathcal{X}}_{\varnothing^1, +^1}  \nonumber \otimes \mathcal{S}^{\epsilon_1}_{ \varnothing, +} \otimes I_{\epsilon_2}\\ \nonumber
-  &+ P^{S_z}_- \otimes \mathcal{S}^{\mathcal{X}}_{\varnothing^1, -^1} \otimes \mathcal{S}^{\epsilon_1}_{\varnothing, -} \otimes I_{\epsilon_2}
+  &+ P^{S_z}_- \otimes \mathcal{S}^{\mathcal{X}}_{\varnothing^1, -^1} \otimes \mathcal{S}^{\epsilon_1}_{\varnothing, -} \otimes I_{\epsilon_2}.
 \end{align}
 
-For the second measurement, we begin by selecting $\hat{z}$ spin-down states and leave them unaffected
+For the second measurement, we begin by selecting $\hat{z}$ spin-down states and leaving them unaffected,
 \begin{align}
   U(t_2, t_1) &=  P^{S_z}_- \otimes I_\mathcal{X} \otimes I_{\epsilon_1} \otimes I_{\epsilon_2}
-\end{align}
-Then, we select $\hat{z}$ spin-up states and perform the measurement scheme again, since these are routed to the second apparatus.
+\end{align}.
+Then, we select $\hat{z}$ spin-up states and perform the measurement scheme again, since these are routed to the second apparatus,
 \begin{align}
   U(t_2, t_1) &= P^{S_x}_+ P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{+^1, +^2} \otimes I_{\epsilon_1} \otimes \mathcal{S}^{\epsilon_2}_{+, \varnothing} \\ \nonumber
   &+ P^{S_x}_- P^{S_z}_+ \otimes \mathcal{S}^\mathcal{X}_{-^1, +^2} \otimes I_{\epsilon_1} \otimes \mathcal{S}^{\epsilon_2}_{-, \varnothing} \\ \nonumber
-  &+ P^{S_z}_- \otimes I_\mathcal{X} \otimes I_{\epsilon_1} \otimes I_{\epsilon_2}
+  &+ P^{S_z}_- \otimes I_\mathcal{X} \otimes I_{\epsilon_1} \otimes I_{\epsilon_2}.
 \end{align}
 The $\epsilon_2$ entanglement operator functions just as the $\epsilon_1$ operator did for the first measurement. The position entanglement operator is more subtle. Immediately after the first measurement, we expect the up and down position state to be mapped to the ready state of the second apparatus. Immediately after that, the ready state is mapped to up and down position states as the second measurement takes place. Combining both of these mappings, we directly map up/down position states from the first apparatus to up/down position states of the second.
 
@@ -502,7 +532,7 @@ Because the environment is used as the third degree of freedom, we do not have t
 
 \end{tikzpicture}
 
-\caption[Insert an abbreviated caption here to show in the List of Figures]
+\caption[Unitary measurement for Stern-Gerlach Experiment 2, including the electron-environment interaction]
 {Schematic of consecutive measurement with spin, position and environment degrees of freedom. Notice the temporary encoding of measurement results in position states, and persistent encoding of measurement results in environment states.}
 \label{Figure:Measurement:consecutive final}
 \end{figure}
