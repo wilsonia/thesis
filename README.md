@@ -1,31 +1,10 @@
-# simple-thesis-dissertation
+# The Consistent Histories Approach to the Stern-Gerlach Experiment
 
-Template for a simple thesis or dissertation (Ph.D. or master's degree) or technical report, in XeLaTeX.
+Bachelor's thesis for the physics program at Oregon State University.
 
-**Compiled sample document:**<br>
-[Thesis.pdf](https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Thesis.pdf)
+[Based off of zachscrivena's thesis template](https://github.com/zachscrivena/simple-thesis-dissertation)
 
-**Sample pages (click to enlarge):**
-
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-01.png" alt="Thesis-01">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-05.png" alt="Thesis-05">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-07.png" alt="Thesis-07">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-12.png" alt="Thesis-12">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-14.png" alt="Thesis-14">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-16.png" alt="Thesis-16">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-17.png" alt="Thesis-17">
-<img height="225" src="https://raw.githubusercontent.com/zachscrivena/simple-thesis-dissertation/master/Miscellaneous/Thesis-18.png" alt="Thesis-18">
-
-## Main Features
-
-- Simple template that can be further customized or extended.
-- Template document contains numerous examples.
-- Consistent style for figures, tables, mathematical theorems, definitions, lemmas, etc.
-- Direct support for TrueType (TTF) and OpenType (OTF) fonts.
-- Direct support for multilingual Unicode characters, with the appropriate fonts.
-- Hyperlinks can be included in generated PDF.
-
-## Overview
+## Compiling
 
 The main XeLaTeX source file is `Thesis.tex`; the compiled document is `Thesis.pdf`.
 
