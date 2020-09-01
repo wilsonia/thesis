@@ -20,13 +20,7 @@ S_n(\vec{S}) = \vec{S} \cdot \hat{n}.
 
 We see that in classical mechanics, physical variables are modeled using functions. Each function $S_n$ maps a spin state $\vec{S}$ to a real scalar representing the component of spin in the $\hat{n}$ direction.
 
-What makes classical mechanics familiar to everyday experience boils down to intuitive but important properties of the state space $\mathbb{R}^3$:
-\begin{itemize}
-\item For any direction $\hat{n}$, $\vec{S}$ determines spin $S_n$
-\item $S_n$ can be any real value
-\end{itemize}
-
-Because $\vec{S}$ determines spin in any direction, the sample spaces for spin in any two directions $\hat{n}$ and $\hat{m}$ are compatible. Spin states in $\mathbb{R}^3$ are interpreted physically as the electron possessing definite values for every $S_n$ at an instant in time.
+What makes classical mechanics familiar to everyday experience boils down to intuitive but important properties of the state space $\mathbb{R}^3$:  $S_n$ can be any real value, and for any direction $\hat{n}$, $\vec{S}$ determines the spin along that axis $S_n$. Because $\vec{S}$ determines spin in any direction, the sample spaces for spin in any two directions $\hat{n}$ and $\hat{m}$ are compatible. Spin states in $\mathbb{R}^3$ are interpreted physically as the electron possessing definite values for every $S_n$ at an instant in time.
 
 In addition to spin states determining all $S_n$, the state space allows $S_n$ to take on any real value. There are no fundamental restrictions on which real numbers $S_n$ could be; its sample space is continuous and infinitely large.
 
@@ -179,31 +173,6 @@ which is visualized in \autoref{Figure:Measurement:Copenhagen Experiment 1}. The
 \end{figure}
 
 \subsection{Experiment 2} \label{standard consecutive measurements}
-\begin{figure}
-\centering\CaptionFontSize
-\begin{tikzpicture}[shorten >=1pt,auto, thick,
-     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
-     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
-     wf/.style={rectangle, minimum height=1cm}]
-    \apparatus{1}{3}{0}{$\hat{z}$};
-    \apparatus{2}{6}{1.5}{$\hat{x}$};
-
-    \node[wf] (w0) at (0,0) {$\ket{\psi_s}$};
-    \node[wf] (w1) at (8, 2.0) {$\ket{+_{S_x}}$};
-    \node[wf] (w2) at (8, 1.0) {$\ket{-_{S_x}}$};
-
-    \draw[line width=0.5mm] (w0) -- (1);
-
-    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+_{S_z}}$};
-
-    \draw[line width=0.5mm] (2+) -- (w1);
-    \draw[line width=0.5mm] (2-) -- (w2);
-\end{tikzpicture}
-\caption[Standard approach to Stern-Gerlach Experiment 2]
-{Stern-Gerlach Experiment 2 as described by the standard measurement scheme. Notice that each measurement outcome is re-normalized, so information about the state prior to measurement is lost.}
-\label{Figure:Measurement:Copenhagen Experiment 2}
-\end{figure}
-
 Now we consecutively measure spin as shown in \autoref{Figure:Measurement:Copenhagen Experiment 2}. Electrons measured spin-down by the first apparatus are discarded, while electrons measured spin-up are routed to another apparatus. The first apparatus effectively prepares an initial state of $\ket{+_{S_z}}$ for the second apparatus. Using the projection postulate, the state after the first measurement is
 \begin{align}
     \ket{\psi^\prime} &= \frac{{P^{S_z}_+}\ket{\psi}}{\sqrt{\bra{\psi}P^{S_z}_+\ket{\psi}}} = \ket{+_{S_z}}.
@@ -228,6 +197,31 @@ Using \autoref{eq:z up state}, \autoref{eq:x up state}, and \autoref{eq:x down s
 \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & \pm 1 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} \right|^2 \right) \\ \nonumber
   &= \frac{1}{2}.
 \end{align}
+
+\begin{figure}
+\centering\CaptionFontSize
+\begin{tikzpicture}[shorten >=1pt,auto, thick,
+     square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
+     port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
+     wf/.style={rectangle, minimum height=1cm}]
+    \apparatus{1}{3}{0}{$\hat{z}$};
+    \apparatus{2}{6}{1.5}{$\hat{x}$};
+
+    \node[wf] (w0) at (0,0) {$\ket{\psi_s}$};
+    \node[wf] (w1) at (8, 2.0) {$\ket{+_{S_x}}$};
+    \node[wf] (w2) at (8, 1.0) {$\ket{-_{S_x}}$};
+
+    \draw[line width=0.5mm] (w0) -- (1);
+
+    \draw[line width=0.5mm] (1+) -- (2) node [near end] {$\ket{+_{S_z}}$};
+
+    \draw[line width=0.5mm] (2+) -- (w1);
+    \draw[line width=0.5mm] (2-) -- (w2);
+\end{tikzpicture}
+\caption[Standard approach to Stern-Gerlach Experiment 2]
+{Stern-Gerlach Experiment 2 as described by the standard measurement scheme. Notice that each measurement outcome is re-normalized, so information about the state prior to measurement is lost.}
+\label{Figure:Measurement:Copenhagen Experiment 2}
+\end{figure}
 
 \section{Dynamics}
 In a mechanical theory, the equations of motion (or \textit{dynamics}) describe how a state evolves with time. In classical Newtonian mechanics, this is given by Newton's law of motion
@@ -407,7 +401,7 @@ For guidance, we look back to the original phrasing of the von Neumann measureme
 
 Newton's third law asserts that an interaction consists of equal and opposite actions between two systems. For the Stern-Gerlach experiment, the interaction between the apparatus magnet and the electron affects both the electron and the magnet, yet we have only described the effect on the electron. If we interpret the third system $H_\epsilon$ as the apparatus, \autoref{eq:selected basis} also describes the effect on the magnet from the interaction. Such an approach has been proposed under the name \textit{interaction induced superselection} (or \textit{inselection})\cite{Wang}.
 
-A much more established approach interprets the third system as the \textit{environment}, which consists of every imaginable system other than the electron. This approach is called \textit{environment induced superselection} or \textit{einselection} \cite{Zurek}. Although inselection is pitched as a different response to the preferred basis problem, we suggest that it is a compatible (if not potentially more precise) approach to interpreting $H_\epsilon$, because the apparatus is necessarily included in the environment. The electron's effect on the magnet is obscured but present when calling $H_\epsilon$ the environment.
+A much more established approach interprets the third system as the \textit{environment}, which consists of every imaginable system other than the electron. This approach is called \textit{environment induced superselection} or \textit{einselection} \cite{Zurek}. Although inselection is pitched as a different response to the preferred basis problem, we suggest that it is a compatible (if not potentially more precise) approach to interpreting $\mathcal{H}_\epsilon$, because the apparatus is necessarily included in the environment. The electron's effect on the magnet is obscured but present when calling $\mathcal{H}_\epsilon$ the environment.
 
 A benefit of using einselection is that the environment keeps persistent records about the electron's state. Imagine every system that collides with the electron (gas molecules, photons, etc.). The collision's occurrence depends on the electron's trajectory (which is dependent on its spin). Given omnipotent knowledge of every system's interaction with the electron, one could deduce the electron's spin state. When the electron is realized with spin-up or spin-down, there are causal effects in the environment that encode the electron's history; we say that the environment continuously records \textit{which-state information} about the system \cite{Schlosshauer}. We can think of the environment as constantly interacting with our system to establish the ``facts of the universe'' about the electron.
 
@@ -433,6 +427,8 @@ For a general initial spin state, this produces the final state
   \ket{\psi'} &= P^{S_z}_+ \ket{\psi_s} \otimes \ket{+_{\mathcal{X}}} \otimes \ket{+_\epsilon} \: \bm{+} \: P^{S_z}_- \ket{\psi_s} \otimes \ket{-_{\mathcal{X}}} \otimes \ket{-_\epsilon},
 \end{align}
 where each term represents a possible outcome of the experiment. This result is visualized schematically in \autoref{fig: Experiment 1 inselection}.
+
+When including the electron-environment interaction, there is no longer a basis ambiguity for the time evolved state; \autoref{einselection experiment 1 state} cannot be expanded using another basis. We also capture the behavior of the environment as a record keeper, which will be necessary for consistently assigning probabilities to measurement outcomes in \autoref{sec:consistency conditions}.
 
 \begin{figure}
 \centering\CaptionFontSize
@@ -490,7 +486,7 @@ Then, we select $\hat{z}$ spin-up states and perform the measurement scheme agai
 \end{align}
 The $\epsilon_2$ entanglement operator functions just as the $\epsilon_1$ operator did for the first measurement. The position entanglement operator is more subtle. Immediately after the first measurement, we expect the up and down position state to be mapped to the ready state of the second apparatus. Immediately after that, the ready state is mapped to up and down position states as the second measurement takes place. Combining both of these mappings, we directly map up/down position states from the first apparatus to up/down position states of the second.
 
-Because the environment is used as the third degree of freedom, we do not have to worry about reversing the spin-apparatus entanglement after measurement. The role of the environment is to keep a persistent record, so it stays in the state $\ket{\pm_\epsilon}$ after the measurement.
+Because the environment is used as the third degree of freedom, we do not have to worry about reversing the spin-apparatus entanglement after measurement. The role of the environment is to keep a persistent record, so it stays in the state $\ket{\pm_\epsilon}$ after the measurement. This effect is seen in \autoref{Figure:Measurement:consecutive final}, which visualizes the branching of a general initial state evolved by $U(t_2, t_0)$.
 
 % \begin{align}
 %   U(t_2, t_1) &= U(t_2, t_1)_{a_1} U(t_2, t_1)_{a_2} \\ \nonumber

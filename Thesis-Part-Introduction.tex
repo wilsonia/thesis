@@ -62,7 +62,7 @@ While the consistent histories approach does not answer the question of \textit{
 \chapter{Stern-Gerlach Experiments}
 Numerous explanations of the Stern-Gerlach experiment exist with varying levels of detail and accessibility \cite{mcintyre, bocking, rodriguez, stern}, so we provide only a brief review of the experimental setup and compare schematic diagrams from these accounts in  \autoref{Figure:stern} and \autoref{Figure:new stern}.
 
-The purpose of the experiment is to measure the spin angular momentum of electrons. By spinning along its own axes (like a basketball on a finger), an electron possesses a magnetic moment that interacts with external magnetic fields. In a Stern-Gerlach apparatus, magnets are configured to create an inhomogeneous magnetic field with a gradient in primarily one direction (conventionally $\hat{z}$). When electrons are sent through this field in a direction perpendicular to the magnetic gradient (conventionally $\hat{y}$), their trajectories are deflected based on the magnitude of their spin in the $\hat{z}$ direction only. After it traverses the magnetic field, the electron's $\hat{z}$ position is measured through collision with a screen. From this, we can deduce the electron's $\hat{z}$ component of spin.
+The purpose of the experiment is to measure the spin angular momentum of electrons. By spinning along its own axes (like a basketball on a finger), an electron possesses a magnetic moment that interacts with external magnetic fields\footnote{As a point particle, an electron cannot actually spin about its own axes, so ``spin'' is a misnomer. However, electrons do posses an intrinsic magnetic moment, and thinking of its source as internal rotation is useful for building intuition.}. In a Stern-Gerlach apparatus, magnets are configured to create an inhomogeneous magnetic field with a gradient in primarily one direction (conventionally $\hat{z}$). When electrons are sent through this field in a direction perpendicular to the magnetic gradient (conventionally $\hat{y}$), their trajectories are deflected based on the magnitude of their spin in the $\hat{z}$ direction only. After it traverses the magnetic field, the electron's $\hat{z}$ position is measured through collision with a screen. From this, we can deduce the electron's $\hat{z}$ component of spin.
 
 \begin{figure}[!tb]
 \centering\CaptionFontSize
@@ -82,13 +82,7 @@ The purpose of the experiment is to measure the spin angular momentum of electro
 \label{Figure:new stern}
 \end{figure}
 
-We now introduce three specific SG experimental setups that will be referenced throughout this thesis. These experiments are adapted from those in McIntyre's introductory quantum mechanics text \cite{mcintyre}.
-\section{Experiment 1} \label{og experiment 1}
-The first experiment consists of a single SG apparatus measuring the $\hat{z}$ component of spin. Because the oven provides a large quantity of electrons with randomly oriented spin, classical mechanics predicts a continuous spread of deflections and corresponding screen collisions. However, in a departure from classical behavior, electrons only collide in two distinct regions on the screen. This is evidence that the spin angular momentum of the electron is \textit{quantized}, meaning that its possible values are restricted. We call these two values \textit{spin-up} and \textit{spin-down}, and find that there is an even split between electrons measured spin-up and spin-down. This result is represented schematically in \autoref{Figure:Exp 1}.
-
-In probability theory, a \textit{sample space} consists of an exhaustive set of mutually exclusive outcomes, called \textit{events}. The sample space for Experiment 1 consists of spin-up and spin-down events, both having 50\% probability.
-
-\begin{figure}[!htb]
+\begin{figure}
 \centering\CaptionFontSize
 \begin{tikzpicture}[shorten >=1pt,auto, thick,
      square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
@@ -113,18 +107,24 @@ In probability theory, a \textit{sample space} consists of an exhaustive set of 
 \label{Figure:Exp 1}
 \end{figure}
 
+We now introduce three specific SG experimental setups that will be referenced throughout this thesis. These experiments are adapted from those in McIntyre's introductory quantum mechanics text \cite{mcintyre}.
+\section{Experiment 1} \label{og experiment 1}
+The first experiment measures the $\hat{z}$ component of spin. Because the oven provides a large quantity of electrons with randomly oriented spin, classical mechanics predicts a continuous spread of deflections and corresponding screen collisions. However, in a departure from classical behavior, electrons only collide in two distinct regions of the screen. This is evidence that the spin angular momentum of the electron is \textit{quantized}, meaning that its possible values are restricted. We call these two values \textit{spin-up} and \textit{spin-down}, and observe an even split between spin-up and spin-down measurements. This result is represented schematically in \autoref{Figure:Exp 1}.
+
+In probability theory, a \textit{sample space} consists of an exhaustive set of mutually exclusive outcomes, called \textit{events}. The sample space for Experiment 1 consists of spin-up and spin-down events, both having 50\% probability.
+
 \section{Experiment 2}
 
 For the second experiment, two consecutive SG measurements are made. Electrons are first sent through an apparatus measuring the $\hat{z}$ component of spin, which is configured so that spin-down electrons collide with the screen. The spin-up electrons do not collide with the screen, and are instead routed to another SG apparatus measuring the $\hat{x}$ component of spin. At each apparatus, we find an even split between electrons measured spin-up and spin-down. This result is represented schematically in \autoref{Figure:Exp 2}.
 
-\begin{figure}[!t]
+\begin{figure}
 \centering\CaptionFontSize
 \begin{tikzpicture}[shorten >=1pt,auto, thick,
      square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
      port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
      wf/.style={rectangle, minimum height=1cm}]
-    \apparatus{1}{3}{0}{$z$};
-    \apparatus{2}{6}{1.5}{$x$};
+    \apparatus{1}{3}{0}{$\hat{z}$};
+    \apparatus{2}{6}{1.5}{$\hat{x}$};
 
     \node[wf] (w0) at (-0.5,0) {$100 \% $ of electrons};
     \node[wf] (w1) at (9, 2.0) {$25 \%$ of electrons};
@@ -146,14 +146,14 @@ For the second experiment, two consecutive SG measurements are made. Electrons a
 
 If we decide that electrons measured spin-down in the $\hat{z}$ apparatus are uninteresting, we can choose not to count them (reducing our sample size). Re-normalized probabilities are shown in \autoref{Figure:Exp 2 renormalized}.
 
-\begin{figure}[!t]
+\begin{figure}
 \centering\CaptionFontSize
 \begin{tikzpicture}[shorten >=1pt,auto, thick,
      square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
      port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
      wf/.style={rectangle, minimum height=1cm}]
-    \apparatus{1}{3}{0}{$z$};
-    \apparatus{2}{6}{1.5}{$x$};
+    \apparatus{1}{3}{0}{$\hat{z}$};
+    \apparatus{2}{6}{1.5}{$\hat{x}$};
 
     \node[wf] (w0) at (-0.5,0) {$100 \% $ of electrons};
     \node[wf] (w1) at (9, 2.0) {$50 \%$ of electrons};
@@ -186,9 +186,9 @@ However, it appears that the act of measuring the $\hat{x}$ component of spin di
      square node/.style={rectangle, minimum height=2cm, minimum width=1.50cm, text width = 1.25cm, draw, font=\sffamily\Large\bfseries},
      port/.style={rectangle, draw,  minimum height=1cm, minimum width=0.75cm, font=\sffamily\Large\bfseries},
      wf/.style={rectangle, minimum height=1cm}]
-     \apparatus{1}{3}{0}{$z$};
-     \apparatus{2}{6}{1.5}{$x$};
-     \apparatus{3}{9}{3}{$z$};
+     \apparatus{1}{3}{0}{$\hat{z}$};
+     \apparatus{2}{6}{1.5}{$\hat{x}$};
+     \apparatus{3}{9}{3}{$\hat{z}$};
 
      \node[wf] (w0) at (-0.5,0) {$100 \% $ of electrons};
      \node[wf] (w2) at (9, 1.0) {$25 \%$ of electrons};
@@ -207,6 +207,6 @@ However, it appears that the act of measuring the $\hat{x}$ component of spin di
 \end{tikzpicture}
 
 \caption[Results of Stern-Gerlach Experiment 3]
-{Visualization of the results of SG Experiment 3. Notice that even though $\hat{z}$ spin-up had already been measured for all electrons routed the the third apparatus, it still measures an even split of spin-up and spin-down electrons. This result indicates that $S_z$ and $S_x$ have incompatible sample spaces, meaning that they cannot be simultaneously known. }
+{Visualization of the results of SG Experiment 3. Notice that even though $\hat{z}$ spin-up had already been measured for all electrons routed the the third apparatus, it still measures an even split of spin-up and spin-down electrons. The electron ``forgetting'' its previous measurement of $z$ spin reflects the fundamental inability to simultaneously determine $S_z$ and $S_x$.}
 \label{Figure:Exp 3}
 \end{figure}

@@ -67,7 +67,9 @@ The standard probability postulate is written as the inner product of the system
         &= \bra{\psi} P^A_n \ket{\psi}.
 \end{align}
 
-Now, we seek to make probabilistic predictions about the occurrence of histories. If we could find an operator analogous to the $P^a_n$ that represents the occurrence of a history instead of a measurement result, the Born Rule could be extended to assign probabilities to histories without changing form. Such an operator would propagate an initial state through the events of a given history, similar to how the projector for $\ket{a_n}$ propagates an initial state to a measurement outcome.
+Here we identify Lüders' Rule, which states that the component of $\ket{\psi}$ measured in $a_n$ is represented by $P^A_n \ket{\psi}$ \cite{Hegerfeldt}. The Born Rule then states that the probability of measuring $a_n$ is the inner product of this branch of the final state with the initial state.
+
+Now, we seek to make probabilistic predictions about the occurrence of histories. If we could find an operator analogous to the $P^A_n$ that represents the occurrence of a history instead of a measurement result, the Born Rule could be extended to assign probabilities to histories without changing form. Following Lüders' Rule, such an operator would evolve an initial state through the events of a given history, similar to how the projector for $\ket{a_n}$ evolves an initial state to a measurement outcome.
 
 To exemplify finding this operator, we consider the history for measuring spin-up in both apparatuses $h_{+_z, +_x}$ identified for Experiment 2 in \autoref{eq:Experiment 2 Histories}. We follow the path from the initial state to the final $+_x$ outcome in \autoref{Figure:Measurement:consecutive final}, operating on the initial state with unitary dynamics and event projectors along the way. The resulting state is called the \textit{branch wavefunction} for that history, labeled $\ket{\psi_{+_z, +_x}}$.  First, we assert that the system begins in the state corresponding to the first event in the history
 \begin{align}
@@ -98,16 +100,16 @@ $\ket{\psi_{+_z, +_x}}$ represents the ``branch'' of the final system that evolv
 \end{align}
 Through its constituent Heisenberg projectors, the class operator brings together the events of a history with the unitary dynamics experienced by the system to characterize the occurrence of a history.
 
-In general, the class operator for a history consisting of $n$ events is defined by \footnote{Conventionally, the class operator is written with projectors appearing in the same left-to-right reading order as the order of events in the history. By calling our operator $C_h^\dagger$, we invert this order so that the event projectors operate on the initial state in the same order as the events in the history.}
+In general, the class operator for a history consisting of $n$ events is defined by\footnote{Conventionally, the class operator is written with projectors appearing in the same left-to-right reading order as the order of events in the history. By calling our operator $C_h^\dagger$, we invert this order so that the event projectors operate on the initial state in the same order as the events in the history.}
 \begin{align}
-  C_h^\dagger = P^{\alpha_n}_{{\alpha_k}_n}(t_n) \: P^{\alpha_{n-1}}_{{\alpha_k}_{n-1}}(t_{n-1})) \: ... \: P^{\alpha_0}_{{\alpha_k}_0}(t_0),
+  C_h^\dagger = P^{A_n}_{{A_k}_n}(t_n) \: P^{A_{n-1}}_{{A_k}_{n-1}}(t_{n-1})) \: ... \: P^{A_0}_{{A_k}_0}(t_0),
 \end{align}
-where the superscript $\alpha_n$ labels the physical variable for the event, and the subscript ${\alpha_k}_n$ labels the eigenvalue for the event. $C_h^\dagger$ corresponds to the branch wavefunction
+where the superscript $A_n$ labels the physical variable for the event, and the subscript ${A_k}_n$ labels the eigenvalue for the event. $C_h^\dagger$ corresponds to the branch wavefunction
 \begin{align}
   \ket{\psi_h} = U(t_n, t_0) C_h^\dagger \ket{\psi}.
 \end{align}
 
-To extend the probability postulate to make predictions about histories, we replace the measurement result projector $P^a_n$ with the class operator $C_h^\dagger$
+To extend the probability postulate to make predictions about histories, we replace the measurement result projector $P^A_n$ with the class operator $C_h^\dagger$
 \begin{align} \label{eq:Extended Born Rule}
   \mathcal{P}(h_n) = \bra{\psi} C_h^\dagger \ket{\psi}.
 \end{align}
@@ -148,7 +150,7 @@ so the probability expression simplifies to
 \end{align}
 We have reproduced the predictions of the standard Born Rule for Experiment 1 made in \autoref{Standard Experiment 1}.
 
-\section{Consistency Conditions}
+\section{Consistency Conditions} \label{sec:consistency conditions}
 
 In standard quantum mechanics, the third postulate defines the subset of states corresponding to ``measurement results'', and the fourth postulate makes predictions about these states only. Now that we have extended the Born Rule to make predictions about histories, we must be careful about the context in which predictions are made.
 
